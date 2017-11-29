@@ -2,11 +2,16 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use App\Elegant;
 
-class Developer extends Model
+class Developer extends Elegant
 {
     protected $casts = [
       "public" => "boolean",
     ]:
+    
+    protected $rules = [
+      "email" => "required",
+      "username" => "required|email",
+    ];
 }
