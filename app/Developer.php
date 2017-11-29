@@ -7,11 +7,15 @@ use App\Elegant;
 class Developer extends Elegant
 {
     protected $casts = [
-      "public" => "boolean",
-    ]:
-    
+      'admin' => 'boolean',
+    ];
+
+    protected $fillable = [
+
+    ];
+
     protected $rules = [
-      "email" => "required",
-      "username" => "required|email",
+      'email' => 'required',
+      'username' => 'required|email',
     ];
 }
