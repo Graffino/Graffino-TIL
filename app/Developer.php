@@ -10,9 +10,7 @@ class Developer extends Elegant
       'admin' => 'boolean',
     ];
 
-    protected $fillable = [
-
-    ];
+    protected $fillable = ['email', 'username',];
 
     protected $rules = [
       'email' => 'required',
