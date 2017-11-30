@@ -2,22 +2,32 @@
 
 namespace App;
 
-use App\Elegant;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Developer extends Elegant
+class Developer extends Authenticatable
 {
     protected $casts = [
       'admin' => 'boolean',
     ];
 
-    protected $fillable = ['email', 'username', 'twitter_handle',];
-
-    protected $rules = [
-      'email' => 'required',
-      'username' => 'required|email',
+    protected $fillable = [
+      'email', 'username', 'twitter_handle',
     ];
 
-    public function cleanTwitterHandle () {
-      return $this;
+    protected $hidden = [
+      'remember_token',
+    ]
+
+    public function cleanTwitterHandle () {}
+
+    public static function findOrCreate (Array $attributes) {
+      $email = $attributes->email;
+      $developer = Developer::where('email', $email)->first();
+
+      return $developer ? $developer : Developer::create($attributes);
+    }
+
+    public static function formatName(String $name) {
+      return strtolower(str_replace($name));
     }
 }

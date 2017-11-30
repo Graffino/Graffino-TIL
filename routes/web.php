@@ -18,3 +18,7 @@ Route::get('/', function () {
 Route::get('profile', 'DeveloperController@show');
 Route::get('profile/edit', 'DeveloperController@edit');
 Route::put('profile/edit', 'DeveloperController@update');
+
+Route::get('admin', 'AuthController@index');
+Route::get('auth/github', 'AuthController@request');
+Route::get('auth/github/callback', 'AuthController@callback');

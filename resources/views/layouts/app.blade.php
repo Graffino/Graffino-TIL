@@ -19,6 +19,7 @@
         grid-column: 1 / 5;
         grid-row: 1 / 5;
         background: yellow;
+        text-align: center;
       }
       main {
         grid-column: 2 / 5;
