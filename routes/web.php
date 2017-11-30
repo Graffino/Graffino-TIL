@@ -15,6 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('profile', 'DeveloperController', ['only' => [
-  'show', 'edit', 'update',
-]]);
+Route::get('profile', 'DeveloperController@show');
+Route::get('profile/edit', 'DeveloperController@edit');
+Route::put('profile/edit', 'DeveloperController@update');

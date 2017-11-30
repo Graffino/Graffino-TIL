@@ -227,6 +227,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Markdown' => GrahamCampbell\Markdown\Facades\Markdown::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,
     ],
 
 ];

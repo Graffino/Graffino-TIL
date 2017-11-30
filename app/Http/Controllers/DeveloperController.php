@@ -15,7 +15,7 @@ class DeveloperController extends Controller
      */
     public function show(Developer $developer)
     {
-        //
+        return view('profile.show');
     }
 
     /**
