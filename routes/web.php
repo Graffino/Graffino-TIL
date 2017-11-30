@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resource('profile', 'DeveloperController', ['only' => [
+  'show', 'edit', 'update',
+]]);

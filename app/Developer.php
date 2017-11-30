@@ -10,10 +10,14 @@ class Developer extends Elegant
       'admin' => 'boolean',
     ];
 
-    protected $fillable = ['email', 'username',];
+    protected $fillable = ['email', 'username', 'twitter_handle',];
 
     protected $rules = [
       'email' => 'required',
       'username' => 'required|email',
     ];
+
+    public function cleanTwitterHandle () {
+      return $this;
+    }
 }
