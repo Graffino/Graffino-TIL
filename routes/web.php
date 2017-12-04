@@ -22,3 +22,4 @@ Route::put('profile/edit', 'DeveloperController@update');
 Route::get('admin', 'AuthController@index');
 Route::get('auth/github', 'AuthController@request');
 Route::get('auth/github/callback', 'AuthController@callback');
+Route::get('auth/logout', 'AuthController@delete');

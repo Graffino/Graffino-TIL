@@ -4,51 +4,29 @@ namespace App\Http\Controllers;
 
 use App\Developer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
+use Debugbar;
 
 class DeveloperController extends Controller
 {
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Developer  $developer
-     * @return \Illuminate\Http\Response
-     */
     public function show(Developer $developer)
     {
-        return view('profile.show');
+      //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Developer  $developer
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Developer $developer)
-    {
+    public function edit() {
+        $authId= Auth::id();
+        $developer = Developer::find($authId);
+        Debugbar::info($developer);
+        return view('profile.edit', ['developer' => $developer,]);
+    }
+
+    public function update(Request $request, Developer $developer) {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Developer  $developer
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Developer $developer)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Developer  $developer
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Developer $developer)
-    {
-        //
+    public function destroy(Developer $developer) {
+      //
     }
 }
