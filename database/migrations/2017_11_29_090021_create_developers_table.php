@@ -17,7 +17,7 @@ class CreateDevelopersTable extends Migration
             $table->increments('id');
             $table->string('email')->unique();
             $table->string('username')->unique();
-            $table->string('twitter_handle')->default("tilgraffino");
+            $table->string('twitter_handle');
             $table->boolean('admin')->default(false);
             $table->string('editor')->default('Text Field');
 

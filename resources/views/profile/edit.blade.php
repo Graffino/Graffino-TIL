@@ -6,7 +6,7 @@
     <h1> Hi, {{ $developer['email'] }}!</h1>
 
     {{ Form::model($developer, ['method' => 'PUT', 'url' => ['profile/edit']]) }}
-
+    
         {{-- @include('articles.form') --}}
       <div class="">
         {{ Form::label('text', 'Twitter Handle') }}

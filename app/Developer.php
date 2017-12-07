@@ -29,4 +29,10 @@ class Developer extends Authenticatable
     public static function formatName(String $name) {
       return strtolower(preg_replace('/\s+/', '', $name));
     }
+
+    public static function clean_twitter_handle(String $handle) {
+      if (is_string($handle) && $handle !== '') {
+        return ltrim($handle, '@');
+      }
+    }
 }

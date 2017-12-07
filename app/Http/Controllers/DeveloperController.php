@@ -23,15 +23,13 @@ class DeveloperController extends Controller
 
     public function update(Request $request) {
       $authId = Auth::id();
+      $developer = Developer::find($authId);
 
-      Debugbar::info($request->all());
+      $attr = request()->only('twitter_handle', 'editor');
+      $attr['twitter_handle'] = Developer::cleanTwitterHandle($attr['twitter_handle']);
 
-      Developer::find($authId)->update($request->all());
+      $developer->update($attr);
 
-      return redirect('profile/edit');
-    }
-
-    public function destroy(Developer $developer) {
-      //
+      return view('profile.edit', ['developer' => $developer,]);
     }
 }
