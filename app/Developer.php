@@ -18,6 +18,10 @@ class Developer extends Authenticatable
       'remember_token',
     ];
 
+    public function posts() {
+      $this->belongsTo('App\Post');
+    }
+
     public static function findOrCreate (Array $attributes) {
       $email = $attributes['email'];
       $developer = Developer::where('email', $email)->first();
@@ -30,7 +34,7 @@ class Developer extends Authenticatable
       return strtolower(preg_replace('/\s+/', '', $name));
     }
 
-    public static function clean_twitter_handle(String $handle) {
+    public static function cleanTwitterHandle(String $handle) {
       if (is_string($handle) && $handle !== '') {
         return ltrim($handle, '@');
       }
