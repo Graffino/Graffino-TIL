@@ -28,11 +28,11 @@ class AuthController extends Controller
       $developer = $this->authenticate($auth);
       Auth::login($developer, true);
       $request->session()->flash('info', 'Signed in with '.$developer->email);
-
+      
     } catch (Exception $e) {
       $request->session()->flash('info', $developer->email.' is not a valid email address');
     }
-    return redirect()->action('DeveloperController@show');
+    return redirect('/');
   }
 
   public function delete(Request $request) {
