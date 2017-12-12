@@ -14,13 +14,16 @@ class CreatePostsTable extends Migration
     public function up()
     {
         Schema::create('posts', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('id')->unsigned();
             $table->string('title');
             $table->string('body');
             $table->string('slug');
             $table->integer('likes')->default(1);
             $table->integer('max_likes')->default(1);
-            $table->integer('tweeted_at')->dateTimeTz();
+            $table->integer('tweeted_at')
+              ->dateTimeTz()
+              ->nullable();
+
             $table->timestamps();
         });
     }

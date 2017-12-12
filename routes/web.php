@@ -23,3 +23,10 @@ Route::get('admin', 'AuthController@index');
 Route::get('auth/github', 'AuthController@request');
 Route::get('auth/github/callback', 'AuthController@callback');
 Route::get('auth/logout', 'AuthController@delete');
+
+Route::get('/', 'PostController@index');
+Route::get('/posts/new', 'PostController@new');
+Route::post('/posts/create', 'PostController@create');
+Route::get('/posts/{id}', 'PostController@show');
+Route::get('/posts/{id}/edit', 'PostController@edit');
+Route::put('/posts/{id}/update', 'PostController@update');

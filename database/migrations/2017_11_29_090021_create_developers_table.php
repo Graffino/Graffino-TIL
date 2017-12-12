@@ -14,10 +14,10 @@ class CreateDevelopersTable extends Migration
     public function up()
     {
         Schema::create('developers', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('id')->unsigned();
             $table->string('email')->unique();
             $table->string('username')->unique();
-            $table->string('twitter_handle');
+            $table->string('twitter_handle')->nullable();
             $table->boolean('admin')->default(false);
             $table->string('editor')->default('Text Field');
 
