@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Today I Learned - @yield('title')</title>
-    
+
     <style media="screen">
       body { margin: 0; }
       html, body, .app { height: 100%; }
@@ -35,6 +35,7 @@
   </head>
   <body>
     <div class="app">
+      @include('ui.user')
       <header class="hero">
         <h1 class="hero__title">Today I Learned</h1>
         <div class="hero__subtitle">Follow us on Twitter</div>
