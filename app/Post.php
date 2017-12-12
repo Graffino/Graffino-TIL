@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     protected $fillable = [
-      'title', 'body', 'slug', 'likes', 'max_likes'. 'tweeted_at',
+      'title', 'body', 'slug', 'likes', 'max_likes'. 'tweeted_at', 'developer_id', 'channel_id',
     ];
 
     public static $bodyMaxWords = 200;
@@ -18,7 +18,7 @@ class Post extends Model
     }
 
     public function channel() {
-      $this->belongsTo('App\Channel');
+      return $this->belongsTo('App\Channel');
     }
 
     public static function slugifyTitle($title) {
