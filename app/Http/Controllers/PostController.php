@@ -18,7 +18,7 @@ class PostController extends Controller
     }
 
     public function new() {
-        $channels = getChannels();
+        $channels = $this->getChannels();
 
         return view('posts.new', ['channels' => $channels,]);
     }
@@ -42,7 +42,7 @@ class PostController extends Controller
     }
 
     public function edit($id) {
-        $channels = getChannels();
+        $channels = $this->getChannels();
         $post = Post::find($id);
 
         return view('posts.edit', ['post' => $post, 'channels' => $channels, ]);
