@@ -36,6 +36,7 @@
   <body>
     <div class="app">
       @include('ui.user')
+      @include('ui.flash')
       <header class="hero">
         <h1 class="hero__title">Today I Learned</h1>
         <div class="hero__subtitle">Follow us on Twitter</div>
