@@ -1,0 +1,33 @@
+/**
+ * Typography
+ * Author: Graffino (http://www.graffino.com)
+ */
+
+
+/**
+ * Headings
+ */
+
+h1,
+.h1
+  font-family: $heading-1-font-family
+  font-size: $heading-1-font-size
+  font-weight: $heading-1-font-weight
+  line-height: $heading-1-line-height
+  letter-spacing: $heading-1-letter-spacing
+
+  // Default font-family until webfonts are loaded
+  .no-fonts &
+    font-family: $heading-1-default-stack
+
+h2,
+.h2
+  font-family: $heading-2-font-family
+  font-size: $heading-2-font-size
+  font-weight: $heading-2-font-weight
+  line-height: $heading-2-line-height
+  letter-spacing: $heading-2-letter-spacing
+
+  // Default font-family until webfonts are loaded
+  .no-fonts &
+    font-family: $heading-2-default-stack
