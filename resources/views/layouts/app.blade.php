@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Today I Learned - @yield('title')</title>
-    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="{{ URL::asset('/css/app.css') }}">
   </head>
   <body>
     <div class="app">
