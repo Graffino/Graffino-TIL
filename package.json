@@ -19,6 +19,7 @@
         "vue": "^2.5.7"
     },
     "dependencies": {
+        "rupture": "^0.7.1",
         "stylus": "^0.54.5",
         "stylus-loader": "^3.0.1",
         "svg-spritemap-webpack-plugin": "^1.0.3",

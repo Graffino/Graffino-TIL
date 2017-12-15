@@ -3,32 +3,36 @@
  * Author: Graffino (http://www.graffino.com)
  */
 
- /**
-  * Base
-  */
+/**
+* Dependencies
+*/
 
+// Rupture
+@import "../../../node_modules/rupture/rupture/index"
+
+
+
+
+
+/**
+* Base
+*/
+  // Breakpoints 
+  @import "common/breakpoints"
   // Color variables
   @import "common/colors"
-  // Defaults
-  @import "common/defaults"
   // Fonts and sizes variables
   @import "common/fonts"
+  // Defaults
+  @import "common/defaults"
   // Helpers
   @import "common/helpers"
   // Mixins
   @import "common/mixins"
 
- /**
-  * Vendor styling
-  */
-
-// Generated SVG icon sprite
-// @import "vendor/sprite"
-
-
- /**
-  * Modules
-  */
+/**
+* Modules
+*/
 
  // Typography — body copy, headings, lists, blockquotes, etc
   @import "modules/typography"
@@ -40,3 +44,7 @@
   @import "modules/hero"
   // Sidebar - styles
   @import "modules/sidebar"
+  // Feed - styles
+  @import "modules/feed"
+  // Post - styles
+  @import "modules/post"
