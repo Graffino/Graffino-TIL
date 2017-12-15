@@ -1,0 +1,68 @@
+/**
+ * Defaults
+ * Author: Graffino (http://www.graffino.com)
+ */
+
+// Variables
+focus-outline = @block
+  outline: 0
+  box-shadow: 0 0 0 rem(3) rgba(black, 0.3)
+
+
+
+/**
+ * Globals
+ */
+
+ // Custom focus state for DOM elements
+:focus
+ focus-outline // @stylint ignore
+
+
+*
+  // Border-box
+  box-sizing: border-box
+
+
+// HTML
+html
+  position: relative
+
+  // Font rendering
+  text-rendering: optimizeLegibility
+  font-variant-ligatures: common-ligatures
+  font-kerning: normal
+  font-feature-settings: "kern"
+  -webkit-font-smoothing: antialiased
+
+
+// Body
+body
+  // Defaults
+  overflow-x: hidden
+  min-width: rem(320)
+  background-color: $color-background
+  color: $default-color
+  font-family: $default-fontface-stack
+  font-size: $default-font-size
+  line-height: $default-font-size
+
+  &.has-background-white
+    background-color: white
+
+
+  // Default font-family until webfonts are loaded
+  .no-fonts &
+    font-family: $default-system-stack
+
+
+
+html,
+body
+  // Enable scroll momentum on iPhone Safari (webkit)
+  -webkit-overflow-scrolling: touch
+
+
+.main
+  clearfix()
+  background-color: $color-content-background

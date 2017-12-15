@@ -1,0 +1,30 @@
+$post-background-color = $color-palette-4
+
+.post
+  min-width: rem(800)
+  height: auto
+  margin: rem(40) auto
+  border-radius: rem(10)
+  font-family: $mono-fontface-stack
+  background: linear-gradient(#eef1f5 rem(60), $post-background-color rem(60))
+  box-shadow: 0 0 rem(40) rem(-15) black
+
+  +below($tablet)
+    background: none
+
+  &__container
+    padding: 0 rem(20)
+
+  &__title
+    color: $color-palette-1
+    font-size: $font-size-2
+    font-weight: 700
+    text-align: center
+
+  &__content
+    margin: rem(50)
+    font-size: $font-size-3
+    font-weight: 400
+
+  &__info 
+    text-align: right

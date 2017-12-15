@@ -28,7 +28,7 @@ class AuthController extends Controller
       $developer = $this->authenticate($auth);
       Auth::login($developer, true);
       $request->session()->flash('info', 'Signed in with '.$developer->email);
-      
+
     } catch (Exception $e) {
       $request->session()->flash('info', $developer->email.' is not a valid email address');
     }
@@ -43,6 +43,7 @@ class AuthController extends Controller
   }
 
   private function authenticate(User $user) {
+    Debugbar::info($user);
     $email = $user->email;
     $username = Developer::formatName($user->name);
 
