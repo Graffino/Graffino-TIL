@@ -16,7 +16,7 @@
       @include('ui.user')
       @include('ui.flash')
       <header class="hero">
-        <div class="hero__container">
+        <div class="container">
           <h1 class="hero__title">Today I Learned</h1>
           <div class="hero__links">
             <a class="hero__subtitle" href="https://twitter.com/graffino">
