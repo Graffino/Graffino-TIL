@@ -55,6 +55,17 @@ class PostController extends Controller
         return redirect('/');
     }
 
+    public function show($id) {
+      $post = Post::findOrFail($id);
+      return view('posts.show', ["post" => $post]);
+    }
+
+    public function random() {
+      $post = Post::all()->random(1)->first();
+
+      return view('posts.show', ["post" => $post]);
+    }
+
     private function getChannels() {
       $channelCollection = Channel::all();
       $channels = [];
