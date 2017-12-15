@@ -6,7 +6,7 @@
   <div class="feed__container">
     @foreach($posts as $post)
       <div class="post">
-        <div class="post__container">
+        <div class="post__wrapper">
           <h1 class="post__title">{{ $post->title }}</h1>
           <p class="post__content">{{ $post->body }}</p>
           <div class="post__info">
