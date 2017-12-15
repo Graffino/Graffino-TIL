@@ -1,0 +1,172 @@
+// Variables
+/**
+ * Custom grid
+ * Author: Graffino (http://www.graffino.com)
+ */
+
+// Maximum numbers of columns in the grid
+$max-columns = 12
+// Default column gutter width
+$columns-gutter = 24px
+$columns-gutter-small = 10px
+// Default container horizontal padding
+$container-padding = 28px
+$container-padding-small = 20px
+// Default container width
+$container-width = 1000px
+
+$columns = { size: 1, name: one }, {
+  size: 2,
+  name: two
+}, {
+  size: 3,
+  name: three
+}, {
+  size: 4,
+  name: four
+}, {
+  size: 5,
+  name: five
+}, {
+  size: 6,
+  name: six
+}, {
+  size: 7,
+  name: seven
+}, {
+  size: 8,
+  name: eight
+}, {
+  size: 9,
+  name: nine
+}, {
+  size: 10,
+  name: ten
+}, {
+  size: 11,
+  name: eleven
+}, {
+  size: 12,
+  name: twelve
+}
+$responsive-breakpoints = { size: $xlarge, name: xlarge }, {
+  size: $desktop,
+  name: desktop
+}, {
+  size: $large,
+  name: large
+}, {
+  size: $medium,
+  name: medium
+}, {
+  size: $tablet,
+  name: tablet
+}, {
+  size: $small,
+  name: small
+}, {
+  size: $xsmall,
+  name: xsmall
+}, {
+  size: $iphone6p,
+  name: iphone6p
+}, {
+  size: $iphone6,
+  name: iphone6
+}, {
+  size: $mobile,
+  name: mobile
+}
+
+// Grid container
+.container
+  clearfix()
+  center($container-width, pad = $container-padding)
+
+  +below($xsmall)
+    padding-right: $container-padding-small
+    padding-left: $container-padding-small
+
+  &.-no-padding-from
+    &-tablet-down
+      +below($tablet)
+        padding-right: 0
+        padding-left: 0
+
+    &-small-down
+      +below($small)
+        padding-right: 0
+        padding-left: 0
+
+.container--fluid
+  @extend .container
+  max-width: 100%
+
+// Columns row element
+.columns
+  clearfix()
+  margin-right: rem(-($columns-gutter / 2))
+  margin-left: rem(-($columns-gutter / 2))
+
+  &.-no-gutter
+    margin-right: 0
+    margin-left: 0
+
+    & > .column
+      padding-right: 0
+      padding-left: 0
+
+  &.-gutter-small
+    margin-right: rem(-($columns-gutter-small / 2))
+    margin-left: rem(-($columns-gutter-small / 2))
+
+    & > .column
+      padding-right: rem(($columns-gutter-small / 2))
+      padding-left: rem(($columns-gutter-small / 2))
+
+  &.-align
+    &-vertical
+      display: flex
+      justify-content: center
+      align-items: center
+
+// Individual column element
+.column
+  padding-right: rem(($columns-gutter / 2))
+  padding-left: rem(($columns-gutter / 2))
+  transition: transition-custom($property = width)
+
+  // Classes for column sizing
+  for $column in $columns
+    &.is-{$column.name}, &.is-{$column.size}
+      span(($column.size / $max-columns))
+
+    // Offsets (e.g. ".is-offset-six" or ".is-offset-6")
+    &.is-offset-{$column.name}, &.is-offset-{$column.size}
+      move(($column.size / $max-columns))
+
+  // For breakpoint classes, we require a new loop to override previous classes
+  for $column in $columns
+    // Breakpoint classes (e.g. ".is-six-tablet" or ".is-6-tablet");
+    for $breakpoint in $responsive-breakpoints
+      &.is-{$column.name}-{$breakpoint.name}, &.is-{$column.size}-{$breakpoint.name}
+        +below($breakpoint.size)
+          span(($column.size / $max-columns))
+
+      // Offsets for breakpoints (e.g. ".is-offset-six-large" or ".is-offset-6-large")
+      &.is-offset-{$column.name}-{$breakpoint.name}, &.is-offset-{$column.size}-{$breakpoint.name}
+        +below($breakpoint.size)
+          move(($column.size / $max-columns))
+
+      &.no-offset-{$breakpoint.name}
+        +below($breakpoint.size)
+          unmove()
+
+  &.-no-padding-from
+    &-tablet-down
+      +below($tablet)
+        padding-right: 0
+        padding-left: 0
+
+  &.-clear
+    clear: both
