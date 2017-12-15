@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Developer;
+use App\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -10,8 +11,11 @@ use Debugbar;
 
 class DeveloperController extends Controller
 {
-    public function show(Developer $developer) {
-      //
+    public function show($username) {
+      $developer = Developer::where('username', $username)->first();
+      $posts = Post::where("developer_id", $developer->id);
+
+      return view('posts.feed', ['posts' => $posts]);
     }
 
     public function edit() {

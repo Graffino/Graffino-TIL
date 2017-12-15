@@ -24,6 +24,8 @@ Route::get('auth/github', 'AuthController@request');
 Route::get('auth/github/callback', 'AuthController@callback');
 Route::get('auth/logout', 'AuthController@delete');
 
+Route::get('authors/{username}', 'DeveloperController@show');
+
 Route::get('/', 'PostController@index');
 Route::get('/posts/new', 'PostController@new');
 Route::post('/posts/create', 'PostController@create');

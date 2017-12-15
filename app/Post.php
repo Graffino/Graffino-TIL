@@ -14,7 +14,7 @@ class Post extends Model
     public static $titleMaxChars = 50;
 
     public function developer() {
-      $this->belongsTo('App\Developer');
+      return $this->belongsTo('App\Developer');
     }
 
     public function channel() {

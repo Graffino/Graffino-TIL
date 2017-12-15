@@ -19,7 +19,7 @@ class Developer extends Authenticatable
     ];
 
     public function posts() {
-      $this->belongsTo('App\Post');
+      return $this->hasMany('App\Post');
     }
 
     public static function findOrCreate (Array $attributes) {
