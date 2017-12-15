@@ -45,7 +45,7 @@ class AuthController extends Controller
   private function authenticate(User $user) {
     Debugbar::info($user);
     $email = $user->email;
-    $username = Developer::formatName($user->name);
+    $username = $user->nickname;
 
     if (stripos($email, '@graffino.com') !== false) {
       $attr = [

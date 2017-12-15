@@ -65,7 +65,7 @@
               </a>
             </li>
             <li>
-              <a class="link" href="#">
+              <a class="link" href="{{ url('random')}}">
                 <svg class="icon -size-medium -dice">
                   <use xlink:href="#sprite-dice"/>
                 </svg>
