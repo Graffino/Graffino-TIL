@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use App\Post;
 use App\Developer;
 use App\Channel;
@@ -66,6 +67,13 @@ class PostController extends Controller
       return view('posts.show', ["post" => $post]);
     }
 
+    public function search(Request $request) {
+      $q = $request->input('q');
+      $posts = $this->searchPosts($q);
+
+      return view("posts.feed", ['posts' => $posts]);
+    }
+
     private function getChannels() {
       $channelCollection = Channel::all();
       $channels = [];
@@ -80,5 +88,9 @@ class PostController extends Controller
       unset($channels[0]);
 
       return $channels;
+    }
+
+    private function searchPosts($q) {
+      //
     }
 }

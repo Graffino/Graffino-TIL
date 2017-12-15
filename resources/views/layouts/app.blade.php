@@ -42,6 +42,10 @@
                   <use xlink:href="#sprite-magnifier"/>
                 </svg>
               </a>
+              {{ Form::open(['method' => 'get', 'url' => ['search']], ['class' => 'form']) }}
+                <input class="form__input" type="search" name="q">
+                {{ Form::submit('Search', ['class' => 'form__button']) }}
+              {{ Form::close() }}
             </li>
             <li>
               <a class="link" href="#">

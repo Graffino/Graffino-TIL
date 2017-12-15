@@ -31,3 +31,5 @@ Route::get('/posts/{id}', 'PostController@show');
 Route::get('/posts/{id}/edit', 'PostController@edit');
 Route::put('/posts/{id}/update', 'PostController@update');
 Route::get('/random', 'PostController@random');
+
+Route::get('/search', 'PostController@search');
