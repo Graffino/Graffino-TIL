@@ -70,7 +70,7 @@ class PostController extends Controller
     public function search(Request $request) {
       $q = $request->input('q');
       $posts = $this->searchPosts($q);
-
+      Debugbar::info($posts);
       return view("posts.feed", ['posts' => $posts]);
     }
 
@@ -91,6 +91,17 @@ class PostController extends Controller
     }
 
     private function searchPosts($q) {
-      //
+      $results = DB::select("select p.* from posts p
+      left join developers d on d.id = p.developer_id
+      left join channels c on c.id = p.channel_id
+      join lateral (
+        select ts_rank_cd( setweight(to_tsvector('english', p.title), 'A')
+        || setweight(to_tsvector('english', d.username), 'B')
+        || setweight(to_tsvector('english', c.name), 'B')
+        || setweight(to_tsvector('english', p.body), 'C'), plainto_tsquery('english', '".$q."')) as rank)
+        ranks on true
+        where ranks.rank > 0 order by ranks.rank desc, p.created_at desc");
+
+      return Post::hydrate($results);
     }
 }
