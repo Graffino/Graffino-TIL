@@ -1,11 +1,28 @@
 .sidebar
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  
+  position: fixed
+  bottom: 0
+  left: 0
+
   .nav
     ul
       list-style-type: none
 
       li
         margin: rem(10) 0
+
+        +below($large)
+          display: inline-block
+
+        svg
+          vertical-align: middle
+
+    &__search
+      &-input
+        height: rem(40)
+        padding: 0 rem(10)
+
+      &-button
+        height: rem(40)
+        background-color: $color-palette-4
+        color: white
+        text-transform: uppercase

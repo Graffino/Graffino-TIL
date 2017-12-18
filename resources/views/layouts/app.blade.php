@@ -37,15 +37,17 @@
         <nav class="nav">
           <ul>
             <li>
-              <a class="link" href="#">
+              <a class="link" id="search-button" href="#">
                 <svg class="icon -size-medium -magnifier">
                   <use xlink:href="#sprite-magnifier"/>
                 </svg>
               </a>
-              {{ Form::open(['method' => 'get', 'url' => ['search']], ['class' => 'form']) }}
-                <input class="form__input" type="search" name="q">
-                {{ Form::submit('Search', ['class' => 'form__button']) }}
-              {{ Form::close() }}
+              <div id="search-bar" style="display: none;">
+                {{ Form::open(['method' => 'get', 'url' => ['search']], ['class' => 'form']) }}
+                  <input class="nav__search-input" type="search" name="q">
+                  {{ Form::submit('Search', ['class' => 'nav__search-button']) }}
+                {{ Form::close() }}
+              </div>
             </li>
             <li>
               <a class="link" href="#">
@@ -79,5 +81,6 @@
         </nav>
       </aside>
     </div>
+    <script type="text/javascript" src="{{ URL::asset('/js/app.js') }}"></script>
   </body>
 </html>
