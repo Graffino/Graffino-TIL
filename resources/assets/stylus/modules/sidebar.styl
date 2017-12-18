@@ -2,15 +2,25 @@
   position: fixed
   bottom: 0
   left: 0
-
+  +below($eager-tablet)
+    width: 100%
+    background-color: rgba($color-palette-4, 0.7)
+    
   .nav
+    +below($eager-tablet)
+      padding: 0
+    
     ul
       list-style-type: none
+
+      +below($eager-tablet)
+        white-space: nowrap
 
       li
         margin: rem(10) 0
 
         +below($large)
+          span(1/5)
           display: inline-block
 
         svg

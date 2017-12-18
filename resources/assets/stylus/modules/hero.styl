@@ -1,6 +1,9 @@
 .hero
   &__links
     text-align: right
+    
+    +below($small)
+      text-align: center
 
   &__title
     margin: 0 auto
@@ -10,6 +13,12 @@
     text-transform: uppercase
     text-align: center
     white-space: nowrap
+
+    +below($large)
+      white-space: normal
+
+    +below($small)
+      font-size: rem(60)
 
   &__subtitle
     color: $color-palette-3

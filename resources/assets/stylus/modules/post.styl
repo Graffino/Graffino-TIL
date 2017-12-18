@@ -5,10 +5,13 @@ $post-header-color = $color-palette-5
   min-width: rem(800)
   height: auto
   margin: rem(40) auto
-  border-radius: rem(10)
+  border-radius: rem(12)
   background: linear-gradient($post-header-color rem(60), $post-background-color rem(60))
   font-family: $mono-fontface-stack
   box-shadow: 0 0 rem(40) rem(-15) black
+
+  +below($eager-tablet)
+    min-width: 90%
 
   &__wrapper
     margin-bottom: rem(30)
@@ -44,6 +47,11 @@ $post-header-color = $color-palette-5
       font-size: $font-size-2
       text-align: center
       text-transform: uppercase
+
+      +below($eager-tablet)
+        span(1/2)
+        border: 0
+        text-align: center
 
       & > a
         vertical-align: middle
