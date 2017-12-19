@@ -28,6 +28,9 @@ $post-header-color = $color-palette-5
     font-size: $font-size-3
     font-weight: 400
 
+    +below($small)
+      margin-left: rem(10)
+
   &__info
     text-align: right
 
@@ -44,6 +47,7 @@ $post-header-color = $color-palette-5
       display: inline-block
       border-top: rem(2) solid $color-palette-5
       padding-top: rem(2)
+      font-family: $sans-fontface-stack
       font-size: $font-size-2
       text-align: center
       text-transform: uppercase
@@ -58,12 +62,24 @@ $post-header-color = $color-palette-5
 
   &__tag
     color: $color-palette-13
+    
+    &:hover
+      color: $color-palette-10
 
   &__permalink
     color: $color-palette-8
+    
+    &:hover
+      color: $color-palette-7
 
   &__raw
     color: $color-palette-11
-  
+
+    &:hover
+      color: $color-palette-9
+
   &__like
     color: $color-palette-6
+
+    &:hover
+      color: $color-palette-12
