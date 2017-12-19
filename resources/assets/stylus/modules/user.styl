@@ -1,25 +1,25 @@
 .user
-    &__controls
-        min-height: rem(30)
-        margin: 0
-        padding: rem(6)
-        background-color: $color-palette-1
-        font-family: $mono-fontface-stack
+  &__controls
+    min-height: rem(30)
+    margin: 0
+    padding: rem(6)
+    background-color: $color-palette-1
+    font-family: $mono-fontface-stack
 
-        .controls__list
-            margin: 0
-            list-style-type: none
+.controls__list
+  margin: 0
+  list-style-type: none
 
-            .list__item
-                display: inline-block
-                margin: 0 rem(4)
-                text-transform: uppercase
-                
-                +below($eager-tablet)
-                    span(1/4)
+  .list__item
+    display: inline-block
+    margin: 0 rem(4)
+    text-transform: uppercase
 
-                a
-                    text-decoration: none
-                    
-                    &:visited
-                        color: white
+    +below($eager-tablet)
+      span(1/4)
+
+    a
+      text-decoration: none
+
+      &:visited
+        color: white
