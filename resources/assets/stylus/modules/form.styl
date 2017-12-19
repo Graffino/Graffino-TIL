@@ -1,6 +1,55 @@
 .form
-    &__wrapper
-        text-align: center
+  &__input
+    width: 100%
+    border-radius: rem(4)
+    font-size: rem(20)
 
-    &__field
-        margin: rem(10) 0
+  &__input[type="text"],
+  &__input[type="search"]
+    vertical-align: middle
+    min-height: rem(40)
+    padding: 0 rem(10)
+
+    &:active,
+    &:focus
+      border: rem(3) solid $color-palette-13
+
+  &__textarea
+    width: 100%
+    border-radius: rem(4)
+    padding: rem(10)
+    font-size: rem(18)
+
+  &__select
+    width: 100px
+    height: 40px
+    border-radius: rem(4)
+    padding-left: rem(10)
+    font-size: rem(20)
+    text-align: center
+
+  &__label
+    display: block
+    margin-bottom: rem(4)
+    font-size: rem(30)
+    text-align: left
+
+  &__wrapper
+    margin-bottom: rem(100)
+    text-align: center
+
+  &__link
+    display: inline-block
+
+  &__button
+    min-height: rem(40)
+    padding: 0 rem(50)
+
+  &__link
+    vertical-align: middle
+    margin-left: rem(50)
+    color: white
+    font-size: rem(20)
+
+    &:hover
+      text-decoration: underline

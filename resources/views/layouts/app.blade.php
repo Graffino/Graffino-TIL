@@ -44,8 +44,8 @@
               </a>
               <div id="search-bar" style="display: none;">
                 {{ Form::open(['method' => 'get', 'url' => ['search']], ['class' => 'form']) }}
-                  <input class="nav__search-input" type="search" name="q">
-                  {{ Form::submit('Search', ['class' => 'nav__search-button']) }}
+                  <input class="form__input nav__search-input" type="search" name="q">
+                  {{ Form::submit('Search', ['class' => 'button nav__search-button']) }}
                 {{ Form::close() }}
               </div>
             </li>
