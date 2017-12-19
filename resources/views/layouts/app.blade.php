@@ -42,7 +42,7 @@
                   <use xlink:href="#sprite-magnifier"/>
                 </svg>
               </a>
-              <div id="search-bar" style="display: none;">
+              <div id="search-bar" class="nav__search" style="display: none;">
                 {{ Form::open(['method' => 'get', 'url' => ['search']], ['class' => 'form']) }}
                   <input class="form__input nav__search-input" type="search" name="q">
                   {{ Form::submit('Search', ['class' => 'button nav__search-button']) }}

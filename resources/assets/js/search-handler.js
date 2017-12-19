@@ -3,7 +3,7 @@ const searchButton = document.getElementById("search-button"),
 
 searchButton.addEventListener("click", () => {
     if (searchBar.style.display == 'none') {
-        searchBar.style.display = 'inline-block';
+        searchBar.style.display = 'block';
     } else {
         searchBar.style.display = 'none';
     }
