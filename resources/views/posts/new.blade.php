@@ -14,7 +14,7 @@
         </div>
         <div class="form__field">
           {{ Form::label('body', 'Body', ['class' => 'form__label']) }}
-          {{ Form::textarea('body', null, ['class' => 'form__textarea']) }}
+          {{ Form::textarea('body', null, ['class' => 'form__textarea', 'id' => 'markdown-source',]) }}
         </div>
         <div class="form__field">
           {{ Form::label('select', 'Channel', ['class' => 'form__label']) }}
@@ -24,5 +24,6 @@
         {{ link_to('/', 'Cancel', ['class' => 'link form__link']) }}
       {{ Form::close() }}
     </div>
+    <div id="html-preview"></div>
   </div>
 @endsection

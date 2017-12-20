@@ -1,5 +1,4 @@
-
-window._ = require('lodash');
+window.Rx = require('rxjs');
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -53,10 +52,3 @@ window.Echo = new Echo({
     cluster: 'eu',
     encrypted: true
 });
-
-window.Echo.private('text-converter')
-  .listen('TextConverted', (e) => {
-    console.log(e.text);
-  });
-
-console.log(window.Echo);

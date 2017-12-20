@@ -7,3 +7,4 @@
 
 require('./bootstrap');
 require('./search-handler');
+require('./markdown-handler');

@@ -11,7 +11,7 @@
 |
 */
 
-use App\Events\TextConverted;
+use Illuminate\Http\Request;
 
 Route::get('/', function () {
     return view('welcome');
@@ -39,8 +39,3 @@ Route::get('/random', 'PostController@random');
 Route::get('/channel/{id}', 'ChannelController@show');
 
 Route::get('/search', 'PostController@search');
-
-Route::get('/broadcast', function () {
-  event(new TextConverted('Salut'));
-  return '/';
-});
