@@ -746,7 +746,7 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(8);
-module.exports = __webpack_require__(37);
+module.exports = __webpack_require__(38);
 
 
 /***/ }),
@@ -761,6 +761,7 @@ module.exports = __webpack_require__(37);
  */
 
 __webpack_require__(9);
+__webpack_require__(37);
 
 /***/ }),
 /* 9 */
@@ -36674,6 +36675,21 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ }),
 /* 37 */
+/***/ (function(module, exports) {
+
+var searchButton = document.getElementById("search-button"),
+    searchBar = document.getElementById("search-bar");
+
+searchButton.addEventListener("click", function () {
+    if (searchBar.style.display == 'none') {
+        searchBar.style.display = 'block';
+    } else {
+        searchBar.style.display = 'none';
+    }
+}, false);
+
+/***/ }),
+/* 38 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
