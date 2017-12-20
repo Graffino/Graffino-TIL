@@ -36,6 +36,8 @@ Route::get('/posts/{id}/edit', 'PostController@edit');
 Route::put('/posts/{id}/update', 'PostController@update');
 Route::get('/random', 'PostController@random');
 
+Route::get('/channel/{id}', 'ChannelController@show');
+
 Route::get('/search', 'PostController@search');
 
 Route::get('/broadcast', function () {

@@ -16,7 +16,7 @@
           </div>
         </div>
         <ul class="container--fluid">
-          <li><a class="post__tag link" href="#">{{ $post->channel->name }}</a></li>
+          <li><a class="post__tag link" href="{{ url('channel/'.$post->channel->id)}}">{{ $post->channel->name }}</a></li>
           <li><a class="post__permalink link" href="/posts/{{ $post->id }}">Permalink</a></li>
           <li><a class="post__raw link" href="#">Raw</a></li>
           <li>
