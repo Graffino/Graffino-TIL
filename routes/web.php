@@ -11,6 +11,8 @@
 |
 */
 
+use App\Events\TextConverted;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -35,3 +37,8 @@ Route::put('/posts/{id}/update', 'PostController@update');
 Route::get('/random', 'PostController@random');
 
 Route::get('/search', 'PostController@search');
+
+Route::get('/broadcast', function () {
+  event(new TextConverted('Salut'));
+  return '/';
+});

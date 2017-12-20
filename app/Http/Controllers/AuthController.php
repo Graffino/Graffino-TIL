@@ -22,7 +22,9 @@ class AuthController extends Controller
   }
 
   public function callback(Request $request) {
+    Debugbar::info($request);
     $auth = Socialite::driver('github')->user();
+    Debugbar::info($auth);
 
     try {
       $developer = $this->authenticate($auth);
