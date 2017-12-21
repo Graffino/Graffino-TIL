@@ -9,7 +9,7 @@
       <div class="post">
         <div class="post__wrapper">
           <h1 class="post__title">{{ $post->title }}</h1>
-          <p class="post__content">{{ $post->body }}</p>
+          <p class="post__content">{!! markdown($post->body) !!}</p>
           <div class="post__info">
             <span class="post__author">{{ $post->developer->username }}</span>
             <span class="post__timestamp">{{ $post->created_at }}</span>

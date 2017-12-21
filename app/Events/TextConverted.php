@@ -9,7 +9,6 @@ use Illuminate\Broadcasting\PresenceChannel;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
-use GrahamCampbell\Markdown\Facades\Markdown;
 
 class TextConverted implements ShouldBroadcast
 {
@@ -24,7 +23,7 @@ class TextConverted implements ShouldBroadcast
      */
     public function __construct($text)
     {
-        $this->text = Markdown::convertToHtml($text);;
+        $this->text = markdown($text);;
     }
 
     /**
