@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use App\Post;
 use App\Developer;
 use App\Channel;
+use App\Notifications\PostCreated;
 use Debugbar;
 
 class PostController extends Controller
@@ -29,7 +30,7 @@ class PostController extends Controller
         $request = $request->all();
         $slug = Post::saltSlug(Post::slugifyTitle($request['title']));
 
-        $post = array_merge(
+        $data = array_merge(
           $request,
           [
             'slug' => $slug,
@@ -37,8 +38,8 @@ class PostController extends Controller
           ]
         );
 
-        Post::create($post);
-
+        $post = Post::create($data);
+        $post->notify(new PostCreated($post));
         return redirect('/');
     }
 
