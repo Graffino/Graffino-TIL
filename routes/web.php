@@ -31,10 +31,11 @@ Route::get('authors/{username}', 'DeveloperController@show');
 Route::get('/', 'PostController@index');
 Route::get('/posts/new', 'PostController@new');
 Route::post('/posts/create', 'PostController@create');
-Route::get('/posts/{id}', 'PostController@show');
+Route::get('/posts/{slug}', 'PostController@show');
 Route::get('/posts/{id}/edit', 'PostController@edit');
 Route::put('/posts/{id}/update', 'PostController@update');
 Route::get('/random', 'PostController@random');
+Route::get('/raw/{slug}', 'PostController@raw');
 
 Route::get('/channel/{id}', 'ChannelController@show');
 

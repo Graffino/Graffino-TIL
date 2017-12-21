@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Profile')
+@section('title', 'Edit '.$post->title)
 
 @section('content')
     <h1>Create a new post</h1>
