@@ -2,10 +2,16 @@
 
 namespace App\Notifications;
 
+use Illuminate\Support\Facades\Auth;
+use App\Developer;
+
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\SlackMessage;
+use NotificationChannels\Twitter\TwitterChannel;
+use NotificationChannels\Twitter\TwitterStatusUpdate;
+use App\Helpers\ApplicationHelper;
 
 class PostCreated extends Notification
 {
@@ -31,13 +37,14 @@ class PostCreated extends Notification
      */
     public function via($notifiable)
     {
+        // return [TwitterChannel::class, 'slack',];
         return [];
     }
 
     /**
      * Get the slack representation of the notification.
      *
-     * @param  mixed  $notifiable
+     *s.param  mixed  $notifiable
      * @return \Illuminate\Notifications\Messages\SlackMessage
      */
     public function toSlack($notifiable)
@@ -52,6 +59,15 @@ class PostCreated extends Notification
             ->title($post->title, 'http://localhost:8000')
             ->content('Go see what\'s up');
         });
+    }
+
+    public function toTwitter($notifiable)
+    {
+      $canonicalUrl = ApplicationHelper::canonicalUrl($this->post->slug);
+      $developer = Developer::find(Auth::id());
+      $tweet = $this->post->title.' '.$canonicalUrl.' via @'.Developer::twitterHandle($developer).' #til #'.$this->post->channel->twitter_hashtag;
+
+      return new TwitterStatusUpdate($tweet);
     }
 
     /**

@@ -39,4 +39,14 @@ class Developer extends Authenticatable
         return ltrim($handle, '@');
       }
     }
+
+    public static function twitterHandle(Developer $developer) {
+      $handle = env('DEFAULT_TWITTER_HANDLE');
+
+      if (!is_null($developer->twitter_handle)) {
+        $handle = $developer->twitter_handle;
+      }
+
+      return $handle;
+    }
 }
