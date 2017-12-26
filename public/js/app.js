@@ -44812,8 +44812,10 @@ searchButton.addEventListener("click", function () {
 var source = document.getElementById('markdown-source');
 var destination = document.getElementById('html-preview');
 
+var subscription = void 0;
+
 var updateHtml = function updateHtml(html) {
-  destination.innerHTML = html;
+  return destination.innerHTML = html;
 };
 
 var makeRequest = function makeRequest(data) {
@@ -44826,7 +44828,9 @@ var $stream = Rx.Observable.fromEvent(source, 'input').map(function (event) {
   return value.length >= 5;
 }).distinctUntilChanged().debounce(function () {
   return Rx.Observable.interval(800);
-}).subscribe(makeRequest);
+});
+
+if (source != null) subscription = $stream.subscribe(makeRequest);
 
 window.Echo.private('text-converter').listen('TextConverted', function (e) {
   return updateHtml(e.text);
