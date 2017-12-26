@@ -82,6 +82,29 @@ class PostController extends Controller
       return view("posts.feed", ['posts' => $posts]);
     }
 
+    public function like($slug) {
+      $post = Post::where('slug', '=', $slug)->firstOrFail();
+      $likes = $post->likes + 1;
+      $maxLikes = collect([$post->max_likes, $likes])->max();
+      $maxLikesChanged = $maxLikes != $post->max_likes;
+
+      $post::update([
+        'likes' => $likes,
+        'max_likes' => $maxLikes,
+      ]);
+
+      return $likes;
+    }
+
+    public function unlike($slug) {
+      $post = Post::where('slug', '=', $slug)->firstOrFail();
+      $likes = $post->likes - 1;
+
+      $post::update(['likes' => $likes,]);
+
+      return $likes;
+    }
+
     private function getChannels() {
       $channelCollection = Channel::all();
       $channels = [];

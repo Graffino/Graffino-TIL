@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Today I Learned - @yield('title')</title>
+    <title>@yield('title') - Today I Learned</title>
     <link rel="stylesheet" href="{{ URL::asset('/css/app.css') }}">
   </head>
   <body>
