@@ -40,3 +40,5 @@ Route::get('/raw/{slug}', 'PostController@raw');
 Route::get('/channel/{id}', 'ChannelController@show');
 
 Route::get('/search', 'PostController@search');
+
+Route::get('/stats', 'StatsController@index');
