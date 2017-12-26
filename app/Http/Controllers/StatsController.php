@@ -41,8 +41,9 @@ class StatsController extends Controller
     $mostLikedPosts = DB::table('posts')
       ->join('channels', 'posts.channel_id', '=', 'channels.id')
       ->orderBy('posts.likes', 'desc')
+      ->orderBy('posts.created_at', 'desc')
       ->limit(10)
-      ->select('posts.title', 'posts.likes', 'posts.slug', 'channels.name')
+      ->select('posts.title', 'posts.likes', 'posts.slug', 'channels.name as channel')
       ->get();
 
     $postsWithAgeInHours = DB::table('posts')
