@@ -24,11 +24,67 @@ class StatsController extends Controller
       order by dates_table.date");
     $postsForDays = Post::hydrate($postsForDaysSQL);
 
+    $postsByChannelsCount = DB::table('posts')
+      ->join('channels', 'posts.channel_id', '=', 'channels.id')
+      ->groupBy('channels.name')
+      ->orderByRaw('count(posts.id) DESC')
+      ->select(DB::raw('count(posts.id), channels.name'))
+      ->get();
+
+    $postsByDevelopersCount = DB::table('posts')
+      ->join('developers', 'posts.developer_id', '=', 'developers.id')
+      ->groupBy('developers.username')
+      ->orderByRaw('count(posts.id) DESC')
+      ->select(DB::raw('count(posts.id), developers.username'))
+      ->get();
+
+    $mostLikedPosts = DB::table('posts')
+      ->join('channels', 'posts.channel_id', '=', 'channels.id')
+      ->orderBy('posts.likes', 'desc')
+      ->limit(10)
+      ->select('posts.title', 'posts.likes', 'posts.slug', 'channels.name')
+      ->get();
+
+    $postsWithAgeInHours = DB::table('posts')
+     ->whereNotNull('created_at')
+     ->select(DB::raw('
+      posts.id as id,
+      posts.likes as likes,
+      greatest(extract(epoch from(current_timestamp - posts.created_at)) / 3600, 0.1) as hours_age
+    '))
+     ->toSql();
+
+    $hottestPosts = DB::table(DB::raw('(' . $postsWithAgeInHours . ') as sub'))
+      ->join('posts', 'posts.id', '=', 'sub.id')
+      ->join('channels', 'channels.id', '=', 'sub.id')
+      ->orderByRaw('5 DESC')
+      ->select(DB::raw('
+        posts.title,
+        sub.likes,
+        posts.slug,
+        channels.name as channel,
+        sub.likes / (sub.hours_age ^ 0.8) as hottness
+      '))
+      ->limit(10)
+      ->get();
+
+    $developersCount = DB::table('developers')->count();
+    $channelsCount = DB::table('channels')->count();
+    $postsCount = DB::table('posts')->count();
+
+
     $data = [
       'postsForDays' => $postsForDays,
       'maxCount' => $postsForDays->map(function ($entry) {
         return $entry->count;
       })->max(),
+      'postsCount' => $postsCount,
+      'developers' => $postsByDevelopersCount,
+      'developersCount' => $developersCount,
+      'channels' => $postsByChannelsCount,
+      'channelsCount' => $channelsCount,
+      'mostLikedPosts' => $mostLikedPosts,
+      'hottestPosts' => $hottestPosts,
     ];
 
     return view('stats.all', $data);
