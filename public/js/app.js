@@ -1260,7 +1260,7 @@ exports.root = _root;
 
 
 var bind = __webpack_require__(162);
-var isBuffer = __webpack_require__(469);
+var isBuffer = __webpack_require__(470);
 
 /*global toString:true*/
 
@@ -5462,7 +5462,7 @@ exports.Timestamp = Timestamp;
 /* WEBPACK VAR INJECTION */(function(process) {
 
 var utils = __webpack_require__(10);
-var normalizeHeaderName = __webpack_require__(471);
+var normalizeHeaderName = __webpack_require__(472);
 
 var DEFAULT_CONTENT_TYPE = {
   'Content-Type': 'application/x-www-form-urlencoded'
@@ -14819,12 +14819,12 @@ module.exports = function bind(fn, thisArg) {
 
 
 var utils = __webpack_require__(10);
-var settle = __webpack_require__(472);
-var buildURL = __webpack_require__(474);
-var parseHeaders = __webpack_require__(475);
-var isURLSameOrigin = __webpack_require__(476);
+var settle = __webpack_require__(473);
+var buildURL = __webpack_require__(475);
+var parseHeaders = __webpack_require__(476);
+var isURLSameOrigin = __webpack_require__(477);
 var createError = __webpack_require__(164);
-var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(477);
+var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(478);
 
 module.exports = function xhrAdapter(config) {
   return new Promise(function dispatchXhrRequest(resolve, reject) {
@@ -14921,7 +14921,7 @@ module.exports = function xhrAdapter(config) {
     // This is only done if running in a standard browser environment.
     // Specifically not if we're in a web worker, or react-native.
     if (utils.isStandardBrowserEnv()) {
-      var cookies = __webpack_require__(478);
+      var cookies = __webpack_require__(479);
 
       // Add xsrf header
       var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
@@ -15005,7 +15005,7 @@ module.exports = function xhrAdapter(config) {
 "use strict";
 
 
-var enhanceError = __webpack_require__(473);
+var enhanceError = __webpack_require__(474);
 
 /**
  * Create an Error with the specified message, config, error code, request and response.
@@ -15066,7 +15066,7 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(168);
-module.exports = __webpack_require__(490);
+module.exports = __webpack_require__(492);
 
 
 /***/ }),
@@ -15081,8 +15081,9 @@ module.exports = __webpack_require__(490);
  */
 
 __webpack_require__(169);
-__webpack_require__(488);
 __webpack_require__(489);
+__webpack_require__(490);
+__webpack_require__(491);
 
 /***/ }),
 /* 169 */
@@ -15090,9 +15091,10 @@ __webpack_require__(489);
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_laravel_echo__ = __webpack_require__(486);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_laravel_echo__ = __webpack_require__(487);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_laravel_echo___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_laravel_echo__);
 window.Rx = __webpack_require__(170);
+window.Cookies = __webpack_require__(465);
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -15101,9 +15103,9 @@ window.Rx = __webpack_require__(170);
  */
 
 try {
-  window.$ = window.jQuery = __webpack_require__(465);
+  window.$ = window.jQuery = __webpack_require__(466);
 
-  __webpack_require__(466);
+  __webpack_require__(467);
 } catch (e) {}
 
 /**
@@ -15112,7 +15114,7 @@ try {
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
 
-window.axios = __webpack_require__(467);
+window.axios = __webpack_require__(468);
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
@@ -15138,7 +15140,7 @@ if (token) {
 
 
 
-window.Pusher = __webpack_require__(487);
+window.Pusher = __webpack_require__(488);
 
 window.Echo = new __WEBPACK_IMPORTED_MODULE_0_laravel_echo___default.a({
   broadcaster: 'pusher',
@@ -26291,6 +26293,181 @@ exports.zipAll = zipAll_1.zipAll;
 /* 465 */
 /***/ (function(module, exports, __webpack_require__) {
 
+var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
+ * JavaScript Cookie v2.2.0
+ * https://github.com/js-cookie/js-cookie
+ *
+ * Copyright 2006, 2015 Klaus Hartl & Fagner Brack
+ * Released under the MIT license
+ */
+;(function (factory) {
+	var registeredInModuleLoader = false;
+	if (true) {
+		!(__WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
+				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
+				(__WEBPACK_AMD_DEFINE_FACTORY__.call(exports, __webpack_require__, exports, module)) :
+				__WEBPACK_AMD_DEFINE_FACTORY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+		registeredInModuleLoader = true;
+	}
+	if (true) {
+		module.exports = factory();
+		registeredInModuleLoader = true;
+	}
+	if (!registeredInModuleLoader) {
+		var OldCookies = window.Cookies;
+		var api = window.Cookies = factory();
+		api.noConflict = function () {
+			window.Cookies = OldCookies;
+			return api;
+		};
+	}
+}(function () {
+	function extend () {
+		var i = 0;
+		var result = {};
+		for (; i < arguments.length; i++) {
+			var attributes = arguments[ i ];
+			for (var key in attributes) {
+				result[key] = attributes[key];
+			}
+		}
+		return result;
+	}
+
+	function init (converter) {
+		function api (key, value, attributes) {
+			var result;
+			if (typeof document === 'undefined') {
+				return;
+			}
+
+			// Write
+
+			if (arguments.length > 1) {
+				attributes = extend({
+					path: '/'
+				}, api.defaults, attributes);
+
+				if (typeof attributes.expires === 'number') {
+					var expires = new Date();
+					expires.setMilliseconds(expires.getMilliseconds() + attributes.expires * 864e+5);
+					attributes.expires = expires;
+				}
+
+				// We're using "expires" because "max-age" is not supported by IE
+				attributes.expires = attributes.expires ? attributes.expires.toUTCString() : '';
+
+				try {
+					result = JSON.stringify(value);
+					if (/^[\{\[]/.test(result)) {
+						value = result;
+					}
+				} catch (e) {}
+
+				if (!converter.write) {
+					value = encodeURIComponent(String(value))
+						.replace(/%(23|24|26|2B|3A|3C|3E|3D|2F|3F|40|5B|5D|5E|60|7B|7D|7C)/g, decodeURIComponent);
+				} else {
+					value = converter.write(value, key);
+				}
+
+				key = encodeURIComponent(String(key));
+				key = key.replace(/%(23|24|26|2B|5E|60|7C)/g, decodeURIComponent);
+				key = key.replace(/[\(\)]/g, escape);
+
+				var stringifiedAttributes = '';
+
+				for (var attributeName in attributes) {
+					if (!attributes[attributeName]) {
+						continue;
+					}
+					stringifiedAttributes += '; ' + attributeName;
+					if (attributes[attributeName] === true) {
+						continue;
+					}
+					stringifiedAttributes += '=' + attributes[attributeName];
+				}
+				return (document.cookie = key + '=' + value + stringifiedAttributes);
+			}
+
+			// Read
+
+			if (!key) {
+				result = {};
+			}
+
+			// To prevent the for loop in the first place assign an empty array
+			// in case there are no cookies at all. Also prevents odd result when
+			// calling "get()"
+			var cookies = document.cookie ? document.cookie.split('; ') : [];
+			var rdecode = /(%[0-9A-Z]{2})+/g;
+			var i = 0;
+
+			for (; i < cookies.length; i++) {
+				var parts = cookies[i].split('=');
+				var cookie = parts.slice(1).join('=');
+
+				if (!this.json && cookie.charAt(0) === '"') {
+					cookie = cookie.slice(1, -1);
+				}
+
+				try {
+					var name = parts[0].replace(rdecode, decodeURIComponent);
+					cookie = converter.read ?
+						converter.read(cookie, name) : converter(cookie, name) ||
+						cookie.replace(rdecode, decodeURIComponent);
+
+					if (this.json) {
+						try {
+							cookie = JSON.parse(cookie);
+						} catch (e) {}
+					}
+
+					if (key === name) {
+						result = cookie;
+						break;
+					}
+
+					if (!key) {
+						result[name] = cookie;
+					}
+				} catch (e) {}
+			}
+
+			return result;
+		}
+
+		api.set = api;
+		api.get = function (key) {
+			return api.call(api, key);
+		};
+		api.getJSON = function () {
+			return api.apply({
+				json: true
+			}, [].slice.call(arguments));
+		};
+		api.defaults = {};
+
+		api.remove = function (key, attributes) {
+			api(key, '', extend(attributes, {
+				expires: -1
+			}));
+		};
+
+		api.withConverter = init;
+
+		return api;
+	}
+
+	return init(function () {});
+}));
+
+
+/***/ }),
+/* 466 */
+/***/ (function(module, exports, __webpack_require__) {
+
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
  * jQuery JavaScript Library v3.2.1
  * https://jquery.com/
@@ -36548,7 +36725,7 @@ return jQuery;
 
 
 /***/ }),
-/* 466 */
+/* 467 */
 /***/ (function(module, exports) {
 
 /*!
@@ -38931,13 +39108,13 @@ if (typeof jQuery === 'undefined') {
 
 
 /***/ }),
-/* 467 */
+/* 468 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(468);
+module.exports = __webpack_require__(469);
 
 /***/ }),
-/* 468 */
+/* 469 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38945,7 +39122,7 @@ module.exports = __webpack_require__(468);
 
 var utils = __webpack_require__(10);
 var bind = __webpack_require__(162);
-var Axios = __webpack_require__(470);
+var Axios = __webpack_require__(471);
 var defaults = __webpack_require__(57);
 
 /**
@@ -38980,14 +39157,14 @@ axios.create = function create(instanceConfig) {
 
 // Expose Cancel & CancelToken
 axios.Cancel = __webpack_require__(166);
-axios.CancelToken = __webpack_require__(484);
+axios.CancelToken = __webpack_require__(485);
 axios.isCancel = __webpack_require__(165);
 
 // Expose all/spread
 axios.all = function all(promises) {
   return Promise.all(promises);
 };
-axios.spread = __webpack_require__(485);
+axios.spread = __webpack_require__(486);
 
 module.exports = axios;
 
@@ -38996,7 +39173,7 @@ module.exports.default = axios;
 
 
 /***/ }),
-/* 469 */
+/* 470 */
 /***/ (function(module, exports) {
 
 /*!
@@ -39023,7 +39200,7 @@ function isSlowBuffer (obj) {
 
 
 /***/ }),
-/* 470 */
+/* 471 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39031,8 +39208,8 @@ function isSlowBuffer (obj) {
 
 var defaults = __webpack_require__(57);
 var utils = __webpack_require__(10);
-var InterceptorManager = __webpack_require__(479);
-var dispatchRequest = __webpack_require__(480);
+var InterceptorManager = __webpack_require__(480);
+var dispatchRequest = __webpack_require__(481);
 
 /**
  * Create a new instance of Axios
@@ -39109,7 +39286,7 @@ module.exports = Axios;
 
 
 /***/ }),
-/* 471 */
+/* 472 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39128,7 +39305,7 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 
 
 /***/ }),
-/* 472 */
+/* 473 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39161,7 +39338,7 @@ module.exports = function settle(resolve, reject, response) {
 
 
 /***/ }),
-/* 473 */
+/* 474 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39189,7 +39366,7 @@ module.exports = function enhanceError(error, config, code, request, response) {
 
 
 /***/ }),
-/* 474 */
+/* 475 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39264,7 +39441,7 @@ module.exports = function buildURL(url, params, paramsSerializer) {
 
 
 /***/ }),
-/* 475 */
+/* 476 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39324,7 +39501,7 @@ module.exports = function parseHeaders(headers) {
 
 
 /***/ }),
-/* 476 */
+/* 477 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39399,7 +39576,7 @@ module.exports = (
 
 
 /***/ }),
-/* 477 */
+/* 478 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39442,7 +39619,7 @@ module.exports = btoa;
 
 
 /***/ }),
-/* 478 */
+/* 479 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39502,7 +39679,7 @@ module.exports = (
 
 
 /***/ }),
-/* 479 */
+/* 480 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39561,18 +39738,18 @@ module.exports = InterceptorManager;
 
 
 /***/ }),
-/* 480 */
+/* 481 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var utils = __webpack_require__(10);
-var transformData = __webpack_require__(481);
+var transformData = __webpack_require__(482);
 var isCancel = __webpack_require__(165);
 var defaults = __webpack_require__(57);
-var isAbsoluteURL = __webpack_require__(482);
-var combineURLs = __webpack_require__(483);
+var isAbsoluteURL = __webpack_require__(483);
+var combineURLs = __webpack_require__(484);
 
 /**
  * Throws a `Cancel` if cancellation has been requested.
@@ -39654,7 +39831,7 @@ module.exports = function dispatchRequest(config) {
 
 
 /***/ }),
-/* 481 */
+/* 482 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39681,7 +39858,7 @@ module.exports = function transformData(data, headers, fns) {
 
 
 /***/ }),
-/* 482 */
+/* 483 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39702,7 +39879,7 @@ module.exports = function isAbsoluteURL(url) {
 
 
 /***/ }),
-/* 483 */
+/* 484 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39723,7 +39900,7 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 
 
 /***/ }),
-/* 484 */
+/* 485 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39787,7 +39964,7 @@ module.exports = CancelToken;
 
 
 /***/ }),
-/* 485 */
+/* 486 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39821,7 +39998,7 @@ module.exports = function spread(callback) {
 
 
 /***/ }),
-/* 486 */
+/* 487 */
 /***/ (function(module, exports) {
 
 var asyncGenerator = function () {
@@ -40607,7 +40784,7 @@ var Echo = function () {
 module.exports = Echo;
 
 /***/ }),
-/* 487 */
+/* 488 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*!
@@ -44791,7 +44968,7 @@ return /******/ (function(modules) { // webpackBootstrap
 ;
 
 /***/ }),
-/* 488 */
+/* 489 */
 /***/ (function(module, exports) {
 
 var searchButton = document.getElementById("search-button"),
@@ -44806,23 +44983,23 @@ searchButton.addEventListener("click", function () {
 }, false);
 
 /***/ }),
-/* 489 */
+/* 490 */
 /***/ (function(module, exports) {
 
-var source = document.getElementById('markdown-source');
-var destination = document.getElementById('html-preview');
+var markdownSource = document.getElementById('markdown-source');
+var markdownDestination = document.getElementById('html-preview');
 
-var subscription = void 0;
+var markdownSubscription = void 0;
 
 var updateHtml = function updateHtml(html) {
-  return destination.innerHTML = html;
+  return markdownDestination.innerHTML = html;
 };
 
 var makeRequest = function makeRequest(data) {
   return Rx.Observable.ajax({ url: '/api/convert', method: 'POST', body: { raw: data } }).subscribe(console.log('Converting "' + data + '" to html...'));
 };
 
-var $stream = Rx.Observable.fromEvent(source, 'input').map(function (event) {
+var $stream = Rx.Observable.fromEvent(markdownSource, 'input').map(function (event) {
   return event.target.value;
 }).filter(function (value) {
   return value.length >= 5;
@@ -44830,14 +45007,69 @@ var $stream = Rx.Observable.fromEvent(source, 'input').map(function (event) {
   return Rx.Observable.interval(800);
 });
 
-if (source != null) subscription = $stream.subscribe(makeRequest);
+if (markdownSource != null) markdownSubscription = $stream.subscribe(makeRequest);
 
 window.Echo.private('text-converter').listen('TextConverted', function (e) {
   return updateHtml(e.text);
 });
 
 /***/ }),
-/* 490 */
+/* 491 */
+/***/ (function(module, exports) {
+
+var token = document.head.querySelector('meta[name="csrf-token"]').content;
+var likesSource = document.getElementsByClassName('js-like');
+
+var likesSubscription = void 0;
+
+var isLiked = function isLiked(event) {
+  return !!Cookies.get('liked -' + event.target.id);
+};
+var toggle = function toggle(event) {
+  return isLiked(event) ? unlike(event) : like(event);
+};
+var getCount = function getCount(event) {
+  return Array.from(event.target.children).filter(function (child) {
+    return child.classList.contains('js-like-count');
+  });
+};
+var updateClass = function updateClass(el) {
+  return !!Cookies.get('liked -' + el.id) ? el.classList.add('is-liked') : el.classList.remove('is-liked');
+};
+
+Array.from(likesSource).map(function (el) {
+  return updateClass(el);
+});
+
+var like = function like(event) {
+  return Rx.Observable.ajax({ url: window.location.origin + '/posts/like/' + event.target.id, method: 'POST', body: { slug: event.target.id }, headers: { "X-CSRF-TOKEN": token } }).subscribe(function (data) {
+    var count = getCount(event);
+
+    Cookies.set('liked -' + event.target.id, 'liked', { expires: 3600, path: '/' });
+    count[0].innerHTML = data.response;
+    event.target.classList.add('is-liked');
+  });
+};
+
+var unlike = function unlike(event) {
+  return Rx.Observable.ajax({ url: 'posts/unlike/' + event.target.id, method: 'POST', body: { slug: event.target.id }, headers: { "X-CSRF-TOKEN": token } }).subscribe(function (data) {
+    var count = getCount(event);
+
+    Cookies.remove('liked -' + event.target.id, { expires: 3600, path: '/' });
+    count[0].innerHTML = data.response;
+    event.target.classList.remove('is-liked');
+  });
+};
+
+var $likesStream = Rx.Observable.fromEvent(likesSource, 'click').map(function (event) {
+  event.preventDefault();
+  return event;
+});
+
+if (likesSource != null) likesSubscription = $likesStream.subscribe(toggle);
+
+/***/ }),
+/* 492 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

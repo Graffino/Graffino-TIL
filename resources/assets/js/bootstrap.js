@@ -1,4 +1,5 @@
 window.Rx = require('rxjs');
+window.Cookies = require("js-cookie");
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support

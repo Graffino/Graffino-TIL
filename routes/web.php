@@ -37,8 +37,8 @@ Route::put('/posts/{id}/update', 'PostController@update');
 Route::get('/random', 'PostController@random');
 Route::get('/raw/{slug}', 'PostController@raw');
 
-Route::post('/like/{slug}', 'PostController@like');
-Route::post('/unlike/{slug}', 'PostController@unlike');
+Route::post('/posts/like/{slug}', 'PostController@like');
+Route::post('/posts/unlike/{slug}', 'PostController@unlike');
 
 Route::get('/channel/{id}', 'ChannelController@show');
 

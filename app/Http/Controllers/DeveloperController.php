@@ -7,16 +7,11 @@ use App\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-use Debugbar;
-
 class DeveloperController extends Controller
 {
     public function show($username) {
       $developer = Developer::where('username', $username)->first();
       $posts = Post::where("developer_id", $developer->id)->get();
-
-      Debugbar::info($developer);
-      Debugbar::info($posts);
 
       return view('posts.feed', ['posts' => $posts]);
     }

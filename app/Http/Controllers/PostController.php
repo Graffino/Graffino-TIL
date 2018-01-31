@@ -9,10 +9,12 @@ use App\Post;
 use App\Developer;
 use App\Channel;
 use App\Notifications\PostCreated;
-use Debugbar;
+use App\Traits\LikeTrait;
 
 class PostController extends Controller
 {
+    use LikeTrait;
+
     public function index() {
       $posts = Post::orderBy('created_at', 'desc')->get();
 
@@ -78,31 +80,7 @@ class PostController extends Controller
     public function search(Request $request) {
       $q = $request->input('q');
       $posts = $this->searchPosts($q);
-      Debugbar::info($posts);
       return view("posts.feed", ['posts' => $posts]);
-    }
-
-    public function like($slug) {
-      $post = Post::where('slug', '=', $slug)->firstOrFail();
-      $likes = $post->likes + 1;
-      $maxLikes = collect([$post->max_likes, $likes])->max();
-      $maxLikesChanged = $maxLikes != $post->max_likes;
-
-      $post::update([
-        'likes' => $likes,
-        'max_likes' => $maxLikes,
-      ]);
-
-      return $likes;
-    }
-
-    public function unlike($slug) {
-      $post = Post::where('slug', '=', $slug)->firstOrFail();
-      $likes = $post->likes - 1;
-
-      $post::update(['likes' => $likes,]);
-
-      return $likes;
     }
 
     private function getChannels() {

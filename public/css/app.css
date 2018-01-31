@@ -4675,6 +4675,9 @@ body {
 .post__like {
   color: #b65c6a;
 }
+.post__like > * {
+  pointer-events: none;
+}
 .post__like:hover {
   color: #92a6b8;
 }

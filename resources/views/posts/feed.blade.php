@@ -20,11 +20,12 @@
           <li><a class="post__permalink link" href="{{ url('posts/'.$post->slug) }}">Permalink</a></li>
           <li><a class="post__raw link" href="{{ url('raw/'.$post->slug)}}">Raw</a></li>
           <li>
-            <a class="post__like link" href="#">
+            <a id="{{ $post->slug }}" class="post__like link js-like" href="#">
               <svg class="icon -size-xsmall -heart">
                 <use xlink:href="#sprite-heart"/>
               </svg>
-              Like
+              <span class="post__like-count js-like-count">{{ $post->likes }}</span>
+              <span class="post__like-label" style="display: none;">likes</span>
             </a>
           </li>
         </ul>
