@@ -1,88 +1,153 @@
-$post-background-color = $color-palette-14
-$post-header-color = $color-palette-5
+$post-background-color = $color-palette-5
+$post-header-color = $color-palette-14
+
+$post-header-color-red = #ED544F;
+$post-header-color-yellow = #ECBF55;
+$post-header-color-green = #99D177;
 
 .post
-  min-width: rem(800)
-  height: auto
-  margin: rem(40) auto
-  border-radius: rem(12)
-  background: linear-gradient($post-header-color rem(60), $post-background-color rem(60))
-  font-family: $mono-fontface-stack
-  box-shadow: 0 0 rem(40) rem(-15) black
+  position relative
+  overflow hidden
+  width 100%
+  max-width rem(800)
+  margin rem(40) auto
+  border-radius rem(4)
+  font-family $mono-fontface-stack
+  background-color rgba($post-background-color, 0.97);
+  box-shadow 0 0 rem(40) rem(-15) black
+
+  &__terminal-decorations
+    position absolute
+    top 50%
+    left rem(25)
+    transform translateY(-50%)
+    display inline-block
+    margin-right rem(4)
+    margin-left rem(4)
+    width rem(10)
+    height rem(10)
+    border-radius rem(300)
+    background-color yellow
+
+    &:before,
+    &:after
+      content ""
+      position absolute
+      top 0
+      display inline-block
+      width rem(10)
+      height rem(10)
+      border-radius rem(300)
+
+    &:before
+      background-color $post-header-color-red
+      left rem(-15)
+
+    &:after
+      background-color $post-header-color-green
+      right rem(-15)
+
 
   +below($eager-tablet)
-    min-width: 90%
+    min-width 90%
+
+  &__header
+    position relative
+    background-color rgba($post-header-color, 0.9)
+    padding 1px
+    max-height: rem(36);
 
   &__wrapper
-    margin-bottom: rem(30)
-    padding: 0 rem(20)
+    padding rem(10) rem(20)
 
   &__title
-    color: $color-palette-1
-    font-size: $font-size-2
-    font-weight: 700
-    text-align: center
+    overflow hidden
+    width 80%
+    margin 0 auto
+    color darkslategray
+    font-size $font-size-4
+    font-weight 400
+    text-align center
+    text-overflow ellipsis
+
+    &:hover
+      & > a
+        color $color-theme-2
+
+    & > a
+      display block
+      padding-top rem(10)
+      padding-bottom rem(10)
+      color inherit
+      text-decoration none
+      transition color 250ms ease-in-out
+
+      &:hover
+        text-decoration none
 
   &__content
-    margin: rem(50)
-    font-size: $font-size-3
-    font-weight: 400
+    margin rem(50)
+    font-size $font-size-3
+    font-weight 400
 
     +below($small)
-      margin-left: rem(10)
+      margin-left rem(10)
 
   &__info
-    text-align: right
+    text-align right
 
   &__author,
   &__timestamp
-    display: block
-    margin: rem(4) 0
-  
-  ul
-    list-style-type: none
+    color inherit
+    display block
+    margin rem(4) 0
+    text-decoration none
 
-    li
-      column(1/4)
-      display: inline-block
-      border-top: rem(2) solid $color-palette-5
-      padding-top: rem(2)
-      font-family: $sans-fontface-stack
-      font-size: $font-size-2
-      text-align: center
-      text-transform: uppercase
+  &__actions
+    display flex
+    flex-flow row nowrap
+    justify-content space-around
+    margin 0
+    padding 0
+    list-style-type none
 
-      +below($eager-tablet)
-        span(1/2)
-        border: 0
-        text-align: center
+    &-item
+      width 100%
+      font-size $font-size-4
+      text-align center
 
-      & > a
-        vertical-align: middle
+      &::before
+        content ""
+        display block
+        width 100%
+        height rem(2)
+        background-color: currentColor
 
-  &__tag
-    color: $color-palette-13
+      &:first-child
+        color $color-theme-1
+      &:last-child
+        color $color-theme-2
+      &:nth-child(2)
+        color $color-theme-3
+      &:nth-child(3)
+        color $color-theme-4
 
-    &:hover
-      color: $color-palette-10
+      & >  a
+        display block
+        padding-top rem(7)
+        padding-bottom rem(7)
+        color: inherit
+        text-decoration none
+        transition opacity 250ms ease-in-out
 
-  &__permalink
-    color: $color-palette-8
-
-    &:hover
-      color: $color-palette-7
-
-  &__raw
-    color: $color-palette-11
-
-    &:hover
-      color: $color-palette-9
+        &:hover
+          opacity 0.5
 
   &__like
-    color: $color-palette-6
+    color $color-palette-6
 
     & > *
-      pointer-events: none;
+      pointer-events none;
 
-    &:hover
-      color: $color-palette-12
+    &hover
+      color $color-palette-12

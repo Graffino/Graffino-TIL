@@ -3,39 +3,55 @@
   bottom: 0
   left: 0
 
-  +below($eager-tablet)
-    width: 100%
-    background-color: rgba($color-palette-4, 0.7)
-    
+  +below($medium)
+    width 100%
+    background-color rgba(white, 0.1)
+
   .nav
-    +below($eager-tablet)
-      padding: 0
-    
-    ul
+    &__list
+      display: flex
+      flex-flow column nowrap
+      justify-content space-around
       padding: rem(10)
       list-style-type: none
 
-      +below($eager-tablet)
-        white-space: nowrap
+      +below($medium)
+        flex-direction row
+        margin 0
+        padding 0
 
-      li
+      &-item
+        position relative
         margin: rem(10) 0
 
-        +below($large)
-          span(1/5)
-          display: inline-block
+      &-link
+        display inline-block
+        width rem(40)
+        height rem(40)
 
-        svg
+        +below($medium)
+          width rem(24)
+          height rem(24)
+
+        & > .icon
+          width: 100%;
+          height: 100%;
           vertical-align: middle
 
     &__search
+      position absolute
+      top rem(-10)
+      left rem(60)
       min-width: rem(300)
       margin: rem(10) auto
- 
+
       &-input
-        max-width: 60%
         height: rem(40)
         padding: 0 rem(10)
 
       &-button
         height: rem(40)
+        display none;
+
+        +below($medium)
+          display block

@@ -15066,7 +15066,7 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(168);
-module.exports = __webpack_require__(492);
+module.exports = __webpack_require__(493);
 
 
 /***/ }),
@@ -15084,6 +15084,7 @@ __webpack_require__(169);
 __webpack_require__(489);
 __webpack_require__(490);
 __webpack_require__(491);
+__webpack_require__(492);
 
 /***/ }),
 /* 169 */
@@ -45070,6 +45071,25 @@ if (likesSource != null) likesSubscription = $likesStream.subscribe(toggle);
 
 /***/ }),
 /* 492 */
+/***/ (function(module, exports) {
+
+var flashClassName = 'alert';
+
+var getFlashMessages = function getFlashMessages() {
+  return document.getElementsByClassName(flashClassName);
+};
+var checkFlashMessages = function checkFlashMessages() {
+  return getFlashMessages().length > 0;
+};
+
+var clearFlashMessages = function clearFlashMessages() {
+  if (checkFlashMessages()) getFlashMessages()[0].parentNode.removeChild(getFlashMessages()[0]);
+};
+
+if (checkFlashMessages()) document.onclick = clearFlashMessages;
+
+/***/ }),
+/* 493 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

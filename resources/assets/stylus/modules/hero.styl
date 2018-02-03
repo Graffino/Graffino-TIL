@@ -1,31 +1,48 @@
 .hero
+  position fixed
+  top 0
+  right 0
+  left 0
+  padding rem(50) rem(20)
+
   &__links
-    text-align: right
-    
+    padding-right 15vw
+    text-align right
+
     +below($small)
       text-align: center
+      padding-right 0
 
   &__title
     margin: 0 auto
-    font-weight: 200
+    font-weight: 600
     color: white
     font-size: $font-size-1
     text-transform: uppercase
     text-align: center
-    white-space: nowrap
-
-    +below($large)
-      white-space: normal
 
     +below($small)
+      margin-bottom rem(20)
       font-size: rem(60)
 
   &__subtitle
-    color: $color-palette-3
+    color white
+    font-size $font-size-3
     text-decoration: none
     text-transform: uppercase
-    
+    letter-spacing: 1px
+    transition opacity 250ms ease-in-out
+
     &:hover
-      text-decoration: underline
+      opacity 0.5
+
+    &.-color
+      &-twitter
+        color: $color-palette-3
+
     & .icon
       vertical-align: middle
+
+      &.-logo
+        width rem(60)
+        height rem(20)

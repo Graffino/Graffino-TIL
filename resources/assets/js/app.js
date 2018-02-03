@@ -9,3 +9,4 @@ require('./bootstrap');
 require('./search-handler');
 require('./markdown-handler');
 require('./like-handler');
+require('./flash-handler');

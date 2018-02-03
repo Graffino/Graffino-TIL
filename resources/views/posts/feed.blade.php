@@ -6,31 +6,35 @@
 <div class="container">
   <div class="feed__wrapper">
     @foreach($posts as $post)
-      <div class="post">
+      <article class="post">
+        <header class="post__header">
+          <span class="post__terminal-decorations"></span>
+          <h1 class="post__title"><a href="{{ url('posts/'.$post->slug) }}">{{ $post->title }}</a></h1>
+        </header>
         <div class="post__wrapper">
-          <h1 class="post__title">{{ $post->title }}</h1>
           <p class="post__content">{!! markdown($post->body) !!}</p>
           <div class="post__info">
-            <span class="post__author">{{ $post->developer->username }}</span>
-            <span class="post__timestamp">{{ $post->created_at->format('d M y') }}</span>
+            <a class="post__author" href="{{ url('authors/'.$post->developer->username) }}">{{ $post->developer->username }}</a>
+            <a class="post__timestamp" href="{{ url('posts/'.$post->slug) }}">{{ $post->created_at->format('d M y') }}</a>
           </div>
         </div>
-        <ul class="container--fluid">
-          <li><a class="post__tag link" href="{{ url('channel/'.$post->channel->id) }}">{{ $post->channel->name }}</a></li>
-          <li><a class="post__permalink link" href="{{ url('posts/'.$post->slug) }}">Permalink</a></li>
-          <li><a class="post__raw link" href="{{ url('raw/'.$post->slug)}}">Raw</a></li>
-          <li>
-            <a id="{{ $post->slug }}" class="post__like link js-like" href="#">
-              <svg class="icon -size-xsmall -heart">
-                <use xlink:href="#sprite-heart"/>
-              </svg>
-              <span class="post__like-count js-like-count">{{ $post->likes }}</span>
-              <span class="post__like-label" style="display: none;">likes</span>
-            </a>
-          </li>
-        </ul>
-      </div>
+        <footer class="footer">
+          <ul class="post__actions">
+            <li class="post__actions-item"><a href="{{ url('channel/'.$post->channel->id) }}">{{ $post->channel->name }}</a></li>
+            <li class="post__actions-item"><a href="{{ url('posts/'.$post->slug) }}">Permalink</a></li>
+            <li class="post__actions-item"><a href="{{ url('raw/'.$post->slug)}}">Raw</a></li>
+            <li class="post__actions-item">
+              <a id="{{ $post->slug }}" class="post__like js-like" href="#">
+                &hearts;	
+                <span class="post__like-count js-like-count">{{ $post->likes }}</span>
+                <span class="post__like-label" style="display: none;">likes</span>
+              </a>
+            </li>
+          </ul>
+        </footer>
+      </article>
     @endforeach
+    {{ $posts->links() }}
   </div>
 </div>
 @endsection
