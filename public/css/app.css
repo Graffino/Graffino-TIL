@@ -4570,6 +4570,7 @@ body {
 }
 @media only screen and (max-width: 940px) {
   .sidebar .nav__list {
+    position: relative;
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
         -ms-flex-direction: row;
@@ -4581,6 +4582,11 @@ body {
 .sidebar .nav__list-item {
   position: relative;
   margin: 0.625rem 0;
+}
+@media only screen and (max-width: 940px) {
+  .sidebar .nav__list-item {
+    position: static;
+  }
 }
 .sidebar .nav__list-link {
   display: inline-block;
@@ -4599,15 +4605,43 @@ body {
   vertical-align: middle;
 }
 .sidebar .nav__search {
+  opacity: 0;
+  visibility: hidden;
   position: absolute;
   top: -0.625rem;
   left: 3.75rem;
   min-width: 18.75rem;
   margin: 0.625rem auto;
+  -webkit-transition: opacity 250ms ease-in-out, visibility 250ms ease-in-out;
+  transition: opacity 250ms ease-in-out, visibility 250ms ease-in-out;
+}
+@media only screen and (max-width: 940px) {
+  .sidebar .nav__search {
+    top: auto;
+    bottom: 100%;
+    left: 0;
+    width: 100%;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+.sidebar .nav__search.is-visible {
+  opacity: 1;
+  visibility: visible;
 }
 .sidebar .nav__search-input {
   height: 2.5rem;
+  border: 0;
+  border-radius: 0.25rem;
   padding: 0 0.625rem;
+}
+@media only screen and (max-width: 940px) {
+  .sidebar .nav__search-input {
+    width: 100%;
+    border-radius: 0;
+    padding-right: 5.625rem;
+    padding-left: 0;
+  }
 }
 .sidebar .nav__search-button {
   height: 2.5rem;
@@ -4616,6 +4650,9 @@ body {
 @media only screen and (max-width: 940px) {
   .sidebar .nav__search-button {
     display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
   }
 }
 .feed__wrapper {
@@ -4930,8 +4967,18 @@ body {
   line-height: 1.2;
   -webkit-box-shadow: 0 0 2.5rem -0.9375rem #000;
           box-shadow: 0 0 2.5rem -0.9375rem #000;
+  -webkit-transition: opacity 250ms ease-in-out, visibility 250ms ease-in-out;
+  transition: opacity 250ms ease-in-out, visibility 250ms ease-in-out;
 }
-.popup.is-active {
-  opacity: 0;
+@media only screen and (max-width: 940px) {
+  .popup {
+    bottom: 100%;
+    left: 0;
+    width: 100%;
+    border-radius: 0;
+  }
+}
+.popup.is-visible {
+  opacity: 1;
   visibility: visible;
 }

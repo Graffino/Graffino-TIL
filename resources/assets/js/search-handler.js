@@ -1,10 +1,23 @@
-const searchButton = document.getElementById("search-button"),
-    searchBar = document.getElementById("search-bar");
+const toggleBtn = document.getElementsByClassName("js-toggle-button"),
+  toggleEl = document.getElementsByClassName("js-toggle-element");
 
-searchButton.addEventListener("click", () => {
-    if (searchBar.style.display == 'none') {
-        searchBar.style.display = 'block';
+
+const findAncestor = function(el, cls) {
+    while ((el = el.parentElement) && !el.classList.contains(cls));
+    return el;
+};
+
+Array.from(toggleBtn).map(item => {
+  item.addEventListener("click", function(event) {
+    event.preventDefault();
+
+    let ancestor = findAncestor(event.target, 'js-toggle-container');
+    let el = Array.from(ancestor.children).filter(child => child.classList.contains('js-toggle-element'))[0];
+
+    if (el.classList.contains('is-visible')) {
+      el.classList.remove('is-visible');
     } else {
-        searchBar.style.display = 'none';
+      el.classList.add('is-visible');
     }
-}, false);
+  }, false);
+});

@@ -44972,16 +44972,30 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 489 */
 /***/ (function(module, exports) {
 
-var searchButton = document.getElementById("search-button"),
-    searchBar = document.getElementById("search-bar");
+var toggleBtn = document.getElementsByClassName("js-toggle-button"),
+    toggleEl = document.getElementsByClassName("js-toggle-element");
 
-searchButton.addEventListener("click", function () {
-    if (searchBar.style.display == 'none') {
-        searchBar.style.display = 'block';
+var findAncestor = function findAncestor(el, cls) {
+  while ((el = el.parentElement) && !el.classList.contains(cls)) {}
+  return el;
+};
+
+Array.from(toggleBtn).map(function (item) {
+  item.addEventListener("click", function (event) {
+    event.preventDefault();
+
+    var ancestor = findAncestor(event.target, 'js-toggle-container');
+    var el = Array.from(ancestor.children).filter(function (child) {
+      return child.classList.contains('js-toggle-element');
+    })[0];
+
+    if (el.classList.contains('is-visible')) {
+      el.classList.remove('is-visible');
     } else {
-        searchBar.style.display = 'none';
+      el.classList.add('is-visible');
     }
-}, false);
+  }, false);
+});
 
 /***/ }),
 /* 490 */

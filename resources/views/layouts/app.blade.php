@@ -39,26 +39,26 @@
       <aside class="sidebar">
         <nav class="nav">
           <ul class="nav__list">
-            <li class="nav__list-item">
-              <a class="nav__list-link" id="search-button" href="#">
+            <li class="nav__list-item js-toggle-container">
+              <a class="nav__list-link js-toggle-button" href="#">
                 <svg class="icon">
                   <use xlink:href="#sprite-magnifier"/>
                 </svg>
               </a>
-              <div id="search-bar" class="nav__search js-popup">
+              <div id="search-bar" class="nav__search js-toggle-element">
                 {{ Form::open(['method' => 'get', 'url' => ['search']], ['class' => 'form']) }}
                   <input class="form__input nav__search-input" type="search" name="q">
                   {{ Form::submit('Search', ['class' => 'button nav__search-button']) }}
                 {{ Form::close() }}
               </div>
             </li>
-            <li class="nav__list-item">
-              <a class="nav__list-link" href="#">
+            <li class="nav__list-item js-toggle-container">
+              <a class="nav__list-link js-toggle-button" href="#">
                 <svg class="icon">
                   <use xlink:href="#sprite-question-mark"/>
                 </svg>
               </a>
-              <div class="popup js-popup">
+              <div class="popup js-toggle-element">
                 Today I Learned is an open-source project by Graffino, inspired by <a class="link" style="color: #ae1f23;" href="https://hashrocket.com">Hashrocket</a> that exists to catalogue the sharing and accumulation of knowledge as it happens day-to-day. Posting is open to everyone at Graffino as well as selected friends of ours. We hope you enjoy learning along with us.
                 <br>
                 <br><a class="link -color-github" href="#">https://github.com/Graffino/</a>

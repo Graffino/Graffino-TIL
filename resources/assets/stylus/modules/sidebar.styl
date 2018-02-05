@@ -16,6 +16,7 @@
       list-style-type: none
 
       +below($medium)
+        position relative
         flex-direction row
         margin 0
         padding 0
@@ -23,6 +24,9 @@
       &-item
         position relative
         margin: rem(10) 0
+
+        +below($medium)
+          position static
 
       &-link
         display inline-block
@@ -39,15 +43,37 @@
           vertical-align: middle
 
     &__search
+      opacity 0
+      visibility hidden
       position absolute
       top rem(-10)
       left rem(60)
       min-width: rem(300)
       margin: rem(10) auto
+      transition opacity 250ms ease-in-out, visibility 250ms ease-in-out
+
+      +below($medium)
+        top auto
+        bottom: 100%
+        left 0
+        width 100%
+        margin-top 0
+        margin-bottom 0
+
+      &.is-visible
+        opacity 1
+        visibility visible
 
       &-input
         height: rem(40)
+        border 0
+        border-radius rem(4)
         padding: 0 rem(10)
+        +below($medium)
+          width 100%
+          border-radius 0
+          padding-right rem(90)
+          padding-left: 0;
 
       &-button
         height: rem(40)
@@ -55,3 +81,6 @@
 
         +below($medium)
           display block
+          position absolute
+          top 0
+          right 0
