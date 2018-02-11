@@ -17,7 +17,7 @@
       @include('ui.flash')
       <header class="hero">
         @include('ui.user')
-        <h1 class="hero__title">Today I Learned</h1>
+        <h1 class="hero__title"><a href="{{ url('/') }}">Today I Learned</a></h1>
         <div class="hero__links">
           <a class="hero__subtitle" href="https://graffino.com">
               by
@@ -47,7 +47,7 @@
               </a>
               <div id="search-bar" class="nav__search js-toggle-element">
                 {{ Form::open(['method' => 'get', 'url' => ['search']], ['class' => 'form']) }}
-                  <input class="form__input nav__search-input" type="search" name="q">
+                  <input class="nav__search-input" type="search" name="q">
                   {{ Form::submit('Search', ['class' => 'button nav__search-button']) }}
                 {{ Form::close() }}
               </div>

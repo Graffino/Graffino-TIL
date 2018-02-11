@@ -118,6 +118,10 @@
   }
 
   // Center for specific viewport size
+  &-center-text {
+    text-align: center !important;
+  }
+
   &-center-for {
     &-large-down {
       +below($large) {
@@ -432,7 +436,14 @@
       margin-left: 0 !important;
     }
   }
-
+  
+  &-margin {
+    &-left {
+      &-1 {
+        margin-left: rem(10);
+      }
+    }
+  }
   // Display table
   &-display {
     &-table {
@@ -534,6 +545,16 @@
     }
     &-negative {
       z-index: -1 !important;
+    }
+  }
+
+  &-pull {
+    &-right {
+      float right
+    }
+
+    &-left {
+      float left
     }
   }
 }

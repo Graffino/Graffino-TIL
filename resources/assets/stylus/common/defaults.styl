@@ -64,6 +64,7 @@ body
 
 .main
   clearfix()
+  position relative
   margin-top 17vw
   padding-bottom rem(70)
 
@@ -90,6 +91,8 @@ body
     opacity: 0.5
 
 .list
+  padding-left 0
+
   &.-type
     &-simple
       margin-top 0
@@ -98,7 +101,25 @@ body
       list-style-type none
 
     &-inline
-      ^[0]__item
+      & ^[0]__item
         display inline-block
         margin-right rem(10)
         margin-left rem(10)
+
+    &-tile
+      & ^[0]__item
+        clearfix()
+        margin-top rem(5)
+        margin-bottom rem(5)
+        background-color rgba($color-palette-5, 0.97);
+
+        & > a
+          display: block
+          padding rem(10)
+          color white
+          
+
+.tile {
+  padding rem(20)
+  background-color rgba($color-palette-5, 0.97)
+}

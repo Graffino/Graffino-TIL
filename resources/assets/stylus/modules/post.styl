@@ -16,6 +16,19 @@ $post-header-color-green = #99D177;
   background-color rgba($post-background-color, 0.97);
   box-shadow 0 0 rem(40) rem(-15) black
 
+  +below($eager-tablet)
+    margin-top rem(20)
+    margin-bottom rem(20)
+
+  &__copy {
+    max-width rem(700)
+    margin rem(40) auto rem(20)
+    font-family $mono-fontface-stack
+    font-size rem(16)
+    line-height 1.5
+    text-align center
+  }
+
   &__terminal-decorations
     position absolute
     top 50%
@@ -47,11 +60,8 @@ $post-header-color-green = #99D177;
       background-color $post-header-color-green
       right rem(-15)
 
-
-  +below($eager-tablet)
-    min-width 90%
-
   &__header
+    @extend .h-z-index-10
     position relative
     background-color rgba($post-header-color, 0.9)
     padding 1px
@@ -84,14 +94,6 @@ $post-header-color-green = #99D177;
 
       &:hover
         text-decoration none
-
-  &__content
-    margin rem(50)
-    font-size $font-size-3
-    font-weight 400
-
-    +below($small)
-      margin-left rem(10)
 
   &__info
     text-align right

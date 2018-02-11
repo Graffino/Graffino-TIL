@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "b1e2fe3dc71f516a0c6156b0e1f8b7d3",
+    "content-hash": "fb7883a8cccece1392f0a3bec6520f25",
     "packages": [
         {
             "name": "abraham/twitteroauth",
@@ -113,6 +113,66 @@
             ],
             "description": "Simple Blade directive for markdown parsing.",
             "time": "2017-08-30T19:46:01+00:00"
+        },
+        {
+            "name": "barryvdh/laravel-stack-middleware",
+            "version": "v1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/barryvdh/laravel-stack-middleware.git",
+                "reference": "f91f8cee1fdb0f699f8f9f12d6d3b5ee84fb4c2f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/barryvdh/laravel-stack-middleware/zipball/f91f8cee1fdb0f699f8f9f12d6d3b5ee84fb4c2f",
+                "reference": "f91f8cee1fdb0f699f8f9f12d6d3b5ee84fb4c2f",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "5.1.x|5.2.x|5.3.x|5.4.x|5.5.x",
+                "php": ">=5.5",
+                "symfony/http-kernel": "~2.6|~3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.5"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Barryvdh\\StackMiddleware\\ServiceProvider"
+                    ],
+                    "aliases": {
+                        "Stack": "Barryvdh\\StackMiddleware\\Facade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Barryvdh\\StackMiddleware\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Barry vd. Heuvel",
+                    "email": "barryvdh@gmail.com"
+                }
+            ],
+            "description": "Stack Middleware for Laravel 5",
+            "keywords": [
+                "StackPHP",
+                "laravel",
+                "middleware",
+                "stack"
+            ],
+            "time": "2017-06-14T17:55:59+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -428,6 +488,65 @@
             "time": "2017-06-15T17:19:42+00:00"
         },
         {
+            "name": "frenzy/turbolinks",
+            "version": "3.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/frenzyapp/turbolinks.git",
+                "reference": "b0535efcf149645e538518b325bc12873716f1c1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/frenzyapp/turbolinks/zipball/b0535efcf149645e538518b325bc12873716f1c1",
+                "reference": "b0535efcf149645e538518b325bc12873716f1c1",
+                "shasum": ""
+            },
+            "require": {
+                "barryvdh/laravel-stack-middleware": "~1.1.1",
+                "helthe/turbolinks": "~2.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Frenzy\\Turbolinks\\TurbolinksServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Frenzy\\Turbolinks\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Studio Frénétic",
+                    "email": "info@studiofrenetic.com"
+                },
+                {
+                    "name": "Tortue Torche",
+                    "email": "tortuetorche@spam.me"
+                }
+            ],
+            "description": "Frenzy Turbolinks makes following links in your web application faster with Laravel 5",
+            "keywords": [
+                "ajax",
+                "assets",
+                "javascript",
+                "larasset",
+                "laravel",
+                "laravel 5",
+                "pjax",
+                "turbolinks",
+                "turbolinks 5"
+            ],
+            "time": "2018-01-15T10:29:55+00:00"
+        },
+        {
             "name": "guzzlehttp/guzzle",
             "version": "6.3.0",
             "source": {
@@ -607,6 +726,59 @@
                 "url"
             ],
             "time": "2017-03-20T17:10:46+00:00"
+        },
+        {
+            "name": "helthe/turbolinks",
+            "version": "2.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/helthe/Turbolinks.git",
+                "reference": "11acaefc2242d0f18c879a4ede7f03aee487cfde"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/helthe/Turbolinks/zipball/11acaefc2242d0f18c879a4ede7f03aee487cfde",
+                "reference": "11acaefc2242d0f18c879a4ede7f03aee487cfde",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3",
+                "symfony/http-foundation": "~2.3|~3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.8",
+                "symfony/http-kernel": "~2.3|~3.0"
+            },
+            "suggest": {
+                "symfony/http-kernel": "Required for usage with the Symfony HttpKernel Component"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.4.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Helthe\\Component\\Turbolinks\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Carl Alexander",
+                    "email": "carlalexander@helthe.co"
+                }
+            ],
+            "description": "Helthe Turbolinks Component",
+            "homepage": "https://helthe.co",
+            "keywords": [
+                "turbolinks"
+            ],
+            "time": "2018-01-04T10:23:35+00:00"
         },
         {
             "name": "jakub-onderka/php-console-color",
