@@ -4,20 +4,26 @@
 
 @section('content')
   <div class="container">
-    <h1 class="h-align-center"> Hi, {{ $developer['email'] }}!</h1>
-    {{ Form::model($developer, ['method' => 'PUT', 'url' => ['profile/edit']]) }}
+    <h1 class="h-align-center"> Hi, {{ $developer->email }}!</h1>
+    <form class="form" action="{{ route('profile.edit') }}" method="post">
+      {{ csrf_field() }}
+      {{ method_field('PUT') }}
       <div class="form__field">
-        {{ Form::label('twitter_handle', 'Twitter Handle', ['class' => 'form__label']) }}
-        {{ Form::text('twitter_handle', $developer->twitter_handle, ['class' => 'form__input']) }}
+        <label class="form__label">Twitter handle</label>
+        <input class="form__input" type="text" name="twitter_handle" value="{{ old('twitter_handle', $developer->twitter_handle) }}">
       </div>
       <div class="form__field">
-        {{ Form::label('editor', 'Editor', ['class' => 'form__label']) }}
-        {{ Form::select('editor', ['Text Field' => 'Text Field', 'Vim' => 'Vim', 'Code Editor' => 'Code Editor'], $developer->editor, ['class' => 'form__select']) }}
+        <label class="form__label">Editor</label>
+        <select class="form__select" name="editor">
+          @foreach ($editorOptions as $value)
+            <option value="{{ $value }}" {{ $value == $developer->editor ? 'selected' : '' }}>{{ $value }}</option>
+          @endforeach
+        </select>
       </div>
       <div class="form__field h-center-text">
-        {{ Form::submit('Update', ['class' => 'button -color-white']) }}
-        {{ link_to('/', 'Cancel', ['class' => 'link h-margin-left-1']) }}
+        <button class="button -color-white" type="submit">Update</button>
+        <a class="link h-margin-left-1" href="{{ route('posts') }}">Cancel</a>
       </div>
-    {{ Form::close() }}
+    </form>
   </div>
 @endsection

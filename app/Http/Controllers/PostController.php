@@ -5,18 +5,23 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Validator;
 use App\Post;
 use App\Developer;
 use App\Channel;
 use App\Notifications\PostCreated;
 use App\Traits\LikeTrait;
 
+use Debugbar;
+
 class PostController extends Controller
 {
     use LikeTrait;
 
     public function index() {
-      $posts = Post::orderBy('created_at', 'desc')->with(['channel', 'developer'])->paginate(5);
+      $posts = Post::orderBy('created_at', 'desc')
+        ->with(['channel', 'developer'])
+        ->paginate(15);
 
       return view('posts.feed')->with('posts', $posts);
     }
@@ -28,21 +33,24 @@ class PostController extends Controller
     }
 
     public function create(Request $request) {
-        $developerId = Auth::id();
-        $request = $request->all();
-        $slug = Post::saltSlug(Post::slugifyTitle($request['title']));
+      Validator::make($request->all(), [
+        'title' => 'required|string',
+        'body' => 'required|string',
+        'channel_id' => 'required',
+      ])->validate();
 
-        $data = array_merge(
-          $request,
-          [
-            'slug' => $slug,
-            'developer_id' => $developerId,
-          ]
-        );
+      $post = new Post();
+      $post->title = $request->get('title');
+      $post->body = $request->get('body');
+      $post->channel_id = $request->get('channel_id');
+      $post->slug = Post::saltSlug(Post::slugifyTitle($request->input('title')));
+      $post->developer_id = Auth::id();
 
-        $post = Post::create($data);
+      if ($post->save()) {
         $post->notify(new PostCreated($post));
-        return redirect('/');
+      }
+
+      return redirect()->route('posts');
     }
 
     public function edit($id) {
@@ -56,7 +64,23 @@ class PostController extends Controller
 
     public function update(Request $request, $id) {
         $post = Post::find($id);
-        $post::update($request->all);
+
+        Validator::make($request->all(), [
+          'title' => 'required|string',
+          'body' => 'required|string',
+          'channel_id' => 'required',
+        ])->validate();
+
+        $post->title = $request->input('title');
+        $post->body = $request->input('body');
+        $post->channel_id = $request->input('channel_id');
+        $post->slug = Post::saltSlug(Post::slugifyTitle($request->input('title')));
+
+        if ($post->update()) {
+          $request->session()->flash('info', 'Post updated successfully!');
+        } else {
+          $request->session()->flash('info', 'Couldn\'t update the post!');
+        }
 
         return redirect('/');
     }
@@ -87,19 +111,7 @@ class PostController extends Controller
     }
 
     protected function getChannels() {
-      $channelCollection = Channel::all();
-      $channels = [];
-
-      foreach ($channelCollection as $channel) {
-        $pluckedChannel = $channel->only(['id', 'name']);
-        $channelHash = [$pluckedChannel['id'] => $pluckedChannel['name']];
-        $channels = array_merge($channels, $channelHash);
-      }
-
-      array_unshift($channels, '');
-      unset($channels[0]);
-
-      return $channels;
+      return Channel::all()->pluck('name')->all();
     }
 
     protected function searchPosts($q) {

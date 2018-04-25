@@ -5003,14 +5003,14 @@ body {
 .post__actions-item:first-child {
   color: #b2cb9c;
 }
-.post__actions-item:last-child {
-  color: #e6626f;
-}
 .post__actions-item:nth-child(2) {
   color: #85afd0;
 }
 .post__actions-item:nth-child(3) {
   color: #c5b187;
+}
+.post__actions-item:nth-child(4) {
+  color: #e6626f;
 }
 .post__actions-item > a {
   display: block;

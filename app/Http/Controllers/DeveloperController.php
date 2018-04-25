@@ -8,8 +8,7 @@ use Laravel\Socialite\Two\User;
 use Socialite;
 use App\Developer;
 use App\Post;
-
-use Debugbar;
+use Validator;
 
 class DeveloperController extends Controller
 {
@@ -44,7 +43,11 @@ class DeveloperController extends Controller
 
   public function show($username) {
     $developer = Developer::where('username', $username)->first();
-    $posts = Post::where("developer_id", $developer->id)->get();
+
+    $posts = Post::orderBy('created_at', 'desc')
+      ->where("developer_id", $developer->id)
+      ->with(['channel', 'developer'])
+      ->paginate(15);
 
     return view('posts.feed')->with('posts', $posts);
   }
@@ -52,12 +55,20 @@ class DeveloperController extends Controller
   public function edit() {
       $authId = Auth::id();
       $developer = Developer::find($authId);
+      $editorOptions = ['Text Field', 'Vim', 'Code Editor'];
 
-      return view('profile.edit')->with('developer', $developer);
+      return view('profile.edit')
+        ->with('developer', $developer)
+        ->with('editorOptions', $editorOptions);
   }
 
   public function update(Request $request) {
     $developer = Developer::find(Auth::id());
+
+    Validator::make($request->all(), [
+      'twitter_handle' => 'required|string|max:15',
+      'editor' => 'required',
+    ])->validate();
 
     $developer->twitter_handle = Developer::cleanTwitterHandle($request->input('twitter_handle'));
     $developer->editor = $request->input('editor');
@@ -68,7 +79,7 @@ class DeveloperController extends Controller
       $request->session()->flash('info', 'Couldn\'t update your profile!');
     }
 
-    return redirect()->route('profile.form', $developer->id);
+    return redirect()->route('profile.edit', $developer->id);
   }
 
   protected function authenticate(User $user) {
