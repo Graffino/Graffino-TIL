@@ -10,6 +10,11 @@
       {{ method_field('PUT') }}
       <div class="form__field">
         <label class="form__label">Twitter handle</label>
+        @if ($errors->has('twitter_handle'))
+          <span class="text -color-white">
+            <strong>{{ $errors->first('twitter_handle') }}</strong>
+          </span>
+        @endif
         <input class="form__input" type="text" name="twitter_handle" value="{{ old('twitter_handle', $developer->twitter_handle) }}">
       </div>
       <div class="form__field">
