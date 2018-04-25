@@ -83,7 +83,7 @@ class PostController extends Controller
       return view("posts.feed", ['posts' => $posts]);
     }
 
-    private function getChannels() {
+    protected function getChannels() {
       $channelCollection = Channel::all();
       $channels = [];
 
@@ -99,7 +99,7 @@ class PostController extends Controller
       return $channels;
     }
 
-    private function searchPosts($q) {
+    protected function searchPosts($q) {
       $results = DB::select("select p.* from posts p
       left join developers d on d.id = p.developer_id
       left join channels c on c.id = p.channel_id

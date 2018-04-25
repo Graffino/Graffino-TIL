@@ -44,7 +44,7 @@ class AuthController extends Controller
     return redirect('/');
   }
 
-  private function authenticate(User $user) {
+  protected function authenticate(User $user) {
     Debugbar::info($user);
     $email = $user->email;
     $username = $user->nickname;
