@@ -14,7 +14,7 @@ use Debugbar;
 class DeveloperController extends Controller
 {
   public function index() {
-    return redirect()->action('DeveloperController@request');
+    return redirect()->route('auth.request');
   }
 
   public function request() {
@@ -32,14 +32,14 @@ class DeveloperController extends Controller
     } catch (Exception $e) {
       $request->session()->flash('info', $developer->email.' is not a valid email address');
     }
-    return redirect('/');
+    return redirect('posts');
   }
 
   public function delete(Request $request) {
     Auth::logout();
     $request->session()->flash('info', 'Signed out');
 
-    return redirect('/');
+    return redirect('posts');
   }
 
   public function show($username) {

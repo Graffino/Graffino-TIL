@@ -17,7 +17,7 @@
       @include('ui.flash')
       <header class="hero">
         @include('ui.user')
-        <h1 class="hero__title"><a href="{{ url('/') }}">Today I Learned</a></h1>
+        <h1 class="hero__title"><a href="{{ route('posts') }}">Today I Learned</a></h1>
         <div class="hero__links">
           <a class="hero__subtitle" href="https://graffino.com">
               by
@@ -67,7 +67,7 @@
               </div>
             </li>
             <li class="nav__list-item">
-              <a class="nav__list-link" href="{{ url('stats') }}">
+              <a class="nav__list-link" href="{{ route('stats') }}">
                 <svg class="icon">
                   <use xlink:href="#sprite-line-chart"/>
                 </svg>
@@ -81,7 +81,7 @@
               </a>
             </li>
             <li class="nav__list-item">
-              <a class="nav__list-link" href="{{ url('random')}}">
+              <a class="nav__list-link" href="{{ route('random')}}">
                 <svg class="icon">
                   <use xlink:href="#sprite-dice"/>
                 </svg>
