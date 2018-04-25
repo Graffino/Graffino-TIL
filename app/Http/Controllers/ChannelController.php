@@ -12,6 +12,6 @@ class ChannelController extends Controller
                     ->where('channel_id', '=', $id)
                     ->paginate(5);
 
-      return view('posts.feed', ["posts" => $posts]);
+      return view('posts.feed')->with('posts', $posts);
     }
 }

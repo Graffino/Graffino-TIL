@@ -46,14 +46,14 @@ class DeveloperController extends Controller
     $developer = Developer::where('username', $username)->first();
     $posts = Post::where("developer_id", $developer->id)->get();
 
-    return view('posts.feed', ['posts' => $posts]);
+    return view('posts.feed')->with('posts', $posts);
   }
 
   public function edit() {
       $authId = Auth::id();
       $developer = Developer::find($authId);
 
-      return view('profile.edit', ['developer' => $developer,]);
+      return view('profile.edit')->with('developer', $developer);
   }
 
   public function update(Request $request) {
@@ -65,7 +65,7 @@ class DeveloperController extends Controller
 
     $developer->update($attr);
 
-    return view('profile.edit', ['developer' => $developer,]);
+    return redirect('profile.edit', $developer->id);
   }
 
   protected function authenticate(User $user) {

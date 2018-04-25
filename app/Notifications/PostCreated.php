@@ -65,7 +65,7 @@ class PostCreated extends Notification
     {
       $canonicalUrl = ApplicationHelper::canonicalUrl($this->post->slug);
       $developer = Developer::find(Auth::id());
-      $tweet = $this->post->title.' '.$canonicalUrl.' via @'.Developer::twitterHandle($developer).' #til #'.$this->post->channel->twitter_hashtag;
+      $tweet = $this->post->title.' '.$canonicalUrl.' via @'.Developer::twitterHandle($developer->id).' #til #'.$this->post->channel->twitter_hashtag;
 
       return new TwitterStatusUpdate($tweet);
     }

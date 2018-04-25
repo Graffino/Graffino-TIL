@@ -18,13 +18,13 @@ class PostController extends Controller
     public function index() {
       $posts = Post::orderBy('created_at', 'desc')->with(['channel', 'developer'])->paginate(5);
 
-      return view('posts.feed', ['posts' => $posts,]);
+      return view('posts.feed')->with('posts', $posts);
     }
 
     public function new() {
         $channels = $this->getChannels();
 
-        return view('posts.new', ['channels' => $channels,]);
+        return view('posts.new')->with('channels', $channels);
     }
 
     public function create(Request $request) {
@@ -49,7 +49,9 @@ class PostController extends Controller
         $channels = $this->getChannels();
         $post = Post::find($id);
 
-        return view('posts.edit', ['post' => $post, 'channels' => $channels, ]);
+        return view('posts.edit')
+          ->with('post', $post)
+          ->with('channels', $channels);
     }
 
     public function update(Request $request, $id) {
@@ -62,25 +64,26 @@ class PostController extends Controller
     public function show($slug) {
       $post = Post::where('slug', '=', $slug)->firstOrFail();
 
-      return view('posts.show', ["post" => $post]);
+      return view('posts.show')->with('post', $post);
     }
 
     public function raw($slug) {
       $post = Post::where('slug', '=', $slug)->firstOrFail();
 
-      return view('posts.raw', ["post" => $post]);
+      return view('posts.raw')->with('post', $post);
     }
 
     public function random() {
       $post = Post::all()->random(1)->first();
 
-      return view('posts.show', ["post" => $post]);
+      return view('posts.show')->with('post', $post);
     }
 
     public function search(Request $request) {
       $q = $request->input('q');
       $posts = $this->searchPosts($q);
-      return view("posts.feed", ['posts' => $posts]);
+
+      return view('posts.feed')->view('posts', $posts);
     }
 
     protected function getChannels() {

@@ -32,7 +32,8 @@ class Developer extends Authenticatable
       }
     }
 
-    public static function twitterHandle(Developer $developer) {
+    public static function twitterHandle($id) {
+      $developer = self::find($id);
       $handle = env('DEFAULT_TWITTER_HANDLE');
 
       if (!is_null($developer->twitter_handle)) {
