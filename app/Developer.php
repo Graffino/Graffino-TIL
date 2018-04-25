@@ -22,14 +22,6 @@ class Developer extends Authenticatable
       return $this->hasMany('App\Post');
     }
 
-    public static function findOrCreate (Array $attributes) {
-      $email = $attributes['email'];
-      $developer = Developer::where('email', $email)->first();
-
-
-      return $developer ? $developer : Developer::create($attributes);
-    }
-
     public static function formatName(String $name) {
       return strtolower(preg_replace('/\s+/', '', $name));
     }

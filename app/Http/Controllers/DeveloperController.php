@@ -32,14 +32,14 @@ class DeveloperController extends Controller
     } catch (Exception $e) {
       $request->session()->flash('info', $developer->email.' is not a valid email address');
     }
-    return redirect('posts');
+    return redirect()->route('posts');
   }
 
   public function delete(Request $request) {
     Auth::logout();
     $request->session()->flash('info', 'Signed out');
 
-    return redirect('posts');
+    return redirect()->route('posts');
   }
 
   public function show($username) {
@@ -69,17 +69,10 @@ class DeveloperController extends Controller
   }
 
   protected function authenticate(User $user) {
-    Debugbar::info($user);
-    $email = $user->email;
-    $username = $user->nickname;
-
-    if (stripos($email, '@graffino.com') !== false) {
-      $attr = [
-        'email' => $email,
-        'username' => $username,
-      ];
-
-      return Developer::findOrCreate($attr);
+    if (stripos($user->email, '@graffino.com') !== false) {
+      return Developer::firstOrCreate([
+        'email' => $user->email, 'username' => $user->nickname
+      ]);
     } else {
       throw new Exception($email);
     }
