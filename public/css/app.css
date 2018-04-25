@@ -4625,14 +4625,6 @@ body {
   margin-bottom: 1.25rem;
   vertical-align: middle;
 }
-.form__input:active,
-.form__textarea:active,
-.form__select:active,
-.form__input:focus,
-.form__textarea:focus,
-.form__select:focus {
-  border: 0.1875rem solid #7790a8;
-}
 .form__textarea {
   width: 100%;
   border-radius: 0.25rem;

@@ -57,15 +57,18 @@ class DeveloperController extends Controller
   }
 
   public function update(Request $request) {
-    $authId = Auth::id();
-    $developer = Developer::find($authId);
+    $developer = Developer::find(Auth::id());
 
-    $attr = request()->only('twitter_handle', 'editor');
-    $attr['twitter_handle'] = Developer::cleanTwitterHandle($attr['twitter_handle']);
+    $developer->twitter_handle = Developer::cleanTwitterHandle($request->input('twitter_handle'));
+    $developer->editor = $request->input('editor');
 
-    $developer->update($attr);
+    if ($developer->update()) {
+      $request->session()->flash('info', 'Profile updated!');
+    } else {
+      $request->session()->flash('info', 'Couldn\'t update your profile!');
+    }
 
-    return redirect('profile.edit', $developer->id);
+    return redirect()->route('profile.form', $developer->id);
   }
 
   protected function authenticate(User $user) {
