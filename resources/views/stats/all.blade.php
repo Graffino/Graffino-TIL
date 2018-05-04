@@ -25,7 +25,7 @@
         <ul class="list -type-simple -type-tile">
           @foreach($hottestPosts as $entry)
             <li class="list__item">
-              <a href="{{ posts('posts', $entry->slug) }}" class="link">
+              <a href="{{ route('posts', $entry->slug) }}" class="link">
                 <b>
                   {{ $entry->title }}
                 </b>
@@ -66,7 +66,7 @@
         <ul class="list -type-simple -type-tile">
           @foreach($channels as $channel)
             <li class="list__item">
-              <a class="link" href="{{ posts('channels/', $channel->name) }}">
+              <a class="link" href="{{ route('channel', $channel->name) }}">
                 <b>
                   #{{ $channel->name }}
                 </b>
