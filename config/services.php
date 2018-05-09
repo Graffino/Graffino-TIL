@@ -22,7 +22,7 @@ return [
     'github' => [
       'client_id' => env('GITHUB_CLIENT_ID'),
       'client_secret' => env('GITHUB_CLIENT_SECRET'),
-      'redirect' => 'http://localhost:8000/auth/github/callback',
+      'redirect' => env('GITHUB_REDIRECT_URL'),
     ],
     'twitter' => [
     	'consumer_key'    => env('TWITTER_CONSUMER_KEY'),

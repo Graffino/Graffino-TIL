@@ -25,7 +25,7 @@
         <ul class="list -type-simple -type-tile">
           @foreach($hottestPosts as $entry)
             <li class="list__item">
-              <a href="{{ route('posts', $entry->slug) }}" class="link">
+              <a href="{{ route('posts.show', $entry->slug) }}" class="link">
                 <b>
                   {{ $entry->title }}
                 </b>
@@ -45,7 +45,7 @@
         <ul class="list -type-simple -type-tile">
           @foreach($mostLikedPosts as $entry)
             <li class="list__item">
-              <a class="link" href="{{ route('posts', $entry->slug) }}">
+              <a class="link" href="{{ route('posts.show', $entry->slug) }}">
                 <b>
                   {{ $entry->title }}
                 </b>
@@ -54,7 +54,6 @@
                   <span>•</span>
                   {{ $entry->likes }} likes
                 </small>
-
               </a>
             </li>
           @endforeach
@@ -84,7 +83,7 @@
         <ul class="list -type-simple -type-tile">
           @foreach($developers as $developer)
             <li class="list__item">
-              <a href="{{ route('admin', $developer->username) }}" class="link">
+              <a href="{{ route('profile', $developer->username) }}" class="link">
                 <b>
                   {{ $developer->username}}
                 </b>

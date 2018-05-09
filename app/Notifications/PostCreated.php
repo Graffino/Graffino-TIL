@@ -37,8 +37,10 @@ class PostCreated extends Notification
      */
     public function via($notifiable)
     {
-        // return [TwitterChannel::class, 'slack',];
-        return [];
+        return [
+          TwitterChannel::class,
+          'slack',
+        ];
     }
 
     /**
@@ -56,7 +58,7 @@ class PostCreated extends Notification
         ->content('A new post has been created')
         ->attachment(function ($attachment) use ($post) {
           $attachment
-            ->title($post->title, 'http://localhost:8000')
+            ->title($post->title, env('APP_URL'))
             ->content('Go see what\'s up');
         });
     }
@@ -65,7 +67,7 @@ class PostCreated extends Notification
     {
       $canonicalUrl = ApplicationHelper::canonicalUrl($this->post->slug);
       $developer = Developer::find(Auth::id());
-      $tweet = $this->post->title.' '.$canonicalUrl.' via @'.Developer::twitterHandle($developer->id).' #til #'.$this->post->channel->twitter_hashtag;
+      $tweet = $canonicalUrl.' via @'.Developer::twitterHandle($developer->id).' #til #'.$this->post->channel->twitter_hashtag;
 
       return new TwitterStatusUpdate($tweet);
     }

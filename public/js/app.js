@@ -14213,7 +14213,7 @@ module.exports = __webpack_require__(643);
  */
 
 __webpack_require__(161);
-__webpack_require__(639);
+__webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./search-handler\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
 __webpack_require__(640);
 __webpack_require__(641);
 __webpack_require__(642);
@@ -48263,35 +48263,7 @@ return /******/ (function(modules) { // webpackBootstrap
 ;
 
 /***/ }),
-/* 639 */
-/***/ (function(module, exports) {
-
-var toggleBtn = document.getElementsByClassName("js-toggle-button"),
-    toggleEl = document.getElementsByClassName("js-toggle-element");
-
-var findAncestor = function findAncestor(el, cls) {
-  while ((el = el.parentElement) && !el.classList.contains(cls)) {}
-  return el;
-};
-
-Array.from(toggleBtn).map(function (item) {
-  item.addEventListener("click", function (event) {
-    event.preventDefault();
-
-    var ancestor = findAncestor(event.target, 'js-toggle-container');
-    var el = Array.from(ancestor.children).filter(function (child) {
-      return child.classList.contains('js-toggle-element');
-    })[0];
-
-    if (el.classList.contains('is-visible')) {
-      el.classList.remove('is-visible');
-    } else {
-      el.classList.add('is-visible');
-    }
-  }, false);
-});
-
-/***/ }),
+/* 639 */,
 /* 640 */
 /***/ (function(module, exports) {
 

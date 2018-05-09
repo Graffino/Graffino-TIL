@@ -7,6 +7,6 @@ class ApplicationHelper
   static public function canonicalUrl($slug) {
     $appUrl = env("APP_URL");
 
-    return $appUrl.$slug;
+    return $appUrl.'/'.$slug;
   }
 }

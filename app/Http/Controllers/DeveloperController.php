@@ -88,7 +88,7 @@ class DeveloperController extends Controller
         'email' => $user->email, 'username' => $user->nickname
       ]);
     } else {
-      throw new Exception($email);
+      return abort(404);
     }
   }
 }

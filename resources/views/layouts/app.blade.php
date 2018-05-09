@@ -25,7 +25,7 @@
                 <use xlink:href="#sprite-logo"/>
               </svg>
           </a>
-          <a class="hero__subtitle -color-twitter" href="https://twitter.com/graffino">
+          <a class="hero__subtitle -color-twitter" href="https://twitter.com/tilgraffino">
               <svg class="icon -size-small -twitter">
                 <use xlink:href="#sprite-twitter"/>
               </svg>
@@ -46,10 +46,10 @@
                 </svg>
               </a>
               <div id="search-bar" class="nav__search js-toggle-element">
-                {{ Form::open(['method' => 'get', 'url' => ['search']], ['class' => 'form']) }}
+                <form class="form" action="{{ route('search') }}" method="get">
                   <input class="nav__search-input" type="search" name="q">
-                  {{ Form::submit('Search', ['class' => 'button nav__search-button']) }}
-                {{ Form::close() }}
+                  <button class="nav__search-button" type="submit">Search</button>
+                </form>
               </div>
             </li>
             <li class="nav__list-item js-toggle-container">

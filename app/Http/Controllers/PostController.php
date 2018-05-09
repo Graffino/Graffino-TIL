@@ -91,6 +91,11 @@ class PostController extends Controller
       return view('posts.show')->with('post', $post);
     }
 
+    public function destroy($id) {
+      Post::destroy($id);
+      return redirect()->route('posts');
+    }
+
     public function raw($slug) {
       $post = Post::where('slug', '=', $slug)->firstOrFail();
 

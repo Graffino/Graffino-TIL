@@ -21,6 +21,7 @@ Route::group(['middleware' => ['auth']], function () {
   Route::post('posts/create', 'PostController@create')->name('posts.create');
   Route::get('posts/{id}/edit', 'PostController@edit')->name('posts.edit');
   Route::put('posts/{id}/update', 'PostController@update')->name('posts.update');
+  Route::put('posts/{id}/delete', 'PostController@destroy')->name('posts.destroy');
 });
 
 Route::get('admin', 'DeveloperController@index')->name('login');
@@ -29,7 +30,6 @@ Route::get('auth/github/callback', 'DeveloperController@callback')->name('auth.c
 Route::get('auth/logout', 'DeveloperController@delete')->name('logout');
 
 Route::get('/', 'PostController@index')->name('posts');
-Route::get('posts/{slug}', 'PostController@show')->name('posts.show');
 Route::get('random', 'PostController@random')->name('random');
 Route::get('raw/{slug}', 'PostController@raw')->name('raw');
 
@@ -39,3 +39,4 @@ Route::post('posts/unlike/{slug}', 'PostController@unlike')->name('unlike');
 Route::get('channel/{id}', 'ChannelController@show')->name('channel');
 Route::get('search', 'PostController@search')->name('search');
 Route::get('stats', 'StatsController@index')->name('stats');
+Route::get('/{slug}', 'PostController@show')->name('posts.show');

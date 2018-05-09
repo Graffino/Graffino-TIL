@@ -4,13 +4,17 @@
   height 200px
 
   &-bar
-      position absolute
-      right 0
-      bottom 0
-      left 0
-      display block
-      width 100%
-      background-color white
+    position absolute
+    right 0
+    bottom 0
+    left 0
+    display block
+    width 100%
+    background-color white
+
+    &:nth-child(even) {
+      opacity: 0.5
+    }
 
   &-item
     position relative

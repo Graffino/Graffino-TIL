@@ -6,7 +6,8 @@
  */
 
 require('./bootstrap');
-require('./search-handler');
+require('./toggle-handler');
+require('./textarea-handler');
 require('./markdown-handler');
 require('./like-handler');
 require('./flash-handler');
