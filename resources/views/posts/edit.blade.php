@@ -39,7 +39,7 @@
         <a class="link h-margin-left-1" href="{{ route('posts') }}">Cancel</a>
       </div>
       <div class="form__field h-center-text">
-        <a href="{{ route('posts.destroy') }}" class="link h-pull-right">Delete</button>
+        <a href="{{ route('posts.destroy', $post->id) }}" class="link h-pull-right">Delete</button>
       </div>
     </form>
     <div id="html-preview"></div>

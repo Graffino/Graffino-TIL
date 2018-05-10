@@ -103,7 +103,7 @@ class PostController extends Controller
     }
 
     public function random() {
-      $post = Post::find(rand(1, Post::count()));
+      $post = Post::inRandomOrder()->first();
 
       return view('posts.show')->with('post', $post);
     }
