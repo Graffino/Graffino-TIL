@@ -112,7 +112,7 @@ class PostController extends Controller
       $q = $request->input('q');
       $posts = $this->searchPosts($q);
 
-      return view('posts', $posts);
+      return view('posts.feed')->with('posts', $posts);
     }
 
     protected function getChannels() {
