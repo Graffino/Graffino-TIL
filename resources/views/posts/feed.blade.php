@@ -6,7 +6,9 @@
 <div class="container">
   <div class="feed__wrapper">
     @each('posts.partials.post', $posts, 'post', 'posts.partials.empty')
-    {{ $posts->links() }}
+    @if( method_exists( $posts,'links' ) )
+        {{ $posts->links() }}
+    @endif
   </div>
 </div>
 @endsection
