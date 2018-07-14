@@ -1,4 +1,4 @@
-const markdownSource = document.getElementById('markdown-source');
+const markdownSource = document.getElementById('editor');
 const markdownDestination = document.getElementById('html-preview');
 
 let markdownSubscription;

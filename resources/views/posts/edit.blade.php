@@ -24,7 +24,7 @@
             <strong>{{ $errors->first('body') }}</strong>
           </span>
         @endif
-        <textarea id="markdown-source" class="form__textarea" name="body">{{ old('body', $post->body) }}</textarea>
+        <textarea id="editor" class="form__textarea" name="body">{{ old('body', $post->body) }}</textarea>
       </div>
       <div class="form__field">
         <label class="form__label">Channel</label>
