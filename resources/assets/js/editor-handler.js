@@ -1,8 +1,8 @@
 const editor = document.getElementById('editor');
-let choice;
+let choiceSource = document.getElementById('editor-choice');
 
-if (choice != undefined) {
-  choice = document.getElementById('editor-choice').dataset.choice;
+if (choiceSource != undefined) {
+  choice = choiceSource.dataset.choice;
 }
 
 if (/Code Editor|Vim|Emacs/.test(choice)) {
@@ -29,4 +29,15 @@ if (/Code Editor|Vim|Emacs/.test(choice)) {
   }
 
   const codeEditor = CodeMirror.fromTextArea(editor, options);
+
+  codeEditor.on('changes', instance => {
+    const value = instance.getValue();
+    editor.value = value;
+    var event = new Event('input', {
+        'bubbles': true,
+        'cancelable': true
+    });
+
+    editor.dispatchEvent(event);
+  });
 }
