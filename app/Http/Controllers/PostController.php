@@ -93,7 +93,9 @@ class PostController extends Controller
 
     public function destroy($id) {
       Post::destroy($id);
-      return redirect()->route('posts');
+
+      return redirect()->route('posts')
+        ->with('info', 'Post deleted!');
     }
 
     public function raw($slug) {

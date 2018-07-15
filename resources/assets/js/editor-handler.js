@@ -1,7 +1,7 @@
 const editor = document.getElementById('editor');
 let choice;
 
-if (editor != undefined) {
+if (choice != undefined) {
   choice = document.getElementById('editor-choice').dataset.choice;
 }
 

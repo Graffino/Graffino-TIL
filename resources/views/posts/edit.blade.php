@@ -45,7 +45,8 @@
       <div class="form__field h-center-text">
         <button type="submit" class="button -color-white h-pull-right">Delete</button>
       </div>
-      </form>
+    </form>
     <div id="html-preview"></div>
+    <div id="editor-choice" data-choice="{{ Auth::user()->editor }}"></div>
   </div>
 @endsection
