@@ -1,5 +1,9 @@
 const editor = document.getElementById('editor');
-const choice = document.getElementById('editor-choice').dataset.choice;
+let choice;
+
+if (editor != undefined) {
+  choice = document.getElementById('editor-choice').dataset.choice;
+}
 
 if (/Code Editor|Vim|Emacs/.test(choice)) {
   let options;
