@@ -39,5 +39,6 @@
       </div>
     </form>
     <div id="html-preview"></div>
+    <div id="editor-choice" data-choice="{{ Auth::user()->editor }}"></div>
   </div>
 @endsection

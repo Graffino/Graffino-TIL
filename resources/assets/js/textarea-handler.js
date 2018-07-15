@@ -7,7 +7,6 @@ if (textarea != undefined) {
 }
 
 function handleHeight() {
-    console.log(originalHeight);
     if (textarea.scrollHeight > originalHeight) {
         textarea.style.height = `${textarea.scrollHeight}px`;
     } else {

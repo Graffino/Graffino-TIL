@@ -2,6 +2,10 @@ window.Rx = require('rxjs');
 window.hljs = require("highlight.js");
 window.Cookies = require("js-cookie");
 
+window.CodeMirror = require("codemirror");
+require('../../../node_modules/codemirror/keymap/vim.js');
+require('../../../node_modules/codemirror/keymap/emacs.js');
+
 hljs.initHighlightingOnLoad();
 
 import Echo from 'laravel-echo'

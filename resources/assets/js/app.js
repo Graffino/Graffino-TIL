@@ -11,3 +11,4 @@ require('./textarea-handler');
 require('./markdown-handler');
 require('./like-handler');
 require('./flash-handler');
+require('./editor-handler');
