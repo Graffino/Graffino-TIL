@@ -15,13 +15,13 @@ if (/Code Editor|Vim|Emacs/.test(choice)) {
 
   switch (choice) {
     case 'Vim':
-      options = Object.assign({}, defaultOptions, {keyMap: 'vim'})
+      options = Object.assign({}, defaultOptions, {keyMap: 'vim'});
     break;
     case 'Emacs':
-      options = Object.assign({}, defaultOptions, {keyMap: 'emacs'})
+      options = Object.assign({}, defaultOptions, {keyMap: 'emacs'});
     break;
     default:
-      options = defaultOptions
+      options = defaultOptions;
   }
 
   console.log(options);
