@@ -24,7 +24,5 @@ if (/Code Editor|Vim|Emacs/.test(choice)) {
       options = defaultOptions;
   }
 
-  console.log(options);
-
   const codeEditor = CodeMirror.fromTextArea(editor, options);
 }
