@@ -55,7 +55,7 @@ class DeveloperController extends Controller
   public function edit() {
       $authId = Auth::id();
       $developer = Developer::find($authId);
-      $editorOptions = ['Text Field', 'Vim', 'Code Editor'];
+      $editorOptions = ['Text Field', 'Code Editor', 'Vim', 'Emacs',];
 
       return view('profile.edit')
         ->with('developer', $developer)

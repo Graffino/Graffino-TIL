@@ -2,7 +2,7 @@ window.Rx = require('rxjs');
 window.hljs = require('highlight.js');
 window.Cookies = require('js-cookie');
 
-window.CodeMirror = require('codemirror');
+window.CodeMirror = require('codemirror/lib/codemirror');
 require('codemirror/keymap/vim');
 require('codemirror/keymap/emacs');
 
