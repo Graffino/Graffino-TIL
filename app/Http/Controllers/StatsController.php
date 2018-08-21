@@ -77,7 +77,7 @@ class StatsController extends Controller
     $data = [
       'postsForDays' => $postsForDays,
       'maxCount' => $postsForDays->map(function ($entry) {
-        return $entry->count;
+        return ($entry->count + 1);
       })->max(),
       'postsCount' => $postsCount,
       'developers' => $postsByDevelopersCount,
