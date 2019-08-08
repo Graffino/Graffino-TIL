@@ -17,10 +17,13 @@ mix.js('resources/assets/js/app.js', 'public/js')
    .stylus('resources/assets/stylus/app.styl', 'public/css')
    .webpackConfig({
       plugins: [
-        new SVGSpritemapPlugin({
-          src: 'resources/assets/icons/*.svg',
-          filename : svgSpriteDestination,
-          svgo : {removeTitle : true}
+        new SVGSpritemapPlugin(['resources/assets/icons/*.svg'], {
+          output: {
+            svgo: {
+              removeTitle: true
+            },
+            filename: svgSpriteDestination
+          },
         })
       ]
     });
