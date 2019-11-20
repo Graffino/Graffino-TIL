@@ -25,7 +25,7 @@
                 <use xlink:href="#sprite-logo"/>
               </svg>
           </a>
-          <a class="hero__subtitle -color-twitter" href="https://twitter.com/tilgraffino">
+          <a class="hero__subtitle -color-twitter" href="https://twitter.com/graffinotil">
               <svg class="icon -size-small -twitter">
                 <use xlink:href="#sprite-twitter"/>
               </svg>
