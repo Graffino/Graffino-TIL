@@ -16,5 +16,6 @@ window.Echo = new Echo({
     broadcaster: 'pusher',
     key: '48c555271ceabb01ea19',
     cluster: 'eu',
-    encrypted: true
+    encrypted: true,
+    authEndpoint: window.location.hostname + '/broadcast/auth'
 });
