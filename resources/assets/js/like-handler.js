@@ -1,5 +1,6 @@
 const token = document.head.querySelector('meta[name="csrf-token"]').content;
 const likesSource = document.getElementsByClassName('js-like');
+const domain = document.querySelector('meta[name="domain-name"]').getAttribute('content');
 
 let likesSubscription;
 
@@ -11,7 +12,7 @@ const updateClass = el => !!Cookies.get(`liked -${el.id}`) ? el.classList.add('i
 Array.from(likesSource).map(el => updateClass(el));
 
 const like = event => Rx.Observable
-  .ajax({url: `${window.location.origin}/posts/like/${event.target.id}`, method: 'POST', body: {slug: event.target.id}, headers: {"X-CSRF-TOKEN": token}})
+  .ajax({url: `${domain}/posts/like/${event.target.id}`, method: 'POST', body: {slug: event.target.id}, headers: {"X-CSRF-TOKEN": token}})
   .subscribe(data => {
     let count = getCount(event);
 
@@ -21,7 +22,7 @@ const like = event => Rx.Observable
   });
 
 const unlike = event => Rx.Observable
-  .ajax({url: `posts/unlike/${event.target.id}`, method: 'POST', body: {slug: event.target.id}, headers: {"X-CSRF-TOKEN": token}})
+  .ajax({url: `${domain}/posts/unlike/${event.target.id}`, method: 'POST', body: {slug: event.target.id}, headers: {"X-CSRF-TOKEN": token}})
   .subscribe(data => {
     let count = getCount(event);
 
