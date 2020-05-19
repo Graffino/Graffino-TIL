@@ -74,7 +74,6 @@ class PostController extends Controller
         $post->title = $request->input('title');
         $post->body = $request->input('body');
         $post->channel_id = $request->input('channel_id');
-        $post->slug = Post::saltSlug(Post::slugifyTitle($request->input('title')));
 
         if ($post->update()) {
           $request->session()->flash('info', 'Post updated successfully!');
