@@ -6,7 +6,7 @@
   <div class="post__wrapper">
     {!! markdown($post->body) !!}
     <div class="post__info">
-      <a class="post__author" href="{{ route('admin', $post->developer->username) }}">{{ $post->developer->username }}</a>
+      <a class="post__author" href="{{ route('author', $post->developer->username) }}">{{ $post->developer->username }}</a>
       <a class="post__timestamp" href="{{ route('posts.show', $post->slug) }}">{{ $post->created_at->format('d M y') }}</a>
     </div>
   </div>

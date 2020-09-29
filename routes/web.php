@@ -12,7 +12,6 @@
 */
 
 Route::group(['middleware' => ['auth']], function () {
-  Route::get('authors/{username}', 'DeveloperController@show')->name('admin');
   Route::get('profile', 'DeveloperController@show')->name('profile');
   Route::get('profile/edit', 'DeveloperController@edit')->name('profile.edit');
   Route::put('profile/edit', 'DeveloperController@update')->name('profile.update');
@@ -23,6 +22,8 @@ Route::group(['middleware' => ['auth']], function () {
   Route::put('posts/{id}/update', 'PostController@update')->name('posts.update');
   Route::delete('posts/{id}/delete', 'PostController@destroy')->name('posts.destroy');
 });
+
+Route::get('author/{username}', 'DeveloperController@show')->name('author');
 
 Route::get('admin', 'DeveloperController@index')->name('login');
 Route::get('auth/github', 'DeveloperController@request')->name('auth.request');
