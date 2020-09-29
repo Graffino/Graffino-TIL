@@ -83,7 +83,7 @@
         <ul class="list -type-simple -type-tile">
           @foreach($developers as $developer)
             <li class="list__item">
-              <a href="{{ route('profile', $developer->username) }}" class="link">
+              <a href="{{ route('author', $developer->username) }}" class="link">
                 <b>
                   {{ $developer->username}}
                 </b>
