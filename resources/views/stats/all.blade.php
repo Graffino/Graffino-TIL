@@ -65,7 +65,7 @@
         <ul class="list -type-simple -type-tile">
           @foreach($channels as $channel)
             <li class="list__item">
-              <a class="link" href="{{ route('channel', $channel->id) }}">
+              <a class="link" href="{{ route('channel', $channel->name) }}">
                 <b>
                   #{{ $channel->name }}
                 </b>
