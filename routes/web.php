@@ -37,7 +37,7 @@ Route::get('raw/{slug}', 'PostController@raw')->name('raw');
 Route::post('posts/like/{slug}', 'PostController@like')->name('like');
 Route::post('posts/unlike/{slug}', 'PostController@unlike')->name('unlike');
 
-Route::get('channel/{id}', 'ChannelController@show')->name('channel');
+Route::get('channel/{name}', 'ChannelController@show')->name('channel');
 Route::get('search', 'PostController@search')->name('search');
 Route::get('stats', 'StatsController@index')->name('stats');
 Route::get('/{slug}', 'PostController@show')->name('posts.show');

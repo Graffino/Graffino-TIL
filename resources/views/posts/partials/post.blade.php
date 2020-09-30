@@ -12,7 +12,7 @@
   </div>
   <footer class="footer">
     <ul class="post__actions">
-      <li class="post__actions-item"><a href="{{ route('channel', $post->channel->id) }}">{{ $post->channel->name }}</a></li>
+      <li class="post__actions-item"><a href="{{ route('channel', $post->channel->name) }}">{{ $post->channel->name }}</a></li>
       <li class="post__actions-item"><a href="{{ route('posts.show', $post->slug) }}">Permalink</a></li>
       <li class="post__actions-item"><a href="{{ route('raw', $post->slug) }}">Raw</a></li>
       <li class="post__actions-item">

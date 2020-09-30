@@ -4,12 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use App\Channel;
 
 class ChannelController extends Controller
 {
-    public function show($id) {
+    public function show($name)
+    {
+      $channel = Channel::where('name', $name)
+      ->first();
+
       $posts = Post::orderBy('created_at', 'desc')
-                    ->where('channel_id', '=', $id)
+                    ->where('channel_id', '=', $channel->id)
                     ->paginate(5);
 
       return view('posts.feed')->with('posts', $posts);
