@@ -3,38 +3,36 @@
     "version": "1.0.15",
     "scripts": {
         "dev": "npm run development",
-        "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-        "watch": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+        "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --config=node_modules/laravel-mix/setup/webpack.config.js",
+        "watch": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --config=node_modules/laravel-mix/setup/webpack.config.js",
         "watch-poll": "npm run watch -- --watch-poll",
         "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
         "prod": "npm run production",
-        "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+        "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --config=node_modules/laravel-mix/setup/webpack.config.js",
         "deploy": "git fetch --all; git reset --hard origin/master; composer install;php artisan migrate --force; yarn; yarn run production; killall php; nohup php artisan queue:work --daemon &"
     },
     "devDependencies": {
-        "axios": "^0.19",
+        "axios": "^0.21",
         "bootstrap-sass": "^3.4.1",
         "cross-env": "^7.0.2",
         "jquery": "^3.5",
         "laravel-mix": "^5.0",
-        "lodash": "^4.17.19",
-        "vue": "^2.6.11",
-        "vue-template-compiler": "^2.6.11",
-        "webpack-cli": "^3.3.11"
+        "lodash": "^4.17.20",
+        "vue": "^2.6.12",
+        "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
-        "codemirror": "^5.54.0",
-        "highlight.js": "^10.0.3",
+        "codemirror": "^5.58.2",
+        "highlight.js": "^10.3.1",
         "jeet": "^7.2.0",
         "js-cookie": "^2.2.1",
-        "laravel-echo": "^1.8.0",
-        "pusher-js": "^6.0.3",
+        "laravel-echo": "^1.9.0",
+        "pusher-js": "^7.0.0",
         "rupture": "^0.7.1",
         "rxjs": "5.5.11",
-        "stylus": "^0.54.7",
+        "stylus": "^0.54.8",
         "stylus-loader": "^3.0.2",
-        "svg-spritemap-webpack-plugin": "^3.5.6",
-        "turbolinks": "^5.2.0",
-        "webpack": "^4.43.0"
+        "svg-spritemap-webpack-plugin": "^3.5.10",
+        "turbolinks": "^5.2.0"
     }
 }
