@@ -27,7 +27,7 @@
         "jeet": "^7.2.0",
         "js-cookie": "^2.2.1",
         "laravel-echo": "^1.9.0",
-        "pusher-js": "^7.0.0",
+        "pusher-js": "^6.0.3",
         "rupture": "^0.7.1",
         "rxjs": "5.5.11",
         "stylus": "^0.54.8",
