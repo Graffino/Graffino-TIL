@@ -23,16 +23,16 @@
     },
     "dependencies": {
         "codemirror": "^5.58.2",
-        "highlight.js": "^10.3.1",
+        "highlight.js": "^10.3.2",
         "jeet": "^7.2.0",
         "js-cookie": "^2.2.1",
         "laravel-echo": "^1.9.0",
-        "pusher-js": "^7.0.0",
+        "pusher-js": "^7.0.1",
         "rupture": "^0.7.1",
         "rxjs": "5.5.11",
         "stylus": "^0.54.8",
         "stylus-loader": "^3.0.2",
-        "svg-spritemap-webpack-plugin": "^3.5.10",
+        "svg-spritemap-webpack-plugin": "^3.7.1",
         "turbolinks": "^5.2.0"
     }
 }
