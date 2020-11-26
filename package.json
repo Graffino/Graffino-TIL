@@ -1,6 +1,6 @@
 {
     "private": false,
-    "version": "1.0.19",
+    "version": "1.0.20",
     "scripts": {
         "dev": "npm run development",
         "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --config=node_modules/laravel-mix/setup/webpack.config.js",
@@ -22,8 +22,8 @@
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
-        "codemirror": "^5.58.2",
-        "highlight.js": "^10.3.2",
+        "codemirror": "^5.58.3",
+        "highlight.js": "^10.4.0",
         "jeet": "^7.2.0",
         "js-cookie": "^2.2.1",
         "laravel-echo": "^1.9.0",
