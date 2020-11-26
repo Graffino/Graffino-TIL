@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
-use App\Events\TextConverted;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,10 +14,6 @@ use App\Events\TextConverted;
 |
 */
 
-Route::get('/user', function (Request $request) {
+Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
-});
-
-Route::post('/convert', function (Request $request) {
-  event(new TextConverted($request->input('raw')));
 });

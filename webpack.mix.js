@@ -1,6 +1,4 @@
-let mix = require('laravel-mix');
-let SVGSpritemapPlugin = require('svg-spritemap-webpack-plugin');
-let svgSpriteDestination = "../resources/views/layouts/svgs.blade.php";
+const mix = require('laravel-mix');
 
 /*
  |--------------------------------------------------------------------------
@@ -8,22 +6,12 @@ let svgSpriteDestination = "../resources/views/layouts/svgs.blade.php";
  |--------------------------------------------------------------------------
  |
  | Mix provides a clean, fluent API for defining some Webpack build steps
- | for your Laravel application. By default, we are compiling the Sass
+ | for your Laravel applications. By default, we are compiling the CSS
  | file for the application as well as bundling up all the JS files.
  |
  */
 
-mix.js('resources/assets/js/app.js', 'public/js')
-   .stylus('resources/assets/stylus/app.styl', 'public/css')
-   .webpackConfig({
-      plugins: [
-        new SVGSpritemapPlugin(['resources/assets/icons/*.svg'], {
-          output: {
-            svgo: {
-              removeTitle: true
-            },
-            filename: svgSpriteDestination
-          },
-        })
-      ]
-    });
+mix.js('resources/js/app.js', 'public/js')
+    .postCss('resources/css/app.css', 'public/css', [
+        //
+    ]);
