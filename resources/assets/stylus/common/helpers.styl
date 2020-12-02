@@ -1,0 +1,560 @@
+/**
+ * Global helpers
+ * Author: Graffino (http://www.graffino.com)
+ */
+
+
+/**
+ * Global helpers
+ */
+
+.h {
+  // Show only on specific viewport size
+  &-show-for {
+    &-large-up {
+      +below($large) {
+        display: none !important;
+      }
+    }
+
+    &-large-down {
+      +above($large + 1) {
+        display: none !important;
+      }
+    }
+
+    &-tablet-up {
+      +below($tablet) {
+        display: none !important;
+      }
+    }
+
+    &-tablet-down {
+      +above($tablet + 1) {
+        display: none !important;
+      }
+    }
+
+    &-small-up {
+      +below($small) {
+        display: none !important;
+      }
+    }
+
+    &-small-down {
+      +above($small + 1) {
+        display: none !important;
+      }
+    }
+
+    &-mobile-up {
+      +below($mobile) {
+        display: none !important;
+      }
+    }
+
+    &-mobile-down {
+      +above($mobile + 1) {
+        display: none !important;
+      }
+    }
+  }
+
+  // Hide for specific viewport size
+  &-hide-for {
+    &-large-up {
+      +above($large + 1) {
+        display: none !important;
+      }
+    }
+
+    &-large-down {
+      +below($large) {
+        display: none !important;
+      }
+    }
+
+    &-tablet-up {
+      +above($tablet + 1) {
+        display: none !important;
+      }
+    }
+
+    &-tablet-down {
+      +below($tablet) {
+        display: none !important;
+      }
+    }
+
+    &-eager-tablet-down {
+      +below($eager-tablet) {
+        display: none !important;
+      }
+    }
+
+    &-mobile-up {
+      +above($mobile + 1) {
+        display: none !important;
+      }
+    }
+
+    &-mobile-down {
+      +below($mobile) {
+        display: none !important;
+      }
+    }
+
+    &-small-up {
+      +above($small + 1) {
+        display: none !important;
+      }
+    }
+
+    &-small-down {
+      +below($small) {
+        display: none !important;
+      }
+    }
+  }
+
+  // Center for specific viewport size
+  &-center-text {
+    text-align: center !important;
+  }
+
+  &-center-for {
+    &-large-down {
+      +below($large) {
+        text-align: center !important;
+      }
+    }
+
+    &-tablet-down {
+      +below($tablet) {
+        text-align: center !important;
+      }
+    }
+
+    &-mobile-down {
+      +below($mobile) {
+        text-align: center !important;
+      }
+    }
+  }
+
+  // Make image responsive
+  &-responsive-image {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  // Hide element visually without removing it
+  &-visually-hidden {
+    overflow: hidden !important;
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    margin: -1px !important;
+    border: 0 !important;
+    padding: 0 !important;
+    clip: rect(0 0 0 0) !important;
+  }
+
+  // Overflow hidden
+  &-overflow {
+    &-hidden {
+      overflow: hidden;
+    }
+  }
+
+  // Alignment
+  &-align {
+    &-left {
+      text-align: left !important;
+
+      &-from-large-down {
+        +below($large) {
+          text-align: left !important;
+        }
+      }
+
+      &-from-large-up {
+        +above($large + 1) {
+          text-align: left !important;
+        }
+      }
+
+      &-from-tablet-down {
+        +below($tablet) {
+          text-align: left !important;
+        }
+      }
+
+      &-from-tablet-up {
+        +above($tablet + 1) {
+          text-align: left !important;
+        }
+      }
+
+      &-from-small-down {
+        +below($small) {
+          text-align: left !important;
+        }
+      }
+
+      &-from-small-up {
+        +above($small + 1) {
+          text-align: left !important;
+        }
+      }
+    }
+
+    &-center {
+      text-align: center !important;
+
+      &-from-large-down {
+        +below($large) {
+          text-align: center !important;
+        }
+      }
+
+      &-from-large-up {
+        +above($large + 1) {
+          text-align: center !important;
+        }
+      }
+
+      &-from-tablet-down {
+        +below($tablet) {
+          text-align: center !important;
+        }
+      }
+
+      &-from-tablet-up {
+        +above($tablet + 1) {
+          text-align: center !important;
+        }
+      }
+
+      &-from-small-down {
+        +below($small) {
+          text-align: center !important;
+        }
+      }
+
+      &-from-small-up {
+        +above($small + 1) {
+          text-align: center !important;
+        }
+      }
+    }
+
+    &-right {
+      text-align: right !important;
+
+      &-from-large-down {
+        +below($large) {
+          text-align: right !important;
+        }
+      }
+
+      &-from-large-up {
+        +above($large + 1) {
+          text-align: right !important;
+        }
+      }
+
+      &-from-tablet-down {
+        +below($tablet) {
+          text-align: right !important;
+        }
+      }
+
+      &-from-tablet-up {
+        +above($tablet + 1) {
+          text-align: right !important;
+        }
+      }
+
+      &-from-small-down {
+        +below($small) {
+          text-align: right !important;
+        }
+      }
+
+      &-from-small-up {
+        +above($small + 1) {
+          text-align: right !important;
+        }
+      }
+    }
+  }
+
+  // Floats
+  &-float {
+    &-none {
+      float: none !important;
+
+      &-from-large-down {
+        +below($large) {
+          float: none !important;
+        }
+      }
+
+      &-from-tablet-down {
+        +below($tablet) {
+          float: none !important;
+        }
+      }
+
+      &-from-small-down {
+        +below($small) {
+          float: none !important;
+        }
+      }
+    }
+
+    &-left {
+      float: left !important;
+
+      &-from-large-down {
+        +below($large) {
+          float: left !important;
+        }
+      }
+
+      &-from-tablet-down {
+        +below($tablet) {
+          float: left !important;
+        }
+      }
+
+      &-from-small-down {
+        +below($small) {
+          float: left !important;
+        }
+      }
+    }
+
+    &-right {
+      float: right !important;
+
+      &-from-large-down {
+        +below($large) {
+          float: right !important;
+        }
+      }
+
+      &-from-tablet-down {
+        +below($tablet) {
+          float: right !important;
+        }
+      }
+
+      &-from-small-down {
+        +below($small) {
+          float: right !important;
+        }
+      }
+    }
+  }
+
+  &-clear {
+    clearfix();
+
+    &-both {
+      clear: both;
+    }
+  }
+
+  // Text case
+  &-case {
+    &-normal {
+      text-transform: none !important;
+    }
+
+    &-uppercase {
+      text-transform: uppercase !important;
+    }
+  }
+
+  // Text color
+  &-color {
+    &-inherit {
+      color: inherit !important;
+    }
+  }
+
+  // Center
+  &-center {
+    // Make sure the element doesn't have a float,
+    // otherwise the helper doesn't work
+    float: none !important;
+    margin-right: auto !important;
+    margin-left: auto !important;
+  }
+
+  // Paddings
+  &-no-padding {
+    padding: 0 !important;
+
+    &-top {
+      padding-top: 0 !important;
+    }
+
+    &-bottom {
+      padding-bottom: 0 !important;
+    }
+
+    &-right {
+      padding-right: 0 !important;
+    }
+
+    &-left {
+      padding-left: 0 !important;
+    }
+  }
+
+  // Margins
+  &-no-margin {
+    margin: 0 !important;
+
+    &-top {
+      margin-top: 0 !important;
+    }
+
+    &-bottom {
+      margin-bottom: 0 !important;
+    }
+
+    &-right {
+      margin-right: 0 !important;
+    }
+
+    &-left {
+      margin-left: 0 !important;
+    }
+  }
+  
+  &-margin {
+    &-left {
+      &-1 {
+        margin-left: rem(10);
+      }
+    }
+  }
+  // Display table
+  &-display {
+    &-table {
+      display: table;
+    }
+
+    &-inline-block {
+      display: inline-block;
+    }
+
+    &-block {
+      display: block;
+    }
+  }
+
+  // Align vertically via table method
+  &-vertical-align {
+    display: table-cell !important;
+    vertical-align: middle;
+
+    &-middle {
+      vertical-align: middle !important;
+    }
+  }
+
+  // Height 100%
+  &-full-height {
+    min-height: 100%;
+  }
+
+  // Disable pointer events
+  &-no-pointer-events {
+    pointer-events: none;
+  }
+
+  // Word-break
+  &-word-break {
+    &-all {
+      word-break: break-all;
+    }
+  }
+
+  &-nowrap {
+    white-space: nowrap;
+  }
+
+  // Position
+  &-position {
+    &-static {
+      position: static !important;
+    }
+
+    &-relative {
+      position: relative !important;
+    }
+
+    &-absolute {
+      position: absolute !important;
+    }
+  }
+
+  // Z Indexes
+  &-z-index {
+    &-0 {
+      z-index: 0 !important;
+    }
+    &-10 {
+      z-index: 10 !important;
+    }
+    &-20 {
+      z-index: 20 !important;
+    }
+    &-30 {
+      z-index: 30 !important;
+    }
+    &-40 {
+      z-index: 40 !important;
+    }
+    &-50 {
+      z-index: 50 !important;
+    }
+    &-60 {
+      z-index: 60 !important;
+    }
+    &-70 {
+      z-index: 70 !important;
+    }
+    &-80 {
+      z-index: 80 !important;
+    }
+    &-90 {
+      z-index: 90 !important;
+    }
+    &-100 {
+      z-index: 100 !important;
+    }
+    &-max {
+      z-index: 9999 !important;
+    }
+    &-negative {
+      z-index: -1 !important;
+    }
+  }
+
+  &-pull {
+    &-right {
+      float right
+    }
+
+    &-left {
+      float left
+    }
+  }
+}
