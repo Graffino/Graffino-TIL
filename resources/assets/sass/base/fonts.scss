@@ -1,0 +1,179 @@
+/**
+ * Fonts and Sizes
+ * Author: Graffino (http://www.graffino.com)
+ */
+
+/*
+  // Font weights
+  Extra Light, Ultra Light = 100
+  Light, Thin = 200
+  Book, Demi = 300
+  Normal, Regular = 400
+  Medium = 500
+  SemiBold, Demibold = 600
+  Bold = 700
+  Black, ExtraBold, Heavy = 800
+  Extra Black, Fat, Poster, UltraBlack = 900
+*/
+
+$extra-light: 100;
+$light: 200;
+$book: 300;
+$regular: 400;
+$medium: 500;
+$semibold: 600;
+$bold: 700;
+$black: 800;
+$extra-black: 900;
+
+/**
+ * Montserrat
+ */
+
+// Regular - 400
+@include webfont(
+    'Adobe Blank',
+    'adobe-blank-regular',
+    $regular,
+    normal,
+    'U+0000-007F'
+);
+
+/**
+ * Fontfaces
+ */
+
+$sans-fontface: 'Adobe Blank';
+$serif-fontface: 'Georgia';
+$cursive-fontface: 'Comic Sans MS';
+$mono-fontface: 'Courier';
+
+// Font-families stack
+$sans-fontface-stack: $sans-fontface, Helvetica, Arial, sans-serif;
+$serif-fontface-stack: $serif-fontface, 'Times New Roman', Times, serif;
+$cursive-fontface-stack: $cursive-fontface, cursive;
+$mono-fontface-stack: $mono-fontface, monospace;
+
+// System fontface stacks used when webfonts are not loaded
+$system-sans-fontface-stack: 'Helvetica', 'Helvetica Neue', 'Arial', sans-serif;
+$system-serif-fontface-stack: 'Georgia', 'Times New Roman', Times, serif;
+
+/**
+ * Defaults
+ */
+
+$default-fontface-stack: $sans-fontface-stack;
+$default-system-stack: $system-sans-fontface-stack;
+
+/**
+ * Fonts and sizes
+ * Author: Graffino (http://www.graffino.com)
+ */
+
+/*
+  // Font weights
+  Thin = 100
+  ExtraLight = 200
+  Light = 300
+  Regular = 400
+  Medium = 500
+  SemiBold = 600
+  Bold = 700
+  ExtraBold = 800
+  Black = 900
+*/
+
+/**
+ * Monserrat
+ */
+/*
+ * Fontfaces
+ */
+
+$sans-fontface: 'Montserrat';
+$mono-fontface: 'Inconsolata';
+
+// Font-families stack
+$sans-fontface-stack: $sans-fontface, Helvetica, Arial, sans-serif;
+$mono-fontface-stack: $mono-fontface, 'Courier', monospace;
+
+// System fontface stacks used when webfonts are not loaded
+$system-sans-fontface-stack: 'Helvetica', 'Helvetica Neue', 'Arial', sans-serif;
+$system-mono-fontface-stack: 'Courier', monospace;
+
+/**
+ * Font sizes
+ */
+
+$font-size-1: 8vw;
+$line-height-1: 1;
+
+$font-size-2: rem(26px);
+$line-height-2: 1;
+
+$font-size-3: rem(16px);
+$line-height-3: 1.2;
+
+$font-size-4: rem(13px);
+$line-height-4: 1;
+
+/**
+ * H1-H6 headings
+ */
+
+// H1
+$heading-1-font-family: $sans-fontface-stack;
+$heading-1-font-weight: 200;
+$heading-1-font-size: $font-size-1;
+$heading-1-line-height: $line-height-1;
+$heading-1-letter-spacing: rem(-5px);
+$heading-1-default-stack: $system-sans-fontface-stack;
+
+// H2
+$heading-2-font-family: $sans-fontface-stack;
+$heading-2-font-weight: 900;
+$heading-2-font-size: $font-size-2;
+$heading-2-line-height: $line-height-2;
+$heading-2-letter-spacing: rem(-3px);
+$heading-2-default-stack: $system-sans-fontface-stack;
+
+// H3
+$heading-3-font-family: $sans-fontface-stack;
+$heading-3-font-weight: 900;
+$heading-3-font-size: $font-size-3;
+$heading-3-line-height: $line-height-3;
+$heading-3-letter-spacing: rem(-3px);
+$heading-3-default-stack: $system-sans-fontface-stack;
+
+// H4
+$heading-4-font-family: $sans-fontface-stack;
+$heading-4-font-weight: 900;
+$heading-4-font-size: $font-size-4;
+$heading-4-line-height: $line-height-4;
+$heading-4-letter-spacing: rem(-2px);
+$heading-4-default-stack: $system-sans-fontface-stack;
+
+// H5
+$heading-5-font-family: $sans-fontface-stack;
+$heading-5-font-weight: 100;
+$heading-5-font-size: $font-size-3;
+$heading-5-line-height: $h5-line-height;
+$heading-5-letter-spacing: rem(-1px);
+$heading-5-default-stack: $system-sans-fontface-stack;
+
+// H6
+$heading-6-font-family: $sans-fontface-stack;
+$heading-6-font-weight: 100;
+$heading-6-font-size: $h6-font-size;
+$heading-6-line-height: $h6-line-height;
+$heading-6-letter-spacing: normal;
+$heading-6-default-stack: $system-sans-fontface-stack;
+
+/**
+ * Defaults
+ */
+
+$default-font-size: $font-size-3;
+$default-line-height: 1;
+$default-fontface-stack: $sans-fontface-stack;
+$default-system-stack: $system-sans-fontface-stack;
