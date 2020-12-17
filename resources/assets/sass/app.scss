@@ -26,30 +26,29 @@
   @import 'utils/functions';
   @import 'utils/helpers';
 
+    /**
+ * Base
+ */
+ @import 'base/colors';
+ @import 'base/fonts';
+ @import 'base/typography';
+ @import 'base/defaults';
+ @import 'base/animations';
+ @import 'base/buttons';
+ @import 'base/forms';
 
 
   // Breakpoints
   @import "common/breakpoints";
-  // Fonts and sizes variables
-  @import "common/fonts";
-  // Helpers
-  @import "common/helpers";
   // Grid
   @import "common/grid";
 /**
  * Modules
  */
-
-  // Typography — body copy, headings, lists, blockquotes, etc
-  // @import "modules/typography";
   // Icons — styles and sizes
   @import "modules/icon";
   // Button — styles and sizes
   @import "modules/button";
-  // Form - styles
-  @import "modules/form";
-  // User Controls - styles
-  @import "modules/user";
   // Hero - styles
   @import "modules/hero";
   // Sidebar - styles
@@ -64,19 +63,7 @@
   @import "modules/alert";
   // Popup
   @import "modules/popup";
-
   // highlightjs
   @import "vendor/atom-one-dark";
   // codemirror
   @import "vendor/code-mirror";
-
-  /**
- * Base
- */
-  @import 'base/colors';
-  @import 'base/fonts';
-  @import 'base/typography';
-  @import 'base/defaults';
-  @import 'base/animations';
-  @import 'base/buttons';
-  @import 'base/forms';
