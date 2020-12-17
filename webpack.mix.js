@@ -14,16 +14,16 @@ let svgSpriteDestination = "../resources/views/layouts/svgs.blade.php";
  */
 
 mix.js('resources/assets/js/app.js', 'public/js')
-   .stylus('resources/assets/stylus/app.styl', 'public/css')
-   .webpackConfig({
-      plugins: [
+mix.sass('resources/assets/sass/app.scss', 'public/css')
+.webpackConfig({
+    plugins: [
         new SVGSpritemapPlugin(['resources/assets/icons/*.svg'], {
-          output: {
-            svgo: {
-              removeTitle: true
+            output: {
+                svgo: {
+                    removeTitle: true
+                },
+                filename: svgSpriteDestination
             },
-            filename: svgSpriteDestination
-          },
         })
-      ]
-    });
+    ]
+});
