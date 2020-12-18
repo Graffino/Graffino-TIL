@@ -70,9 +70,9 @@ $font-colors: (
     @font-face {
       font-family: $family;
       src:
-      url("../fonts/" + $file + ".ttf") format("truetype"), // @stylint ignore
-       url("../fonts/" + $file + ".woff2") format("woff2"),
-        url("../fonts/" + $file + ".woff") format("woff"); // @stylint ignore
+      url("../../fonts/" + $file + ".ttf") format("truetype"), // @stylint ignore
+       url("../../fonts/" + $file + ".woff2") format("woff2"),
+        url("../../fonts/" + $file + ".woff") format("woff"); // @stylint ignore
       font-style: $style;
       font-weight: $weight;
       unicode-range: $range; // @stylint ignore
