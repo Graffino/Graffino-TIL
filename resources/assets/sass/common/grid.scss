@@ -3,212 +3,153 @@
  * Author: Graffino (http://www.graffino.com)
  */
 
- $gutter-compensation: $columns-gutter * 0.5 * -1;
- $gutter-compensation-large: $columns-gutter-large * 0.5 * -1;
- 
- // Grid classes
- .container {
-   box-sizing: border-box;
-   max-width: $container-width + 2 * $container-padding;
-   margin: 0 auto;
-   padding: 0 $container-padding;
- 
-   @include below(tablet) {
-     max-width: 100%;
-     padding-right: $container-padding-small;
-     padding-left: $container-padding-small;
-   }
- }
- 
- .container--fluid {
-   margin-right: auto;
-   margin-left: auto;
-   padding-right: $container-padding;
-   padding-left: $container-padding;
- }
- 
- .columns {
-   box-sizing: border-box;
-   display: flex;
-   flex: 0 1 auto;
-   flex-flow: row wrap;
-   margin-right: $gutter-compensation;
-   margin-left: $gutter-compensation;
- 
-   &.-reversed {
-     flex-direction: row-reverse;
-   }
- 
-   &.-no-gutter {
-     margin-right: 0;
-     margin-left: 0;
-   }
- 
-   &.-align {
-     &-start {
-       justify-content: start;
-     }
- 
-     &-center {
-       justify-content: center;
-     }
- 
-     &-end {
-       justify-content: end;
-     }
- 
-     &-top {
-       align-items: flex-start;
-     }
- 
-     &-middle {
-       align-items: center;
-     }
- 
-     &-bottom {
-       align-items: flex-end;
-     }
-   }
- 
-   &.-distribute {
-     &-around {
-       justify-content: space-around;
-     }
- 
-     &-between {
-       justify-content: space-between;
-     }
-   }
- 
-   &.-masonry {
-     display: flex;
-     flex-direction: column;
-     flex-wrap: wrap;
- 
-     & > .column {
-       flex-basis: auto;
-       margin-bottom: rem(30px);
- 
-       &.-spans-6 {
-         width: 50%;
-       }
- 
-       &.-spans-12-tablet {
-         @include below(tablet) {
-           width: 100%;
-           margin-bottom: rem(10px);
-         }
-       }
- 
-       .card {
-         height: auto;
-       }
-     }
-   }
- 
-   &.-equal-height {
-     & > .column {
-       margin-bottom: rem(30px);
- 
-       @include below(tablet) {
-         margin-bottom: rem(20px);
-       }
- 
-       & > * {
-         height: 100%;
-       }
-     }
-   }
- 
-   &.-gutter-large {
-     margin-right: $gutter-compensation-large;
-     margin-left: $gutter-compensation-large;
- 
-     & > .column {
-       padding-right: $columns-gutter-large * 0.5;
-       padding-left: $columns-gutter-large * 0.5;
-     }
-   }
- }
- 
- .column {
-   box-sizing: border-box;
-   flex-basis: auto;
-   flex-grow: 0;
-   flex-shrink: 0;
-   padding-right: $columns-gutter * 0.5;
-   padding-left: $columns-gutter * 0.5;
- 
-   @each $name, $size in $breakpoints {
-     @for $column from 1 through $max-columns {
-       &.-spans-#{$column} {
-         flex-basis: 100% / $max-columns * $column;
-         max-width: 100% / $max-columns * $column;
-       }
-     }
- 
-     @for $column from 0 through $max-columns {
-       &.-offsets-#{$column} {
-         @if $column==0 {
-           margin-left: 0;
-         } @else {
-           margin-left: 100% / $max-columns * $column;
-         }
-       }
-     }
- 
-     @for $column from 1 through $max-columns {
-       &.-spans-#{$column}-#{$name} {
-         @media only screen and (max-width: $size) {
-           flex-basis: 100% / $max-columns * $column;
-           max-width: 100% / $max-columns * $column;
-         }
-       }
-     }
- 
-     @media only screen and (max-width: $size) {
-       @for $column from 0 through $max-columns {
-         &.-offsets-#{$column}-#{$name} {
-           @if $column==0 {
-             margin-left: 0;
-           } @else {
-             margin-left: 100% / $max-columns * $column;
-           }
-         }
-       }
-     }
- 
-     @media only screen and (max-width: $size) {
-       @for $order from 0 through 10 {
-         &.-order-#{$order}-#{$name} {
-           order: $order;
-         }
-       }
-     }
- 
-     @media only screen and (max-width: $size) {
-       @for $order from 0 through 10 {
-         &.-no-padding-#{$name}-down {
-           padding-right: 0;
-           padding-left: 0;
-         }
-       }
-     }
-   }
- 
-   &.-order {
-     &-first {
-       order: -1;
-     }
- 
-     &-last {
-       order: 1;
-     }
-   }
- }
- 
- .masonry__wrapper {
-   display: flex;
-   max-height: rem(1000px);
- }
- 
+
+/**
+ * Grid rows and columns
+ */
+
+// Maximum numbers of columns in the grid
+$max-columns       : 12;
+// Default column gutter width
+$columns-gutter    : 24px;
+$columns-gutter-small : 10px;
+// Default container horizontal padding
+$container-padding : 30px;
+$container-padding-small : 10px;
+
+// Column names and sizes
+$columns : (( "size": 1, "name": one ),
+    ( "size": 2, "name": two ),
+    ( "size": 3, "name": three ),
+    ( "size": 4, "name": four ),
+    ( "size": 5, "name": five ),
+    ( "size": 6, "name": six ),
+    ( "size": 7, "name": seven ),
+    ( "size": 8, "name": eight ),
+    ( "size": 9, "name": nine ),
+    ( "size": 10, "name": ten ),
+    ( "size": 11, "name": eleven ),
+    ( "size": 12, "name": twelve ));
+
+// Breakpoint names and sizes
+$responsive-breakpoints : (( "size": $xlarge, "name": xlarge ),
+    ( "size": $desktop, "name": desktop ),
+    ( "size": $large, "name": large ),
+    ( "size": $medium, "name": medium ),
+    ( "size": $tablet, "name": tablet ),
+    ( "size": $small, "name": small ),
+    ( "size": $xsmall, "name": xsmall ),
+    ( "size": $iphone6p, "name": iphone6p ),
+    ( "size": $iphone6, "name": iphone6 ),
+    ( "size": $mobile, "name": mobile ));
+
+// Grid container
+.container {
+    @include clearfix();
+    width: auto;
+    max-width: rem(1150px);
+    margin: 0 auto;
+    padding: 0 rem($container-padding);
+
+    :below($small) {
+        padding-right: $container-padding-small;
+        padding-left: $container-padding-small;
+    }
+}
+
+// Columns row element
+.columns {
+    @include clearfix();
+    margin-right: rem(-($columns-gutter / 2));
+    margin-left: rem(-($columns-gutter / 2));
+
+    // Margin scale — It generates margin top/bottom modifier classes (e.g. "-margin-bottom-one" or "-margin-top-one")
+    // @include margin-scale();
+
+    &.-no-gutter {
+        margin-right: 0;
+        margin-left: 0;
+
+        & > .column {
+            padding-right: 0;
+            padding-left: 0;
+        }
+    }
+
+    &.-gutter-small {
+        margin-right: rem(-($columns-gutter-small / 2));
+        margin-left: rem(-($columns-gutter-small / 2));
+
+        & > .column {
+            padding-right: rem($columns-gutter-small / 2);
+            padding-left: rem($columns-gutter-small / 2);
+        }
+    }
+
+    &.-align {
+        &-vertical {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        &-default {
+             @each $breakpoint in $responsive-breakpoints {
+                &-#{map-get($breakpoint, "name")} {
+                    @include below(map-get($breakpoint, "size")) {
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Individual column element
+.column {
+    @include clearfix();;
+    clear: both;
+    padding-right: rem($columns-gutter / 2);
+    padding-left: rem($columns-gutter / 2);
+    transition: transition-custom($property : width);
+
+    // Classes for column sizing
+    @each $column in $columns {
+        &.is-#{map-get($column, "name")},
+        &.is-#{map-get($column, "size")} 
+        // Offsets (e.g. ".is-offset-six" or ".is-offset-6")
+        &.is-offset-#{map-get($column, "name")},
+        &.is-offset-#{map-get($column, "size")} {
+            content: map-get($column, "size"), $max-columns,
+            move((map-get($column, "size")) / $max-columns, "span");
+        }
+    }
+
+    // for breakpoint classes, we require a new loop to override previous classes
+    @each $column in $columns {
+        // Breakpoint classes (e.g. ".is-six-tablet" or ".is-6-tablet");
+        @each $breakpoint in $responsive-breakpoints {
+            &.is-#{map-get($column, "name")}-#{map-get($breakpoint, "name")},
+            &.is-#{map-get($column, "size")}-#{map-get($breakpoint, "name")} {
+                @include below(map-get($breakpoint, "size")) 
+            }
+
+            // Offsets for breakpoints (e.g. ".is-offset-six-large" or ".is-offset-6-large")
+            &.is-offset-#{map-get($column, "name")}-#{map-get($breakpoint, "name")},
+            &.is-offset-#{map-get($column, "size")}-#{map-get($breakpoint, "name")} {
+                @include below(map-get($breakpoint, "size")) {
+                    @include move(map-get($column, "size") / $max-columns, "span");
+                }
+            }
+            &.no-offset-#{map-get($breakpoint, "name")} {
+                @include below(map-get($breakpoint, "size")) {
+                    @include unmove();
+                }
+            }
+        }
+    }
+
+    &.-clear {
+        clear: both;
+    }
+}
