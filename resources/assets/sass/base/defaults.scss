@@ -3,85 +3,144 @@
  * Author: Graffino (http://www.graffino.com)
  */
 
-.icon {
-    use {
-        fill: currentColor;
-    }
-}
+// Variables
+  @mixin focus-outline(){
+    outline: 0;
+    box-shadow: 0 0 0 rem(3px) rgba(black, 0.3);
+  }
 
 /**
  * Globals
  */
 
-* {
-    // Border-box
-    box-sizing: border-box;
+ // Custom focus state for DOM elements
+*:focus{
+ @include focus-outline();
+ } // @stylint ignor
 
-    // Custom focus state for DOM elements
-    &:focus {
-        outline: none;
-        box-shadow: 0 0 0 rem(3px) rgba($color-primary, 0.12);
-    }
+
+
+*{
+  // Border-box
+  box-sizing: border-box
 }
+
 
 // HTML
-html {
-    font-feature-settings: 'kern';
-    font-kerning: normal;
-    -webkit-font-smoothing: antialiased;
-    font-variant-ligatures: common-ligatures;
+html{
+  position: relative;
 
-    // Enable scroll momentum on iPhone Safari (webkit)
-    -webkit-overflow-scrolling: touch;
-    position: relative;
+  // Font rendering
+  text-rendering: optimizeLegibility;
+  font-variant-ligatures: common-ligatures;
+  font-kerning: normal;
+  font-feature-settings: "kern";
+  -webkit-font-smoothing: antialiased;
 
-    // Font rendering
-    text-rendering: optimizeLegibility;
 }
-
 // Body
-body {
-    overflow-x: hidden;
-    min-width: rem(320px);
-    padding: rem(20px);
-    background-color: $color-background-body;
-    color: $color-text;
-    font-family: $default-fontface-stack;
-    font-size: $default-font-size;
-    font-weight: $default-font-weight;
-    line-height: $default-line-height;
+body{
+  // Defaults
+  overflow-x: hidden;
+  min-width: rem(320px);
+  margin: 0px;
+  background-color: $color-background;
+  color: $default-color;
+  font-family: $default-fontface-stack;
+  font-size: $default-font-size;
+  line-height: $default-line-height;
 
-    // Default font-family until webfonts are loaded
-    .no-fonts & {
-        font-family: $default-system-stack;
+  &.has-background-white{
+    background-color: white;
+  }
+
+
+  // Default font-family until webfonts are loaded
+  .no-fonts &{
+    font-family: $default-system-stack;
+  }
+
+
+
+html,
+body{
+  // Enable scroll momentum on iPhone Safari (webkit)
+  -webkit-overflow-scrolling: touch
+
+}
+.main{
+  @include clearfix();
+  position: relative;
+  margin-top: 17vw;
+  padding-bottom: rem(70px);
+
+  :below($small){
+    margin-top: rem(220px);
+  }
+}
+
+a,
+.link{
+  display: inline-block;
+  color: white;
+  text-decoration: underline;
+  transition: opacity 250ms ease-in-out;
+
+  &.-color{
+    &-github{
+      color: #767676;
     }
-}
-
-.main {
-    @include clearfix();
-    position: relative;
-    margin-top: 17vw;
-    padding-bottom: rem(70px);
-    :below($small) {
-        margin-top: rem(220px);
+    &-facebook{
+      color: #3b5998;
     }
-}
-
-.section {
-    padding-top: $default-padding;
-    padding-bottom: $default-padding;
-    background-color: $color-background;
-
-    &.-background-dark {
-        background-color: $color-background-dark;
+    &-twitter{
+      color: #00aced;
     }
+  }
+
+  &:hover{
+    opacity: 0.5;
+  }
+}
+.list{
+  padding-left: 0;
+  $base-class: &;
+
+
+  &.-type{
+    &-simple{
+      margin-top: 0;
+      margin-bottom: 0;
+      padding-left: 0;
+      list-style-type: none;
+    }
+
+    &-inline{
+      & #{$base-class}__item{
+        display: inline-block;
+        margin-right: rem(10px);
+        margin-left: rem(10px);
+      }
+    }
+
+    &-tile
+      & #{$base-class}__item{
+        @include clearfix();
+        margin-top: rem(5px);
+        margin-bottom: rem(5px);
+        background-color: rgba($color-palette-5, 0.97);
+
+        & > a{
+          display: block;
+          padding: rem(10px);
+          color: white;
+        }
+  }     
+}
 }
 
-/* stylelint-disable selector-no-qualifying-type */
-img[data-src],
-img[data-srcset] {
-    display: block;
-    min-height: 1px;
+.tile {
+  padding: rem(20px);
+  background-color: rgba($color-palette-5, 0.97);
 }
-
-/* stylelint-enable */
+}

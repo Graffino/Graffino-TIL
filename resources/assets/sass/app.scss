@@ -16,6 +16,9 @@
  * Variables
  */
 
+  // Breakpoints
+  @import "common/breakpoints";
+
   @import 'base/variables';
 
   /**
@@ -34,36 +37,36 @@
  @import 'base/typography';
  @import 'base/defaults';
  @import 'base/animations';
- @import 'base/buttons';
- @import 'base/forms';
 
-
-  // Breakpoints
-  @import "common/breakpoints";
   // Grid
   @import "common/grid";
 /**
  * Modules
  */
   // Icons — styles and sizes
-  @import "modules/icon";
+  @import 'modules/icon';
   // Button — styles and sizes
-  @import "modules/button";
+  @import 'modules/button';
+  // Form - styles
+  @import 'modules/form';
+  // User Controls - styles
+  @import 'modules/user';
   // Hero - styles
-  @import "modules/hero";
+  @import 'modules/hero';
   // Sidebar - styles
-  @import "modules/sidebar";
+  @import 'modules/sidebar';
   // Feed - styles
-  @import "modules/feed";
+  @import 'modules/feed';
   // Post - styles
-  @import "modules/post";
+  @import 'modules/post';
   // Activity Chart
-  @import "modules/activity-chart";
+  @import 'modules/activity-chart';
   // Alert
-  @import "modules/alert";
+  @import 'modules/alert';
   // Popup
-  @import "modules/popup";
+  @import 'modules/popup';
+
   // highlightjs
-  @import "vendor/atom-one-dark";
-  // codemirror
-  @import "vendor/code-mirror";
+@import 'vendor/atom-one-dark';
+// codemirror
+@import 'vendor/code-mirror';

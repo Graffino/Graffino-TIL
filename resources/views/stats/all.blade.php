@@ -4,10 +4,10 @@
 
 @section('content')
 <div class="container">
-  <h1 class="h-center-text">Statistics</h1>
+  <h1 class="h-center">Statistics</h1>
   <div class="column is-12">
     <article class="tile"> 
-      <h4 class="h-center-text">Last 30 days</h4> 
+      <h4 class="h-center">Last 30 days</h4> 
       <div class=""> 
         <ul class="activity__chart"> 
           @foreach($postsForDays as $entry) 
@@ -21,7 +21,7 @@
   </div>
   <div class="column is-12">
     <article>
-      <h4 class="h-center-text">Hottest Posts</h4>
+      <h4 class="h-center">Hottest Posts</h4>
         <ul class="list -type-simple -type-tile">
           @foreach($hottestPosts as $entry)
             <li class="list__item">
@@ -61,7 +61,7 @@
   </div>
   <div class="column is-6 is-12-tablet">
     <article>
-      <h4 class="h-center-text">{{ $postsCount }} posts in {{ $channelsCount }} channels</h4>
+      <h4 class="h-center">{{ $postsCount }} posts in {{ $channelsCount }} channels</h4>
         <ul class="list -type-simple -type-tile">
           @foreach($channels as $channel)
             <li class="list__item">
@@ -79,7 +79,7 @@
   </div>
   <div class="column is-6 is-12-tablet">
     <article>
-      <h4 class="h-center-text">{{ $developersCount }} authors</h4>
+      <h4 class="h-center">{{ $developersCount }} authors</h4>
         <ul class="list -type-simple -type-tile">
           @foreach($developers as $developer)
             <li class="list__item">
