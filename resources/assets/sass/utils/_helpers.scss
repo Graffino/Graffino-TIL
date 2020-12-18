@@ -370,4 +370,14 @@ $values: (0, 1, 2); //values for line height
             }
         }
     }
+
+    &-pull {
+        &-right {
+          float: right;
+        }
+    
+        &-left {
+          float: left;
+        }
+      }
 }
