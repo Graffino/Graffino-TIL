@@ -29,7 +29,7 @@
         <label class="form__label">Channel</label>
         <select class="form__select" name="channel_id">
           @foreach ($channels as $key => $value)
-            <option value="{{ $key + 1 }}">{{ $value }}</option>
+            <option value="{{ $value }}">{{ $key }}</option>
           @endforeach
         </select>
       </div>

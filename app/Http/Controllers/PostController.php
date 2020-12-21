@@ -117,7 +117,9 @@ class PostController extends Controller
     }
 
     protected function getChannels() {
-      return Channel::all()->pluck('name')->all();
+      $channels = Channel::all()->pluck('id','name')->all();
+      asort($channels);
+      return $channels;
     }
 
     protected function searchPosts($q) {
