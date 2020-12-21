@@ -7,7 +7,7 @@
   color: $white;
   font-size: rem(20px);
   text-transform: uppercase;
-  transition: background-color 250ms ease-in-out;
+  transition: transition-custom($property = $background-color);
   cursor: pointer;
 
   &.-color-white {

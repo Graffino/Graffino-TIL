@@ -1,7 +1,7 @@
 .activity__chart {
   display: flex;
   list-style-type: none;
-  height: 200px;
+  height: rem(200px);
 
   &-bar {
       position: absolute;
@@ -36,7 +36,7 @@
           position: absolute;
           left: 50%;
           color: $white;
-          font-size: 12px;
+          font-size: rem(12px);
           font-style: italic;
           font-weight: bold;
           white-space: nowrap;
@@ -45,12 +45,12 @@
 
       &::after {
           content: attr(data-amount) ' posts';
-          bottom: -20px;
+          bottom: rem(-20px);
       }
 
       &::before {
           content: attr(data-date);
-          top: -20px;
+          top: rem(-20px);
       }
   }
 }
