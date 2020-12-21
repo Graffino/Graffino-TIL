@@ -18,7 +18,7 @@ $container-padding : 30px;
 $container-padding-small : 10px;
 
 // Column names and sizes
-$columns : (( "size": 1, "name": one ),
+$columns : ( "size": 1, "name": one ),
     ( "size": 2, "name": two ),
     ( "size": 3, "name": three ),
     ( "size": 4, "name": four ),
@@ -29,19 +29,19 @@ $columns : (( "size": 1, "name": one ),
     ( "size": 9, "name": nine ),
     ( "size": 10, "name": ten ),
     ( "size": 11, "name": eleven ),
-    ( "size": 12, "name": twelve ));
+    ( "size": 12, "name": twelve );
 
 // Breakpoint names and sizes
-$responsive-breakpoints : (( "size": $xlarge, "name": xlarge ),
-    ( "size": $desktop, "name": desktop ),
-    ( "size": $large, "name": large ),
-    ( "size": $medium, "name": medium ),
-    ( "size": $tablet, "name": tablet ),
-    ( "size": $small, "name": small ),
-    ( "size": $xsmall, "name": xsmall ),
-    ( "size": $iphone6p, "name": iphone6p ),
-    ( "size": $iphone6, "name": iphone6 ),
-    ( "size": $mobile, "name": mobile ));
+$responsive-breakpoints : ( "size": xlarge, "name": xlarge ),
+    ( "size": desktop, "name": desktop ),
+    ( "size": large, "name": large ),
+    ( "size": medium, "name": medium ),
+    ( "size": tablet, "name": tablet ),
+    ( "size": small, "name": small ),
+    ( "size": xsmall, "name": xsmall ),
+    ( "size": mobile-large, "name": mobile-large ),
+    ( "size": mobile-medium, "name": mobile-medium ),
+    ( "size": mobile-small, "name": mobile-small );
 
 // Grid container
 .container {
@@ -51,7 +51,7 @@ $responsive-breakpoints : (( "size": $xlarge, "name": xlarge ),
     margin: 0 auto;
     padding: 0 rem($container-padding);
 
-    :below($small) {
+    @include below(small) {
         padding-right: $container-padding-small;
         padding-left: $container-padding-small;
     }
@@ -137,14 +137,10 @@ $responsive-breakpoints : (( "size": $xlarge, "name": xlarge ),
             // Offsets for breakpoints (e.g. ".is-offset-six-large" or ".is-offset-6-large")
             &.is-offset-#{map-get($column, "name")}-#{map-get($breakpoint, "name")},
             &.is-offset-#{map-get($column, "size")}-#{map-get($breakpoint, "name")} {
-                @include below(map-get($breakpoint, "size")) {
-                    @include move(map-get($column, "size") / $max-columns, "span");
-                }
+                @include below(map-get($breakpoint, "size"))
             }
             &.no-offset-#{map-get($breakpoint, "name")} {
-                @include below(map-get($breakpoint, "size")) {
-                    @include unmove();
-                }
+                @include below(map-get($breakpoint, "size"))
             }
         }
     }

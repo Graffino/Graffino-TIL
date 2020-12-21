@@ -4,7 +4,7 @@
   bottom: 0;
   left: 0;
 
-  :below($medium) {
+  @include below(medium) {
       width: 100%;
       background-color: rgba(white, 0.1);
   }
@@ -17,7 +17,7 @@
           padding: rem(10px);
           list-style-type: none;
 
-          :below($medium) {
+          @include below(medium) {
               position: relative;
               flex-direction: row;
               margin: 0;
@@ -28,7 +28,7 @@
               position: relative;
               margin: rem(10px) 0;
 
-              :below($medium) {
+              @include below(medium) {
                   position: static;
               }
           }
@@ -38,7 +38,7 @@
               width: rem(40px);
               height: rem(40px);
 
-              :below($medium) {
+              @include below(medium) {
                   width: rem(24px);
                   height: rem(24px);
               }
@@ -61,7 +61,7 @@
           margin: rem(10px) auto;
           transition: opacity 250ms ease-in-out, visibility 250ms ease-in-out;
 
-          :below($medium) {
+          @include below(medium) {
               top: auto;
               bottom: 100%;
               left: 0;
@@ -82,7 +82,7 @@
               border-radius: rem(4px);
               padding: 0 rem(10px);
 
-              :below($medium) {
+              @include below(medium) {
                   width: 100%;
                   border-radius: 0;
                   padding-right: rem(70px);
@@ -96,7 +96,7 @@
               border: 0;
               border-radius: 0;
 
-              :below($medium) {
+              @include below(medium) {
                   display: block;
                   position: absolute;
                   top: 0;

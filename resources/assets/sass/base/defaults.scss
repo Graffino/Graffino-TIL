@@ -77,7 +77,7 @@ body {
         margin-top: 17vw;
         padding-bottom: rem(70px);
 
-        :below($small) {
+        @include below(small) {
             margin-top: rem(220px);
         }
     }

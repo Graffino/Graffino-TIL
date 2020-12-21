@@ -16,7 +16,7 @@ $post-header-color-green: #99d177;
     background-color: rgba($post-background-color, 0.97);
     box-shadow: 0 0 rem(40px) rem(-15px) black;
 
-    :below($eager-tablet) {
+    @include below(eager-tablet) {
         margin-top: rem(20px);
         margin-bottom: rem(20px);
     }

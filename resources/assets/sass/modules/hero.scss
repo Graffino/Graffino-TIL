@@ -9,7 +9,7 @@
       padding-right: 15vw;
       text-align: right;
 
-      @include below($small) {
+      @include below(small) {
           text-align: center;
           padding-right: 0;
       }
@@ -32,7 +32,7 @@
           }
       }
 
-      @include below($small) {
+      @include below(small) {
           margin-bottom: rem(20px);
           font-size: rem(60px);
       }

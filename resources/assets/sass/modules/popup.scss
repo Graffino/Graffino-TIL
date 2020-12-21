@@ -15,7 +15,7 @@
   box-shadow: 0 0 rem(40px) rem(-15px) black;
   transition: opacity 250ms ease-in-out, visibility 250ms ease-in-out;
 
-  :below($medium) {
+  @include below(medium) {
       bottom: 100%;
       left: 0;
       width: 100%;
