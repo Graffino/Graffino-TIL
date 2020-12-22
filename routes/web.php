@@ -26,8 +26,8 @@ Route::group(['middleware' => ['auth']], function () {
 Route::get('author/{username}', 'DeveloperController@show')->name('author');
 
 Route::get('admin', 'DeveloperController@index')->name('login');
-Route::get('auth/github', 'DeveloperController@request')->name('auth.request');
-Route::get('auth/github/callback', 'DeveloperController@callback')->name('auth.callback');
+Route::get('auth/google', 'DeveloperController@request')->name('auth.request');
+Route::get('auth/google/callback', 'DeveloperController@callback')->name('auth.callback');
 Route::get('auth/logout', 'DeveloperController@delete')->name('logout');
 
 Route::get('/', 'PostController@index')->name('posts');
