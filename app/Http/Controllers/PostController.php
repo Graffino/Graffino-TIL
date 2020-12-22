@@ -18,7 +18,8 @@ class PostController extends Controller
 {
     use LikeTrait;
 
-    public function index() {
+    public function index()
+    {
       $posts = Post::orderBy('created_at', 'desc')
         ->with(['channel', 'developer'])
         ->paginate(15);
@@ -26,13 +27,15 @@ class PostController extends Controller
       return view('posts.feed')->with('posts', $posts);
     }
 
-    public function new() {
+    public function new()
+    {
         $channels = $this->getChannels();
 
         return view('posts.new')->with('channels', $channels);
     }
 
-    public function create(Request $request) {
+    public function create(Request $request)
+    {
       Validator::make($request->all(), [
         'title' => 'required|string',
         'body' => 'required|string',
@@ -47,13 +50,14 @@ class PostController extends Controller
       $post->developer_id = Auth::id();
 
       if ($post->save()) {
-        $post->notify(new PostCreated($post));
+			$post->notify(new PostCreated($post));
       }
 
       return redirect()->route('posts');
     }
 
-    public function edit($id) {
+    public function edit($id)
+    {
         $channels = $this->getChannels();
         $post = Post::find($id);
 
@@ -62,7 +66,8 @@ class PostController extends Controller
           ->with('channels', $channels);
     }
 
-    public function update(Request $request, $id) {
+    public function update(Request $request, $id)
+    {
         $post = Post::find($id);
 
         Validator::make($request->all(), [
@@ -84,43 +89,53 @@ class PostController extends Controller
         return redirect('/');
     }
 
-    public function show($slug) {
+    public function show($slug)
+    {
       $post = Post::where('slug', '=', $slug)->firstOrFail();
 
       return view('posts.show')->with('post', $post);
     }
 
-    public function destroy($id) {
+    public function destroy($id)
+    {
       Post::destroy($id);
 
       return redirect()->route('posts')
         ->with('info', 'Post deleted!');
     }
 
-    public function raw($slug) {
+    public function raw($slug)
+    {
       $post = Post::where('slug', '=', $slug)->firstOrFail();
 
       return view('posts.raw')->with('post', $post);
     }
 
-    public function random() {
+    public function random()
+    {
       $post = Post::inRandomOrder()->first();
 
       return view('posts.show')->with('post', $post);
     }
 
-    public function search(Request $request) {
+    public function search(Request $request)
+    {
       $q = $request->input('q');
       $posts = $this->searchPosts($q);
 
       return view('posts.feed')->with('posts', $posts);
     }
 
-    protected function getChannels() {
-      return Channel::all()->pluck('name')->all();
+    protected function getChannels()
+    {
+      return Channel::all()
+        ->map(function ($channel) {
+          return $channel->only(['id', 'name']);
+        })->all();
     }
 
-    protected function searchPosts($q) {
+    protected function searchPosts($q)
+    {
       $results = DB::select("select p.* from posts p
       left join developers d on d.id = p.developer_id
       left join channels c on c.id = p.channel_id

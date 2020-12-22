@@ -29,8 +29,8 @@
       <div class="form__field">
         <label class="form__label">Channel</label>
         <select class="form__select" name="channel_id">
-          @foreach ($channels as $key => $value)
-            <option value="{{ $key + 1 }}" {{ ($key + 1) == $post->channel_id ? 'selected' : '' }}>{{ $value }}</option>
+          @foreach ($channels as $channel)
+            <option value="{{ $channel['id'] }}" {{ ($channel['id']) == $post->channel_id ? 'selected' : '' }}>{{ $channel['name'] }}</option>
           @endforeach
         </select>
       </div>
