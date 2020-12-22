@@ -25,9 +25,9 @@
           @endforeach
         </select>
       </div>
-      <div class="form__field h-center-text">
+      <div class="form__field h-center">
         <button class="button -color-white" type="submit">Update</button>
-        <a class="link h-margin-left-1" href="{{ route('posts') }}">Cancel</a>
+        <a class="link h-margin-left-10" href="{{ route('posts') }}">Cancel</a>
       </div>
     </form>
   </div>

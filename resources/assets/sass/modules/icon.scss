@@ -1,0 +1,24 @@
+.icon {
+  &.-size {
+      &-xsmall {
+          width: rem(18px);
+          height: rem(18px);
+      }
+
+      &-small {
+          width: rem(30px);
+          height: rem(30px);
+      }
+
+      &-medium {
+          width: rem(50px);
+          height: rem(50px);
+      }
+  }
+
+  &.-color {
+      &-white {
+          color: $white;
+      }
+  }
+}

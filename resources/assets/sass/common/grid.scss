@@ -1,0 +1,151 @@
+/**
+ * Name: grid.styl
+ * Author: Graffino (http://www.graffino.com)
+ */
+
+
+/**
+ * Grid rows and columns
+ */
+
+// Maximum numbers of columns in the grid
+$max-columns       : 12;
+// Default column gutter width
+$columns-gutter    : 24px;
+$columns-gutter-small : 10px;
+// Default container horizontal padding
+$container-padding : 30px;
+$container-padding-small : 10px;
+
+// Column names and sizes
+$columns : ( "size": 1, "name": one ),
+    ( "size": 2, "name": two ),
+    ( "size": 3, "name": three ),
+    ( "size": 4, "name": four ),
+    ( "size": 5, "name": five ),
+    ( "size": 6, "name": six ),
+    ( "size": 7, "name": seven ),
+    ( "size": 8, "name": eight ),
+    ( "size": 9, "name": nine ),
+    ( "size": 10, "name": ten ),
+    ( "size": 11, "name": eleven ),
+    ( "size": 12, "name": twelve );
+
+// Breakpoint names and sizes
+$responsive-breakpoints : ( "size": xlarge, "name": xlarge ),
+    ( "size": desktop, "name": desktop ),
+    ( "size": large, "name": large ),
+    ( "size": medium, "name": medium ),
+    ( "size": tablet, "name": tablet ),
+    ( "size": small, "name": small ),
+    ( "size": xsmall, "name": xsmall ),
+    ( "size": mobile-large, "name": mobile-large ),
+    ( "size": mobile-medium, "name": mobile-medium ),
+    ( "size": mobile-small, "name": mobile-small );
+
+// Grid container
+.container {
+    @include clearfix();
+    width: auto;
+    max-width: rem(1150px);
+    margin: 0 auto;
+    padding: 0 rem($container-padding);
+
+    @include below(small) {
+        padding-right: $container-padding-small;
+        padding-left: $container-padding-small;
+    }
+}
+
+// Columns row element
+.columns {
+    @include clearfix();
+    margin-right: rem(-($columns-gutter / 2));
+    margin-left: rem(-($columns-gutter / 2));
+
+    // Margin scale — It generates margin top/bottom modifier classes (e.g. "-margin-bottom-one" or "-margin-top-one")
+    // @include margin-scale();
+
+    &.-no-gutter {
+        margin-right: 0;
+        margin-left: 0;
+
+        & > .column {
+            padding-right: 0;
+            padding-left: 0;
+        }
+    }
+
+    &.-gutter-small {
+        margin-right: rem(-($columns-gutter-small / 2));
+        margin-left: rem(-($columns-gutter-small / 2));
+
+        & > .column {
+            padding-right: rem($columns-gutter-small / 2);
+            padding-left: rem($columns-gutter-small / 2);
+        }
+    }
+
+    &.-align {
+        &-vertical {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        &-default {
+             @each $breakpoint in $responsive-breakpoints {
+                &-#{map-get($breakpoint, "name")} {
+                    @include below(map-get($breakpoint, "size")) {
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Individual column element
+.column {
+    @include clearfix();;
+    clear: both;
+    padding-right: rem($columns-gutter / 2);
+    padding-left: rem($columns-gutter / 2);
+    transition: transition-custom($property : width);
+
+    // Classes for column sizing
+    @each $column in $columns {
+        &.is-#{map-get($column, "name")},
+        &.is-#{map-get($column, "size")} 
+        // Offsets (e.g. ".is-offset-six" or ".is-offset-6")
+        &.is-offset-#{map-get($column, "name")},
+        &.is-offset-#{map-get($column, "size")} {
+            content: map-get($column, "size"), $max-columns,
+            move((map-get($column, "size")) / $max-columns, "span");
+        }
+    }
+
+    // for breakpoint classes, we require a new loop to override previous classes
+    @each $column in $columns {
+        // Breakpoint classes (e.g. ".is-six-tablet" or ".is-6-tablet");
+        @each $breakpoint in $responsive-breakpoints {
+            &.is-#{map-get($column, "name")}-#{map-get($breakpoint, "name")},
+            &.is-#{map-get($column, "size")}-#{map-get($breakpoint, "name")} {
+                @include below(map-get($breakpoint, "size")) 
+            }
+
+            // Offsets for breakpoints (e.g. ".is-offset-six-large" or ".is-offset-6-large")
+            &.is-offset-#{map-get($column, "name")}-#{map-get($breakpoint, "name")},
+            &.is-offset-#{map-get($column, "size")}-#{map-get($breakpoint, "name")} {
+                @include below(map-get($breakpoint, "size"))
+            }
+            &.no-offset-#{map-get($breakpoint, "name")} {
+                @include below(map-get($breakpoint, "size"))
+            }
+        }
+    }
+
+    &.-clear {
+        clear: both;
+    }
+}

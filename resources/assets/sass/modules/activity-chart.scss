@@ -1,0 +1,56 @@
+.activity__chart {
+  display: flex;
+  list-style-type: none;
+  height: rem(200px);
+
+  &-bar {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      display: block;
+      width: 100%;
+      background-color: white;
+
+      &:nth-child(even) {
+          opacity: 0.5;
+      }
+  }
+
+  &-item {
+      position: relative;
+      flex: 1 1;
+
+      &:hover {
+          &::after,
+          &::before {
+              visibility: visible;
+              opacity: 1;
+          }
+      }
+
+      &::after,
+      &::before {
+          visibility: hidden;
+          opacity: 0;
+          position: absolute;
+          left: 50%;
+          color: $white;
+          font-size: rem(12px);
+          font-style: italic;
+          font-weight: bold;
+          white-space: nowrap;
+          transform: translateX(-50%);
+      }
+
+      &::after {
+          content: attr(data-amount) ' posts';
+          bottom: rem(-20px);
+      }
+
+      &::before {
+          content: attr(data-date);
+          top: rem(-20px);
+      }
+  }
+}

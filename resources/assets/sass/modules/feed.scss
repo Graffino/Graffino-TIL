@@ -1,0 +1,8 @@
+.feed {
+    &__wrapper {
+        display: flex;
+        flex-flow: column;
+        justify-content: flex-end;
+        align-items: center;
+    }
+}

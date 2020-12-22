@@ -34,15 +34,15 @@
           @endforeach
         </select>
       </div>
-      <div class="form__field h-center-text">
+      <div class="form__field h-center">
         <button class="button -color-white" type="submit">Update</button>
-        <a class="link h-margin-left-1" href="{{ route('posts') }}">Cancel</a>
+        <a class="link h-margin-left-10" href="{{ route('posts') }}">Cancel</a>
       </div>
     </form>
     <form class="form" action="{{ route('posts.destroy', $post->id) }}" method="POST">
       {{ csrf_field() }}
       {{ method_field('DELETE') }}
-      <div class="form__field h-center-text">
+      <div class="form__field h-center">
         <button type="submit" class="button -color-white h-pull-right">Delete</button>
       </div>
     </form>

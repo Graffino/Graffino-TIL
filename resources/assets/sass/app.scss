@@ -1,0 +1,72 @@
+/**
+ * Main stylus file
+ * Author: Graffino (http://www.graffino.com)
+ */
+
+/**
+ * Dependencies
+ */  
+  // Typi
+  @import '~typi/scss/typi';
+
+  // // CodeMirror
+  @import "../../../node_modules/codemirror/lib/codemirror.css";
+
+  /**
+ * Variables
+ */
+
+  // Breakpoints
+  @import "common/breakpoints";
+
+  @import 'base/variables';
+
+  /**
+   * Utils
+   */
+
+  @import 'utils/debug';
+  @import 'utils/functions';
+  @import 'utils/helpers';
+
+    /**
+ * Base
+ */
+ @import 'base/colors';
+ @import 'base/fonts';
+ @import 'base/typography';
+ @import 'base/defaults';
+ @import 'base/animations';
+
+  // Grid
+  @import "common/grid";
+/**
+ * Modules
+ */
+  // Icons — styles and sizes
+  @import 'modules/icon';
+  // Button — styles and sizes
+  @import 'modules/button';
+  // Form - styles
+  @import 'modules/form';
+  // User Controls - styles
+  @import 'modules/user';
+  // Hero - styles
+  @import 'modules/hero';
+  // Sidebar - styles
+  @import 'modules/sidebar';
+  // Feed - styles
+  @import 'modules/feed';
+  // Post - styles
+  @import 'modules/post';
+  // Activity Chart
+  @import 'modules/activity-chart';
+  // Alert
+  @import 'modules/alert';
+  // Popup
+  @import 'modules/popup';
+
+  // highlightjs
+@import 'vendor/atom-one-dark';
+// codemirror
+@import 'vendor/code-mirror';

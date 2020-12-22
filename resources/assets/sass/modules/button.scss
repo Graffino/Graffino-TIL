@@ -1,0 +1,21 @@
+.button {
+  vertical-align: middle;
+  border: 0;
+  border-radius: rem(4px);
+  padding: rem(8px) rem(30px);
+  background-color: $color-palette-4;
+  color: $white;
+  font-size: rem(20px);
+  text-transform: uppercase;
+  transition: transition-custom($property : background-color);
+  cursor: pointer;
+
+  &.-color-white {
+      background-color: $white;
+      color: $color-palette-4;
+  }
+
+  &:hover {
+      background-color: rgba(white, 0.7);
+  }
+}
