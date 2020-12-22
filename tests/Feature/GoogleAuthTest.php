@@ -7,8 +7,6 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Socialite\Contracts\Factory as Socialite;
 use PHPUnit\Framework\TestCase;
 use Mockery;
-use Socialite;
-
 
 class GoogleAuthTest extends TestCase
 {
@@ -19,6 +17,7 @@ class GoogleAuthTest extends TestCase
      */
     public function testGoogleLogin()
     {
+        $socialiteMock = Mockery::mock(Socialite::class);
         $abstractUser = Mockery::mock('Laravel\Socialite\Two\User');         
         $abstractUser->shouldReceive('getId') 
         ->andReturn(1234567890)
@@ -35,9 +34,12 @@ class GoogleAuthTest extends TestCase
 
         $provider->shouldReceive('user')->andReturn($abstractUser);
 
-        Socialite::shouldReceive('driver')->with('google')->andReturn($provider);
+        $socialiteMock->shouldReceive('driver')->with('google')->andReturn($provider);
 
         $this->visit(route("https://til2.graffino.dev/auth/google/callback"))
         ->seePageIs(route("https://til2.graffino.dev/posts/new"));
+
+        $response->assertStatus(200);
+
     }
 }
