@@ -2,25 +2,31 @@
     "name": "graffino/til",
     "version": "1.0.19",
     "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "keywords": [
+        "framework",
+        "laravel"
+    ],
     "license": "MIT",
     "type": "project",
     "require": {
         "php": ">=7.0.0",
         "andreasindal/laravel-markdown": "^2.0",
-        "fideloper/proxy": "~3.3",
+        "fideloper/proxy": "~4.0",
         "laravel-notification-channels/twitter": "^1.0",
-        "laravel/framework": "5.5.*",
+        "laravel/framework": "^5.7",
         "laravel/socialite": "^3.0",
         "laravel/tinker": "~1.0",
         "predis/predis": "^1.1",
         "pusher/pusher-php-server": "~3.0",
-        "frenzy/turbolinks": "~3.2.0"
+        "frenzy/turbolinks": "~3.2.0",
+        "nesbot/carbon": "1.39.1 as 2.0.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.1",
+        "composer/composer": "^2.0",
         "filp/whoops": "~2.0",
         "fzaninotto/faker": "~1.4",
+        "laravel/dusk": "^5.11",
         "mockery/mockery": "~1.0",
         "phpunit/phpunit": "~6.0"
     },
@@ -40,8 +46,7 @@
     },
     "extra": {
         "laravel": {
-            "dont-discover": [
-            ]
+            "dont-discover": []
         }
     },
     "scripts": {

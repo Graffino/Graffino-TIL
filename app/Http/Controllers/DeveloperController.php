@@ -17,11 +17,11 @@ class DeveloperController extends Controller
   }
 
   public function request() {
-    return Socialite::driver('github')->redirect();
+    return Socialite::driver('google')->redirect();
   }
 
   public function callback(Request $request) {
-    $auth = Socialite::driver('github')->user();
+    $auth = Socialite::driver('google')->user();
 
     try {
       $developer = $this->authenticate($auth);
@@ -85,7 +85,7 @@ class DeveloperController extends Controller
   protected function authenticate(User $user) {
     if (stripos($user->email, '@graffino.com') !== false) {
       return Developer::firstOrCreate([
-        'email' => $user->email, 'username' => $user->nickname
+        'email' => $user->email, 'username' => $user->name
       ]);
     } else {
       return abort(404);
