@@ -1,20 +1,10 @@
-@extends('edit')
-@section('content')
-  <div class="meta-container">
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3 class="panel-title">Meta Tags</h3>
+@section('meta_keywords',  $post)
+
+  <div class="form">
+    <label class="form__label">Meta Tags</label>
+        <div class="form__label">
+        @foreach ($post->seo as $keywords)
+            <input type="text" class="form__input" name="meta_keywords" value="{{ old('$keywords', $keywords)}}">
+          @endforeach
         </div>
-        <div class="panel-body">
-            <div class="form-group">
-                <label>Keywords</label>
-                <input name="meta_keywords" class="form-control">
-            </div>
-            <div class="form-group">
-                <label>Description</label>
-                <input name="meta_description" class="form-control">
-            </div>
-        </div>
-    </div>
   </div>
-@endsection

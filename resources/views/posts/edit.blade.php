@@ -34,6 +34,7 @@
           @endforeach
         </select>
       </div>
+      @include('posts.meta')
       <div class="form__field h-center">
         <button class="button -color-white" type="submit">Update</button>
         <a class="link h-margin-left-10" href="{{ route('posts') }}">Cancel</a>
@@ -48,6 +49,5 @@
     </form>
     <div id="html-preview"></div>
     <div id="editor-choice" data-choice="{{ Auth::user()->editor }}"></div>
-    @yield('content')
   </div>
 @endsection

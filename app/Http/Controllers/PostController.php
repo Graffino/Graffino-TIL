@@ -39,12 +39,14 @@ class PostController extends Controller
       Validator::make($request->all(), [
         'title' => 'required|string',
         'body' => 'required|string',
+        'seo' => 'required|json',
         'channel_id' => 'required',
       ])->validate();
 
       $post = new Post();
       $post->title = $request->get('title');
       $post->body = $request->get('body');
+      $post->seo = $request->get('seo');
       $post->channel_id = $request->get('channel_id');
       $post->slug = Post::saltSlug(Post::slugifyTitle($request->input('title')));
       $post->developer_id = Auth::id();
@@ -74,11 +76,13 @@ class PostController extends Controller
           'title' => 'required|string',
           'body' => 'required|string',
           'channel_id' => 'required',
+          'seo' => 'required|json',
         ])->validate();
 
         $post->title = $request->input('title');
         $post->body = $request->input('body');
         $post->channel_id = $request->input('channel_id');
+        $post->seo = $request->input('seo');
 
         if ($post->update()) {
           $request->session()->flash('info', 'Post updated successfully!');

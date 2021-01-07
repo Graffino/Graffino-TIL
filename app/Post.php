@@ -8,9 +8,12 @@ use Illuminate\Notifications\Notifiable;
 class Post extends Model
 {
     use Notifiable;
-
+    
+    protected $casts = [
+      'seo' => 'array'
+    ];
     protected $fillable = [
-      'title', 'body', 'slug', 'likes', 'max_likes'. 'tweeted_at', 'developer_id', 'channel_id',
+      'title', 'body', 'slug', 'likes', 'max_likes'. 'tweeted_at', 'developer_id', 'channel_id', 'seo'
     ];
 
     public static $bodyMaxWords = 200;
