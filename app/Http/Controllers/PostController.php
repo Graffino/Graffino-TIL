@@ -76,13 +76,14 @@ class PostController extends Controller
           'title' => 'required|string',
           'body' => 'required|string',
           'channel_id' => 'required',
-          'seo' => 'required|json',
+          'meta_keywords' => 'required',
         ])->validate();
 
         $post->title = $request->input('title');
         $post->body = $request->input('body');
         $post->channel_id = $request->input('channel_id');
-        $post->seo = $request->input('seo');
+        $keywords = ['keywords' => $request->input('meta_keywords')];
+        $post->seo = json_encode($keywords);
 
         if ($post->update()) {
           $request->session()->flash('info', 'Post updated successfully!');
