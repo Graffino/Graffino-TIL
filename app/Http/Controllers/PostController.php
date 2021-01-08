@@ -66,6 +66,10 @@ class PostController extends Controller
     {
         $channels = $this->getChannels();
         $post = Post::find($id);
+        $seo = json_decode($post->seo);
+        if(isset($seo->keywords)){
+          $post->seo = $seo->keywords;
+        }
 
         return view('posts.edit')
           ->with('post', $post)

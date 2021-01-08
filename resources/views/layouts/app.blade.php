@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="domain-name" content="{{ env('APP_URL') }}">
-    <meta name="keywords" content="'graffino til', 'til', 'learning', 'today i learned' , 'things i learned', 'learn', 'programming'">
-    <meta name="description" content="Learn new things everyday, check out our latest tips and tricks!">
+    <meta name="keywords" content="@yield('meta_keywords', "graffino til, til, learning, today i learned , things i learned, learn, programming")">
+    <meta name="description" content="@yield('description')">
+    <link rel="canonical" href="@yield('canonical_url')"/>
 
     <title>@yield('title') - Today I Learned</title>
     <link rel="stylesheet" href="{{ URL::asset('/css/app.css') }}">
