@@ -9,10 +9,10 @@
     <meta name="keywords" content="@yield('meta_keywords', "graffino til, til, learning, today i learned , things i learned, learn, programming")">
     <meta name="description" content="@yield('description')">
     <link rel="canonical" href="@yield('canonical_url')"/>
-    <meta property="og:title" content="@yield('title', Today I Learned)" />
-    <meta property="og:url" content="@yield('canonical_url')" />
-    <meta property="og:type" content="website" />
-    <meta property="og:description" content="@yield('description')/>
+    <meta name="og:title" content="@yield('title', "Today I Learned")"/>
+    <meta name="og:url" content="@yield('canonical_url')" />
+    <meta name="og:type" content="website" />
+    <meta name="og:description" content="@yield('description')"/>
 
     <title>@yield('title') - Today I Learned</title>
     <link rel="stylesheet" href="{{ URL::asset('/css/app.css') }}">
