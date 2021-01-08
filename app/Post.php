@@ -13,7 +13,7 @@ class Post extends Model
       'seo' => 'array'
     ];
     protected $fillable = [
-      'title', 'body', 'slug', 'likes', 'max_likes'. 'tweeted_at', 'developer_id', 'channel_id', 'seo'
+      'title', 'body', 'slug', 'likes', 'max_likes'. 'tweeted_at', 'developer_id', 'channel_id', 'seo', 'description', 'canonical_url'
     ];
 
     public static $bodyMaxWords = 200;

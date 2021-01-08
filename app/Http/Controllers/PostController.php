@@ -39,14 +39,18 @@ class PostController extends Controller
       Validator::make($request->all(), [
         'title' => 'required|string',
         'body' => 'required|string',
-        'seo' => 'required|json',
+        'meta_keywords' => 'required',
         'channel_id' => 'required',
+        'description' => 'required',
+        'canonical_url' => 'required',
       ])->validate();
 
       $post = new Post();
       $post->title = $request->get('title');
       $post->body = $request->get('body');
       $post->seo = $request->get('seo');
+      $post->canonical_url = $request->get('canonical_url');
+      $post->description = $request->get('description');
       $post->channel_id = $request->get('channel_id');
       $post->slug = Post::saltSlug(Post::slugifyTitle($request->input('title')));
       $post->developer_id = Auth::id();
@@ -71,12 +75,14 @@ class PostController extends Controller
     public function update(Request $request, $id)
     {
         $post = Post::find($id);
-
+        
         Validator::make($request->all(), [
           'title' => 'required|string',
           'body' => 'required|string',
           'channel_id' => 'required',
           'meta_keywords' => 'required',
+          'description' => 'required|string',
+          'canonical_url' => 'required|string',
         ])->validate();
 
         $post->title = $request->input('title');
@@ -84,6 +90,8 @@ class PostController extends Controller
         $post->channel_id = $request->input('channel_id');
         $keywords = ['keywords' => $request->input('meta_keywords')];
         $post->seo = json_encode($keywords);
+        $post->canonical_url = $request->input('canonical_url');
+        $post->description = $request->input('description');
 
         if ($post->update()) {
           $request->session()->flash('info', 'Post updated successfully!');
