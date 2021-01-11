@@ -10,7 +10,7 @@
     <meta name="description" content="@yield('description')">
     <link rel="canonical" href="@yield('canonical_url', 'https://graffino.com/til')"/>
     <meta name="og:title" content="@yield('title') - Today I Learned"/>
-    <meta name="og:url" content="@yield('canonical_url', 'https://graffino.com/til')" />
+    <meta name="og:url" content={{url()->current()}} />
     <meta name="og:type" content="website" />
     <meta name="og:description" content="@yield('description', "Learn new things everyday! Check out our latest tips and tricks!")"/>
 
