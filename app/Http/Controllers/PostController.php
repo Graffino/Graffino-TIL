@@ -48,7 +48,10 @@ class PostController extends Controller
       $post = new Post();
       $post->title = $request->get('title');
       $post->body = $request->get('body');
-      $post->seo = $request->get('seo');
+      $meta_keywords = $request->get('meta_keywords');
+      $keywords_array = explode(',', $meta_keywords);
+      $keywords = ['keywords' => $keywords_array];
+      $post->seo = json_encode($keywords);
       $post->canonical_url = $request->get('canonical_url');
       $post->description = $request->get('description');
       $post->channel_id = $request->get('channel_id');
@@ -68,7 +71,7 @@ class PostController extends Controller
         $post = Post::find($id);
         $seo = json_decode($post->seo);
         if(isset($seo->keywords)){
-          $post->seo = $seo->keywords;
+          $post->seo = implode($seo->keywords, ",");
         }
 
         return view('posts.edit')
@@ -92,7 +95,9 @@ class PostController extends Controller
         $post->title = $request->input('title');
         $post->body = $request->input('body');
         $post->channel_id = $request->input('channel_id');
-        $keywords = ['keywords' => $request->input('meta_keywords')];
+        $keywords = $request->input('meta_keywords');
+        $keywords_array = explode(',', $keywords);
+        $keywords = ['keywords' => $keywords_array];
         $post->seo = json_encode($keywords);
         $post->canonical_url = $request->input('canonical_url');
         $post->description = $request->input('description');
