@@ -42,4 +42,4 @@ const $likesStream = fromEvent(likesSource, 'click')
     return event;
   }))
 
-if (likesSource != null) likesSubscription = $likesStream.subscribe(toggle);
+if (likesSource != null && likesSource.length != 0) likesSubscription = $likesStream.subscribe(toggle);
