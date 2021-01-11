@@ -39,12 +39,21 @@ class PostController extends Controller
       Validator::make($request->all(), [
         'title' => 'required|string',
         'body' => 'required|string',
+        'meta_keywords' => 'required',
         'channel_id' => 'required',
+        'description' => 'required',
+        'canonical_url' => 'required',
       ])->validate();
 
       $post = new Post();
       $post->title = $request->get('title');
       $post->body = $request->get('body');
+      $meta_keywords = $request->get('meta_keywords');
+      $keywords_array = explode(',', $meta_keywords);
+      $keywords = ['keywords' => $keywords_array];
+      $post->seo = json_encode($keywords);
+      $post->canonical_url = $request->get('canonical_url');
+      $post->description = $request->get('description');
       $post->channel_id = $request->get('channel_id');
       $post->slug = Post::saltSlug(Post::slugifyTitle($request->input('title')));
       $post->developer_id = Auth::id();
@@ -60,6 +69,10 @@ class PostController extends Controller
     {
         $channels = $this->getChannels();
         $post = Post::find($id);
+        $seo = json_decode($post->seo);
+        if(isset($seo->keywords)){
+          $post->seo = implode($seo->keywords, ",");
+        }
 
         return view('posts.edit')
           ->with('post', $post)
@@ -69,16 +82,25 @@ class PostController extends Controller
     public function update(Request $request, $id)
     {
         $post = Post::find($id);
-
+        
         Validator::make($request->all(), [
           'title' => 'required|string',
           'body' => 'required|string',
           'channel_id' => 'required',
+          'meta_keywords' => 'required',
+          'description' => 'required|string',
+          'canonical_url' => 'required|string',
         ])->validate();
 
         $post->title = $request->input('title');
         $post->body = $request->input('body');
         $post->channel_id = $request->input('channel_id');
+        $keywords = $request->input('meta_keywords');
+        $keywords_array = explode(',', $keywords);
+        $keywords = ['keywords' => $keywords_array];
+        $post->seo = json_encode($keywords);
+        $post->canonical_url = $request->input('canonical_url');
+        $post->description = $request->input('description');
 
         if ($post->update()) {
           $request->session()->flash('info', 'Post updated successfully!');

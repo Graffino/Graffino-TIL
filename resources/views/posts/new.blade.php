@@ -33,6 +33,7 @@
           @endforeach
         </select>
       </div>
+      @include('posts.meta')
       <div class="form__field h-center">
         <button class="button -color-white" type="submit">Post</button>
         <a class="link h-margin-left-10" href="{{ route('posts') }}">Cancel</a>
