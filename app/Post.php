@@ -10,7 +10,8 @@ class Post extends Model
     use Notifiable;
     
     protected $fillable = [
-      'title', 'body', 'slug', 'likes', 'max_likes'. 'tweeted_at', 'developer_id', 'channel_id', 'seo', 'description', 'canonical_url'
+      'title', 'body', 'slug', 'likes', 'max_likes'. 'tweeted_at', 'developer_id', 'channel_id', 'seo', 'description',
+       'canonical_url', 'social_image_url'
     ];
 
     public static $bodyMaxWords = 200;

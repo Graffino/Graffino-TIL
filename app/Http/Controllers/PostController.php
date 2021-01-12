@@ -24,6 +24,10 @@ class PostController extends Controller
         ->with(['channel', 'developer'])
         ->paginate(15);
 
+        foreach ($posts as $post) {
+          unset($post->seo);
+        }
+        
       return view('posts.feed')->with('posts', $posts);
     }
 
@@ -43,6 +47,7 @@ class PostController extends Controller
         'channel_id' => 'required',
         'description' => 'required',
         'canonical_url' => 'required',
+        'social_image_url' => 'required',
       ])->validate();
 
       $post = new Post();
@@ -55,6 +60,7 @@ class PostController extends Controller
       $post->canonical_url = $request->get('canonical_url');
       $post->description = $request->get('description');
       $post->channel_id = $request->get('channel_id');
+      $post->social_image_url = $request->get('social_image_url');
       $post->slug = Post::saltSlug(Post::slugifyTitle($request->input('title')));
       $post->developer_id = Auth::id();
 
@@ -90,6 +96,7 @@ class PostController extends Controller
           'meta_keywords' => 'required',
           'description' => 'required|string',
           'canonical_url' => 'required|string',
+          'social_image_url' => 'required|string',
         ])->validate();
 
         $post->title = $request->input('title');
@@ -101,6 +108,7 @@ class PostController extends Controller
         $post->seo = json_encode($keywords);
         $post->canonical_url = $request->input('canonical_url');
         $post->description = $request->input('description');
+        $post->social_image_url = $request->input('social_image_url');
 
         if ($post->update()) {
           $request->session()->flash('info', 'Post updated successfully!');
@@ -114,6 +122,10 @@ class PostController extends Controller
     public function show($slug)
     {
       $post = Post::where('slug', '=', $slug)->firstOrFail();
+      $seo = json_decode($post->seo);
+      if(isset($seo->keywords)){
+        $post->seo = implode($seo->keywords, ",");
+      }
 
       return view('posts.show')->with('post', $post);
     }
