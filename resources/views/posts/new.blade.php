@@ -39,6 +39,7 @@
         <a class="link h-margin-left-10" href="{{ route('posts') }}">Cancel</a>
       </div>
     </form>
+    <label class="form__label">Html Preview</label>
     <div id="html-preview"></div>
     <div id="editor-choice" data-choice="{{ Auth::user()->editor }}"></div>
   </div>
