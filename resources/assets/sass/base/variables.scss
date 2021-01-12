@@ -1,0 +1,150 @@
+/**
+ * Variables
+ * Author: Graffino (http://www.graffino.com)
+ */
+
+/**
+ * Palette
+ */
+
+$black: #000;
+$eerie-black: #151923;
+$midnight-express: #1d2230;
+$charleston-green: #1d2230;
+$champagne: #dac19d;
+$silver-sand: #c2c2c2;
+$white: #fff;
+$picton-blue: #209cee;
+$mountain-meadow: #23d160;
+$vermilion: #ff470f;
+$mustard: #ffdd57;
+
+/**
+ * Brand Colors
+ */
+
+$color-primary: $midnight-express;
+$color-accent: $champagne;
+$color-info: $picton-blue;
+$color-success: $mountain-meadow;
+$color-warning: $mustard;
+$color-danger: $vermilion;
+
+/**
+ * Typography
+ */
+
+// Base font sizes for EM / REM mixins
+$base-font-size: 100%;
+$base-font-size-px: 16px;
+
+$default-font-size: 19px;
+$default-font-weight: 200;
+$default-line-height: 1.5;
+
+$body-font-size: 19px;
+$body-line-height: 1.5;
+
+$h1-font-size: 40px;
+$h1-line-height: 1.5;
+
+$h2-font-size: 34px;
+$h2-line-height: 1.5;
+
+$h3-font-size: 30px;
+$h3-line-height: 1.5;
+
+$h4-font-size: 27px;
+$h4-line-height: 1.5;
+
+$h5-font-size: 24px;
+$h5-line-height: 1.5;
+
+$h6-font-size: 21px;
+$h6-line-height: 1.5;
+
+/**
+ * Grid
+ */
+
+// Maximum numbers of columns in the grid
+$max-columns: 12;
+// Default column gutter width
+$columns-gutter: 24px;
+$columns-gutter-large: 40px;
+// Default container horizontal padding
+$container-padding: 28px;
+$container-padding-small: 12px;
+// Default container width
+$container-width: 1200px;
+
+/**
+ * Globals
+ */
+
+$default-radius: 4px;
+$default-shadow: 0 5px 20px 0 rgba($color-primary, 0.3);
+$default-margin: 10px;
+$default-padding: 80px;
+
+/**
+ * Color variables
+ * Author: Graffino (http://www.graffino.com)
+ */
+
+/**
+ * Backgrounds
+ */
+
+$color-background: #1d2230;
+$color-primary: white;
+
+/**
+  * Palette
+  */
+
+$color-theme-1: #b2cb9c;
+$color-theme-2: #e6626f;
+$color-theme-3: #85afd0;
+$color-theme-4: #c5b187;
+
+$color-palette-1: #1d2230;
+$color-palette-2: #213647;
+$color-palette-3: #1da1f2;
+$color-palette-4: #1f3444;
+$color-palette-5: #203443;
+$color-palette-6: #b65c6a;
+$color-palette-7: #7e907a;
+$color-palette-8: #b2a78d;
+$color-palette-9: #88768c;
+$color-palette-10: #a1646f;
+$color-palette-11: #576673;
+$color-palette-12: #92a6b8;
+$color-palette-13: #7790a8;
+$color-palette-14: #eef1f5;
+
+/**
+  * Text
+  */
+
+$color-text: white;
+
+/**
+  * Headings
+  */
+$color-heading: $color-primary;
+
+/**
+  * Links
+  */
+
+$color-link-1: $color-palette-2;
+$color-link-1-hover: $color-palette-11;
+
+/**
+  * Defaults
+  */
+
+$default-color: $color-text;
+$default-link-color: $color-link-1;
+$default-link-hover: $color-link-1-hover;

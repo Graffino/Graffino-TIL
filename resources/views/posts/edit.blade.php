@@ -29,23 +29,25 @@
       <div class="form__field">
         <label class="form__label">Channel</label>
         <select class="form__select" name="channel_id">
-          @foreach ($channels as $key => $value)
-            <option value="{{ $key + 1 }}" {{ ($key + 1) == $post->channel_id ? 'selected' : '' }}>{{ $value }}</option>
+          @foreach ($channels as $channel)
+            <option value="{{ $channel['id'] }}" {{ ($channel['id']) == $post->channel_id ? 'selected' : '' }}>{{ $channel['name'] }}</option>
           @endforeach
         </select>
       </div>
-      <div class="form__field h-center-text">
+      @include('posts.meta')
+      <div class="form__field h-center">
         <button class="button -color-white" type="submit">Update</button>
-        <a class="link h-margin-left-1" href="{{ route('posts') }}">Cancel</a>
+        <a class="link h-margin-left-10" href="{{ route('posts') }}">Cancel</a>
       </div>
     </form>
     <form class="form" action="{{ route('posts.destroy', $post->id) }}" method="POST">
       {{ csrf_field() }}
       {{ method_field('DELETE') }}
-      <div class="form__field h-center-text">
+      <div class="form__field h-center">
         <button type="submit" class="button -color-white h-pull-right">Delete</button>
       </div>
     </form>
+    <label class="form__label">Html Preview</label>
     <div id="html-preview"></div>
     <div id="editor-choice" data-choice="{{ Auth::user()->editor }}"></div>
   </div>

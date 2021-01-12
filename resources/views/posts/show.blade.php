@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('title', $post->title)
+@section('description', $post->description)
 
 @section('content')
   <div class="container">

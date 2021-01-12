@@ -28,16 +28,18 @@
       <div class="form__field">
         <label class="form__label">Channel</label>
         <select class="form__select" name="channel_id">
-          @foreach ($channels as $key => $value)
-            <option value="{{ $key + 1 }}">{{ $value }}</option>
+          @foreach ($channels as $channel)
+            <option value="{{ $channel['id']}}">{{ $channel['name']}}</option>
           @endforeach
         </select>
       </div>
-      <div class="form__field h-center-text">
+      @include('posts.meta')
+      <div class="form__field h-center">
         <button class="button -color-white" type="submit">Post</button>
-        <a class="link h-margin-left-1" href="{{ route('posts') }}">Cancel</a>
+        <a class="link h-margin-left-10" href="{{ route('posts') }}">Cancel</a>
       </div>
     </form>
+    <label class="form__label">Html Preview</label>
     <div id="html-preview"></div>
     <div id="editor-choice" data-choice="{{ Auth::user()->editor }}"></div>
   </div>

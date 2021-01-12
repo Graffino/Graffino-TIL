@@ -1,4 +1,9 @@
-<article class="post">
+  @section('meta_keywords', $post->seo ?? '')
+  @section('description', $post->description ?? '')
+  @section('canonical_url', $post->canonical_url ?? '')
+  @section('social_image_url', $post->social_image_url ?? '')
+  
+  <article class="post">
   <header class="post__header">
     <span class="post__terminal-decorations"></span>
     <h1 class="post__title"><a href="{{ route('posts.show', $post->slug) }}">{{ $post->title }}</a></h1>

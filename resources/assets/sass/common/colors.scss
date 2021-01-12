@@ -1,0 +1,64 @@
+/**
+ * Color variables
+ * Author: Graffino (http://www.graffino.com)
+ */
+
+/**
+ * Backgrounds
+ */
+
+$color-background : #1D2230;;
+$color-primary : white;
+
+/**
+ * Palette
+ */
+
+$color-theme-1 : #B2CB9C;
+$color-theme-2 : #E6626F;
+$color-theme-3 : #85AFD0;
+$color-theme-4 : #C5B187;
+
+$color-palette-1 : #1D2230;
+$color-palette-2 : #213647;
+$color-palette-3 : #1DA1F2;
+$color-palette-4 : #1F3444;
+$color-palette-5 : #203443;
+$color-palette-6 : #B65C6A;
+$color-palette-7 : #7E907A;
+$color-palette-8 : #B2A78D;
+$color-palette-9 : #88768C;
+$color-palette-10 : #A1646F;
+$color-palette-11 : #576673;
+$color-palette-12 : #92A6B8;
+$color-palette-13 : #7790A8;
+$color-palette-14 : #EEF1F5;
+
+/**
+ * Text
+ */
+
+$color-text : white;
+
+
+/**
+ * Headings
+ */
+$color-heading   : $color-primary;
+
+
+/**
+ * Links
+ */
+
+$color-link-1       : $color-palette-2;
+$color-link-1-hover : $color-palette-11;
+
+
+/**
+ * Defaults
+ */
+
+$default-color      : $color-text;
+$default-link-color : $color-link-1;
+$default-link-hover : $color-link-1-hover;
