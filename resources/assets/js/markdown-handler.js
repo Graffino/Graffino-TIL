@@ -9,7 +9,7 @@ let markdownSubscription;
 
 const updateHtml = html => markdownDestination.innerHTML = html;
 
-const makeRequest = data => ajax({url: '/api/convert', method: 'POST', body: { raw: data }})
+const makeRequest = data => ajax({url: 'api/convert', method: 'POST', body: { raw: data }})
   .subscribe(console.log(`Converting "${data}" to html...`));
 
 const $stream = fromEvent(markdownSource, 'input')

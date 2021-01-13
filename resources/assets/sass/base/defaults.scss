@@ -63,89 +63,92 @@ body {
         font-family: $default-system-stack;
     }
 
+}
 
+html,
+body {
+    // Enable scroll momentum on iPhone Safari (webkit)
+    -webkit-overflow-scrolling: touch
+}
 
-    html,
-    body {
-        // Enable scroll momentum on iPhone Safari (webkit)
-        -webkit-overflow-scrolling: touch
+.main {
+    @include clearfix();
+    position: relative;
+    margin-top: 17vw;
+    padding-bottom: rem(70px);
+
+    @include below(small) {
+        margin-top: rem(220px);
     }
+}
 
-    .main {
-        @include clearfix();
-        position: relative;
-        margin-top: 17vw;
-        padding-bottom: rem(70px);
+a,
+.link {
+    display: inline-block;
+    color: white;
+    text-decoration: underline;
+    transition: opacity 250ms ease-in-out;
 
-        @include below(small) {
-            margin-top: rem(220px);
+    &.-color {
+        &-github {
+            color: #767676;
+        }
+
+        &-facebook {
+            color: #3b5998;
+        }
+
+        &-twitter {
+            color: #00aced;
         }
     }
 
-    a,
+    &:hover {
+        opacity: 0.5;
+    }
+}
+
+.list {
+    padding-left: 0;
+
+    &.-type {
+        &-simple {
+            margin-top: 0;
+            margin-bottom: 0;
+            padding-left: 0;
+            list-style-type: none;
+        }
+
+        &-inline {
+            .list__item {
+                display: inline-block;
+                margin-right: rem(10px);
+                margin-left: rem(10px);
+            }
+        }
+
+        &-tile {
+            .list__item {
+                @include clearfix();
+                margin-top: rem(5px);
+                margin-bottom: rem(5px);
+                background-color: rgba($color-palette-5, 0.97);
+
+                &>a {
+                    display: block;
+                    padding: rem(10px);
+                    color: white;
+                }
+            }
+        }
+    }
     .link {
-        display: inline-block;
-        color: white;
-        text-decoration: underline;
-        transition: opacity 250ms ease-in-out;
-
-        &.-color {
-            &-github {
-                color: #767676;
-            }
-
-            &-facebook {
-                color: #3b5998;
-            }
-
-            &-twitter {
-                color: #00aced;
-            }
-        }
-
-        &:hover {
-            opacity: 0.5;
-        }
+        text-decoration: none;
+        color: rgba(255, 255, 255, 0.4);
     }
+}
 
-    .list {
-        padding-left: 0;
-
-        &.-type {
-            &-simple {
-                margin-top: 0;
-                margin-bottom: 0;
-                padding-left: 0;
-                list-style-type: none;
-            }
-
-            &-inline {
-                .list__item {
-                    display: inline-block;
-                    margin-right: rem(10px);
-                    margin-left: rem(10px);
-                }
-            }
-
-            &-tile {
-                .list__item {
-                    @include clearfix();
-                    margin-top: rem(5px);
-                    margin-bottom: rem(5px);
-                    background-color: rgba($color-palette-5, 0.97);
-
-                    &>a {
-                        display: block;
-                        padding: rem(10px);
-                        color: white;
-                    }
-                }
-            }
-        }
-    }
-
-    .tile {
-        padding: rem(20px);
-        background-color: rgba($color-palette-5, 0.97);
-    }
+.tile {
+    padding: rem(20px);
+    background-color: rgba($color-palette-5, 0.97);
 }
