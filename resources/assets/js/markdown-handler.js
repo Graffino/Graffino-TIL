@@ -4,13 +4,12 @@ import { ajax } from 'rxjs/ajax';
 
 const markdownSource = document.getElementById('editor');
 const markdownDestination = document.getElementById('html-preview');
-const domain = document.querySelector('meta[name="domain-name"]').getAttribute('content');
+const domainName = document.head.querySelector('meta[name="domain-name"]').content;
 
 let markdownSubscription;
 
 const updateHtml = html => markdownDestination.innerHTML = html;
-
-const makeRequest = data => ajax({url:`${domain}/api/convert`, method: 'POST', body: { raw: data }})
+const makeRequest = data => ajax({url:`${domainName}api/convert`, method: 'POST', body: { raw: data }})
   .subscribe(console.log(`Converting "${data}" to html...`));
 
 const $stream = fromEvent(markdownSource, 'input')
