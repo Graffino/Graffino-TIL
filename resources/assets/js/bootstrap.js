@@ -10,6 +10,8 @@ hljs.initHighlightingOnLoad();
 
 import Echo from 'laravel-echo'
 
+const domain = document.querySelector('meta[name="domain-name"]').getAttribute('content');
+
 window.Pusher = require('pusher-js');
 
 window.Echo = new Echo({
@@ -17,5 +19,5 @@ window.Echo = new Echo({
     key: '48c555271ceabb01ea19',
     cluster: 'eu',
     encrypted: true,
-    authEndpoint: '/til/broadcasting/auth'
+    authEndpoint: `${domain}/broadcasting/auth`
 });
