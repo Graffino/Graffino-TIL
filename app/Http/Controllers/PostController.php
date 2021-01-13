@@ -43,11 +43,7 @@ class PostController extends Controller
       Validator::make($request->all(), [
         'title' => 'required|string',
         'body' => 'required|string',
-        'meta_keywords' => 'required',
         'channel_id' => 'required',
-        'description' => 'required',
-        'canonical_url' => 'required',
-        'social_image_url' => 'required',
       ])->validate();
 
       $post = new Post();
