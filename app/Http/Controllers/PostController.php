@@ -26,6 +26,7 @@ class PostController extends Controller
 
         foreach ($posts as $post) {
           unset($post->seo);
+          unset($post->canonical_url);
         }
         
       return view('posts.feed')->with('posts', $posts);
@@ -53,13 +54,19 @@ class PostController extends Controller
       $keywords_array = explode(',', $meta_keywords);
       $keywords = ['keywords' => $keywords_array];
       $post->seo = json_encode($keywords);
-      $post->canonical_url = $request->get('canonical_url');
       $post->description = $request->get('description');
       $post->channel_id = $request->get('channel_id');
       $post->social_image_url = $request->get('social_image_url');
+      if($post->social_image_url == null || $post->social_image_url == ''){
+        $image_path = asset('resources/assets/img/post-image.png');
+        $post->social_image_url = $image_path;
+      }
       $post->slug = Post::saltSlug(Post::slugifyTitle($request->input('title')));
       $post->developer_id = Auth::id();
-
+      $post->canonical_url = $request->get('canonical_url');
+      if($post->canonical_url == '' || $post->canonical_url == null){
+        $post->canonical_url = $post->slug;
+      }
       if ($post->save()) {
 			$post->notify(new PostCreated($post));
       }
