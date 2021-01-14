@@ -19,6 +19,7 @@ mix.sass('resources/assets/sass/app.scss', 'public/css')
     plugins: [
         new SVGSpritemapPlugin(['resources/assets/icons/*.svg'], {
             output: {
+                chunk: { keep: true },
                 svgo: {
                     removeTitle: true
                 },
@@ -27,3 +28,7 @@ mix.sass('resources/assets/sass/app.scss', 'public/css')
         })
     ]
 });
+
+if (mix.inProduction()) {
+    mix.version();
+ }

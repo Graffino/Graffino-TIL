@@ -16,7 +16,11 @@
     <meta name="og:image" content="@yield('social_image_url')"/>
 
     <title>@yield('title') - Today I Learned</title>
-    <link rel="stylesheet" href="{{ URL::asset('/css/app.css') }}">
+    @if (config('app.env') == 'local')
+      <link rel="stylesheet" href="{{URL::asset('css/app.css')}}">
+    @else
+      <link rel="stylesheet" href="{{URL::asset(mix('css/app.css'), true)}}">
+    @endif
   </head>
   <body>
     <div class="app">
@@ -100,6 +104,10 @@
         </nav>
       </aside>
     </div>
-    <script type="text/javascript" src="{{ URL::asset('/js/app.js') }}"></script>
+    @if (config('app.env') == 'local')
+      <script src="{{URL::asset('js/app.js')}}"></script>
+    @else
+      <script src="{{URL::asset(mix('js/app.js'), true)}}"></script>
+    @endif
   </body>
 </html>
