@@ -17,6 +17,12 @@ class ChannelController extends Controller
                     ->where('channel_id', '=', $channel->id)
                     ->paginate(5);
 
+      foreach ($posts as $post) {
+        unset($post->seo);
+        unset($post->canonical_url);
+      }
+      
+
       return view('posts.feed')->with('posts', $posts);
     }
 }
