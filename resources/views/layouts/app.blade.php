@@ -13,7 +13,7 @@
     <meta name="og:url" content={{URL::current()}} />
     <meta name="og:type" content="website" />
     <meta name="og:description" content="@yield('description', "Learn new things everyday! Check out our latest tips and tricks!")"/>
-    <meta name="og:image" content="@yield('social_image_url')"/>
+    <meta name="og:image" content="@yield('social_image_url', asset('resources/assets/img/post-image.png'))"/>
 
     <title>@yield('title') - Today I Learned</title>
     @if (config('app.env') == 'local')
