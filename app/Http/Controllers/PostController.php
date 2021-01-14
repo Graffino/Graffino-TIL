@@ -96,10 +96,6 @@ class PostController extends Controller
           'title' => 'required|string',
           'body' => 'required|string',
           'channel_id' => 'required',
-          'meta_keywords' => 'required',
-          'description' => 'required|string',
-          'canonical_url' => 'required|string',
-          'social_image_url' => 'required|string',
         ])->validate();
 
         $post->title = $request->input('title');
