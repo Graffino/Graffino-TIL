@@ -65,7 +65,7 @@ class PostController extends Controller
       $post->developer_id = Auth::id();
       $post->canonical_url = $request->get('canonical_url');
       if($post->canonical_url == '' || $post->canonical_url == null){
-        $post->canonical_url = $post->slug;
+        $post->canonical_url = env('APP_URL') . $post->slug;
       }
       if ($post->save()) {
 			$post->notify(new PostCreated($post));
@@ -96,10 +96,6 @@ class PostController extends Controller
           'title' => 'required|string',
           'body' => 'required|string',
           'channel_id' => 'required',
-          'meta_keywords' => 'required',
-          'description' => 'required|string',
-          'canonical_url' => 'required|string',
-          'social_image_url' => 'required|string',
         ])->validate();
 
         $post->title = $request->input('title');
@@ -128,6 +124,12 @@ class PostController extends Controller
       $seo = json_decode($post->seo);
       if(isset($seo->keywords)){
         $post->seo = implode($seo->keywords, ",");
+      }
+      if($post->canonical_url == '' || $post->canonical_url == null){
+        $post->canonical_url = env('APP_URL') . $post->slug;
+      }
+      if($post->social_image_url == '' || $post->social_image_url == null){
+        $post->social_image_url = asset('resources/assets/img/post-image.png');
       }
 
       return view('posts.show')->with('post', $post);
