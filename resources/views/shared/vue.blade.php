@@ -1,3 +1,3 @@
 <article class="post__copy">
-  Need help?
+  <a href="mailto:hello@graffino.com">Need help?</a>
 </article>

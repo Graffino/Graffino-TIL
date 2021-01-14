@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\URL;
 use Validator;
 use App\Post;
 use App\Developer;
@@ -57,16 +58,10 @@ class PostController extends Controller
       $post->description = $request->get('description');
       $post->channel_id = $request->get('channel_id');
       $post->social_image_url = $request->get('social_image_url');
-      if($post->social_image_url == null || $post->social_image_url == ''){
-        $image_path = asset('resources/assets/img/post-image.png');
-        $post->social_image_url = $image_path;
-      }
       $post->slug = Post::saltSlug(Post::slugifyTitle($request->input('title')));
       $post->developer_id = Auth::id();
       $post->canonical_url = $request->get('canonical_url');
-      if($post->canonical_url == '' || $post->canonical_url == null){
-        $post->canonical_url = env('APP_URL') . $post->slug;
-      }
+
       if ($post->save()) {
 			$post->notify(new PostCreated($post));
       }
@@ -122,14 +117,9 @@ class PostController extends Controller
     {
       $post = Post::where('slug', '=', $slug)->firstOrFail();
       $seo = json_decode($post->seo);
+
       if(isset($seo->keywords)){
         $post->seo = implode($seo->keywords, ",");
-      }
-      if($post->canonical_url == '' || $post->canonical_url == null){
-        $post->canonical_url = env('APP_URL') . $post->slug;
-      }
-      if($post->social_image_url == '' || $post->social_image_url == null){
-        $post->social_image_url = asset('resources/assets/img/post-image.png');
       }
 
       return view('posts.show')->with('post', $post);
@@ -146,6 +136,12 @@ class PostController extends Controller
     public function raw($slug)
     {
       $post = Post::where('slug', '=', $slug)->firstOrFail();
+      $post->canonical_url = env("APP_URL") . $post->slug;
+      $seo = json_decode($post->seo);
+
+      if(isset($seo->keywords)){
+        $post->seo = implode($seo->keywords, ",");
+      }
 
       return view('posts.raw')->with('post', $post);
     }
@@ -153,7 +149,13 @@ class PostController extends Controller
     public function random()
     {
       $post = Post::inRandomOrder()->first();
+      $seo = json_decode($post->seo);
 
+      if(isset($seo->keywords)){
+        $post->seo = implode($seo->keywords, ",");
+      }
+      $post->canonical_url = env("APP_URL") . $post->slug;
+    
       return view('posts.show')->with('post', $post);
     }
 
@@ -162,7 +164,12 @@ class PostController extends Controller
       $q = $request->input('q');
       $posts = $this->searchPosts($q);
 
-      return view('posts.feed')->with('posts', $posts);
+      foreach ($posts as $post) {
+        unset($post->seo);
+        unset($post->canonical_url);
+      }
+
+      return view('posts.search')->with('posts', $posts);
     }
 
     protected function getChannels()

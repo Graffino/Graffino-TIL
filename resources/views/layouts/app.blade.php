@@ -6,16 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="domain-name" content="{{ env('APP_URL') }}">
-    <meta name="keywords" content="@hasSection('meta_keywords')@yield('meta_keywords')@else graffino til, til, learning, today i learned , things i learned, learn, programming @endif">
-    <meta name="description" content="@yield('description')">
-    <link rel="canonical" href="@hasSection('canonical_url')@yield('canonical_url')@else {{env('APP_URL')}} @endif">
-    <meta name="og:title" content="@yield('title') - Today I Learned"/>
-    <meta name="og:url" content={{URL::current()}} />
+    <meta name="keywords" content="@hasSection('meta_keywords')@yield('meta_keywords')@else graffino til, learning, learn, code, programming, webdev, development, sysops @endif">
+    <meta name="description" content="@hasSection('description')@yield('description')@else @yield('title') • TIL - Learn new things everyday! Check out our latest tips and tricks. @endif">
+    <link rel="canonical" href="@hasSection('canonical_url')@yield('canonical_url')@else {{URL::current()}} @endif">
+    <meta name="og:title" content="@yield('title') • Today I Learned"/>
+    <meta name="og:url" content="{{URL::current()}}" />
     <meta name="og:type" content="website" />
-    <meta name="og:description" content="@yield('description', "Learn new things everyday! Check out our latest tips and tricks!")"/>
-    <meta name="og:image" content="@yield('social_image_url', asset('resources/assets/img/post-image.png'))"/>
+    <meta name="og:description" content="@hasSection('description')@yield('description')@else @yield('title') • TIL - Learn new things everyday! Check out our latest tips and tricks. @endif"/>
+    <meta name="og:image" content="@hasSection('social_image_url')@yield('social_image_url')@else {{asset('/images/post-image.png')}}@endif"/>
 
-    <title>@yield('title') - Today I Learned</title>
+    <title>@yield('title') • Today I Learned</title>
     @if (config('app.env') == 'local')
       <link rel="stylesheet" href="{{URL::asset('css/app.css')}}">
     @else
