@@ -8,7 +8,7 @@
     <meta name="domain-name" content="{{ env('APP_URL') }}">
     <meta name="keywords" content="@hasSection('meta_keywords')@yield('meta_keywords')@else graffino til, til, learning, today i learned , things i learned, learn, programming @endif">
     <meta name="description" content="@yield('description')">
-    <link rel="canonical" href="@yield('canonical_url', 'https://graffino.com/til')"/>
+    <link rel="canonical" href="@hasSection('canonical_url')@yield('canonical_url')@else {{env('APP_URL')}} @endif">
     <meta name="og:title" content="@yield('title') - Today I Learned"/>
     <meta name="og:url" content={{url()->current()}} />
     <meta name="og:type" content="website" />

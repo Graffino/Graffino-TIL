@@ -58,7 +58,7 @@ class PostCreated extends Notification
         ->content('A new post has been created')
         ->attachment(function ($attachment) use ($post) {
           $attachment
-            ->title($post->title, env('APP_URL'))
+            ->title($post->title, ApplicationHelper::canonicalUrl($this->post->slug))
             ->content('Go see what\'s up');
         });
     }
