@@ -30,7 +30,7 @@ class PostController extends Controller
           unset($post->canonical_url);
         }
         
-      return view('index.feed')->with('posts', $posts);
+        return view('posts.index')->with('posts', $posts);
     }
 
     public function new()
