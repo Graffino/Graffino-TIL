@@ -28,6 +28,7 @@ class PostController extends Controller
         foreach ($posts as $post) {
           unset($post->seo);
           unset($post->canonical_url);
+          unset($post->description);
         }
         
         return view('posts.index')->with('posts', $posts);
