@@ -10,19 +10,19 @@ class ChannelController extends Controller
 {
     public function show($name)
     {
-      $channel = Channel::where('name', $name)
-      ->first();
+        $channel = Channel::where('name', $name)
+        ->first();
 
-      $posts = Post::orderBy('created_at', 'desc')
+        $posts = Post::orderBy('created_at', 'desc')
                     ->where('channel_id', '=', $channel->id)
                     ->paginate(5);
 
-      foreach ($posts as $post) {
-        unset($post->seo);
-        unset($post->canonical_url);
-      }
-      
+        foreach ($posts as $post) {
+            unset($post->seo);
+            unset($post->canonical_url);
+            unset($post->description);
+        }
 
-      return view('posts.feed')->with('posts', $posts);
+        return view('posts.feed')->with('posts', $posts);
     }
 }

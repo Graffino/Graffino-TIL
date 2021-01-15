@@ -21,16 +21,16 @@ class PostController extends Controller
 
     public function index()
     {
-      $posts = Post::orderBy('created_at', 'desc')
+        $posts = Post::orderBy('created_at', 'desc')
         ->with(['channel', 'developer'])
         ->paginate(15);
 
         foreach ($posts as $post) {
-          unset($post->seo);
-          unset($post->canonical_url);
-          unset($post->description);
+            unset($post->seo);
+            unset($post->canonical_url);
+            unset($post->description);
         }
-        
+
         return view('posts.index')->with('posts', $posts);
     }
 
@@ -43,31 +43,31 @@ class PostController extends Controller
 
     public function create(Request $request)
     {
-      Validator::make($request->all(), [
+        Validator::make($request->all(), [
         'title' => 'required|string',
         'body' => 'required|string',
         'channel_id' => 'required',
-      ])->validate();
+        ])->validate();
 
-      $post = new Post();
-      $post->title = $request->get('title');
-      $post->body = $request->get('body');
-      $meta_keywords = $request->get('meta_keywords');
-      $keywords_array = explode(',', $meta_keywords);
-      $keywords = ['keywords' => $keywords_array];
-      $post->seo = json_encode($keywords);
-      $post->description = $request->get('description');
-      $post->channel_id = $request->get('channel_id');
-      $post->social_image_url = $request->get('social_image_url');
-      $post->slug = Post::saltSlug(Post::slugifyTitle($request->input('title')));
-      $post->developer_id = Auth::id();
-      $post->canonical_url = $request->get('canonical_url');
+        $post = new Post();
+        $post->title = $request->get('title');
+        $post->body = $request->get('body');
+        $meta_keywords = $request->get('meta_keywords');
+        $keywords_array = explode(',', $meta_keywords);
+        $keywords = ['keywords' => $keywords_array];
+        $post->seo = json_encode($keywords);
+        $post->description = $request->get('description');
+        $post->channel_id = $request->get('channel_id');
+        $post->social_image_url = $request->get('social_image_url');
+        $post->slug = Post::saltSlug(Post::slugifyTitle($request->input('title')));
+        $post->developer_id = Auth::id();
+        $post->canonical_url = $request->get('canonical_url');
 
-      if ($post->save()) {
-			$post->notify(new PostCreated($post));
-      }
+        if ($post->save()) {
+            $post->notify(new PostCreated($post));
+        }
 
-      return redirect()->route('posts');
+        return redirect()->route('posts');
     }
 
     public function edit($id)
@@ -75,8 +75,8 @@ class PostController extends Controller
         $channels = $this->getChannels();
         $post = Post::find($id);
         $seo = json_decode($post->seo);
-        if(isset($seo->keywords)){
-          $post->seo = implode($seo->keywords, ",");
+        if (isset($seo->keywords)) {
+            $post->seo = implode($seo->keywords, ",");
         }
 
         return view('posts.edit')
@@ -87,7 +87,7 @@ class PostController extends Controller
     public function update(Request $request, $id)
     {
         $post = Post::find($id);
-        
+
         Validator::make($request->all(), [
           'title' => 'required|string',
           'body' => 'required|string',
@@ -106,9 +106,9 @@ class PostController extends Controller
         $post->social_image_url = $request->input('social_image_url');
 
         if ($post->update()) {
-          $request->session()->flash('info', 'Post updated successfully!');
+            $request->session()->flash('info', 'Post updated successfully!');
         } else {
-          $request->session()->flash('info', 'Couldn\'t update the post!');
+            $request->session()->flash('info', 'Couldn\'t update the post!');
         }
 
         return redirect('/');
@@ -116,74 +116,75 @@ class PostController extends Controller
 
     public function show($slug)
     {
-      $post = Post::where('slug', '=', $slug)->firstOrFail();
-      $seo = json_decode($post->seo);
+        $post = Post::where('slug', '=', $slug)->firstOrFail();
+        $seo = json_decode($post->seo);
 
-      if(isset($seo->keywords)){
-        $post->seo = implode($seo->keywords, ",");
-      }
+        if (isset($seo->keywords)) {
+            $post->seo = implode($seo->keywords, ",");
+        }
 
-      return view('posts.show')->with('post', $post);
+        return view('posts.show')->with('post', $post);
     }
 
     public function destroy($id)
     {
-      Post::destroy($id);
+        Post::destroy($id);
 
-      return redirect()->route('posts')
+        return redirect()->route('posts')
         ->with('info', 'Post deleted!');
     }
 
     public function raw($slug)
     {
-      $post = Post::where('slug', '=', $slug)->firstOrFail();
-      $post->canonical_url = env("APP_URL") . $post->slug;
-      $seo = json_decode($post->seo);
+        $post = Post::where('slug', '=', $slug)->firstOrFail();
+        $post->canonical_url = env("APP_URL") . $post->slug;
+        $seo = json_decode($post->seo);
 
-      if(isset($seo->keywords)){
-        $post->seo = implode($seo->keywords, ",");
-      }
+        if (isset($seo->keywords)) {
+            $post->seo = implode($seo->keywords, ",");
+        }
 
-      return view('posts.raw')->with('post', $post);
+        return view('posts.raw')->with('post', $post);
     }
 
     public function random()
     {
-      $post = Post::inRandomOrder()->first();
-      $seo = json_decode($post->seo);
+        $post = Post::inRandomOrder()->first();
+        $seo = json_decode($post->seo);
 
-      if(isset($seo->keywords)){
-        $post->seo = implode($seo->keywords, ",");
-      }
-      $post->canonical_url = env("APP_URL") . $post->slug;
-    
-      return view('posts.show')->with('post', $post);
+        if (isset($seo->keywords)) {
+            $post->seo = implode($seo->keywords, ",");
+        }
+        $post->canonical_url = env("APP_URL") . $post->slug;
+
+        return view('posts.show')->with('post', $post);
     }
 
     public function search(Request $request)
     {
-      $q = $request->input('q');
-      $posts = $this->searchPosts($q);
+        $q = $request->input('q');
+        $posts = $this->searchPosts($q);
 
-      foreach ($posts as $post) {
-        unset($post->seo);
-        unset($post->canonical_url);
-      }
+        foreach ($posts as $post) {
+            unset($post->seo);
+            unset($post->canonical_url);
+            unset($post->description);
+        }
 
-      return view('posts.search')->with('posts', $posts);
+        return view('posts.search')->with('posts', $posts);
     }
 
     protected function getChannels()
     {
-      return Channel::all()
+        return Channel::all()
         ->map(function ($channel) {
-          return $channel->only(['id', 'name']);
+            return $channel->only(['id', 'name']);
         })->all();
     }
 
     protected function searchPosts($q)
     {
-      $results = DB::select("select p.* from posts p
+        $results = DB::select("select p.* from posts p
       left join developers d on d.id = p.developer_id
       left join channels c on c.id = p.channel_id
       join lateral (
@@ -194,6 +195,6 @@ class PostController extends Controller
         ranks on true
         where ranks.rank > 0 order by ranks.rank desc, p.created_at desc");
 
-      return Post::hydrate($results);
+        return Post::hydrate($results);
     }
 }

@@ -9,12 +9,14 @@
 <link rel="canonical" href="{{$post->canonical_url}}"/>
 
 @section('content')
-<pre style="word-wrap: break-word; white-space: pre-wrap;">
-{{ $post->title }}
+<h1>{{ $post->title }}</h1>
 
+<pre style="word-wrap: break-word; white-space: pre-wrap;">
 {{ $post->body }}
 
 {{ $post->developer->username }}
 {{ $post->created_at->format('d M Y') }}
 </pre>
+
+<a href="{{$post->canonical_url}}">&laquo; Back to post</a>
 @endsection
