@@ -20,8 +20,8 @@ class ChannelController extends Controller
         foreach ($posts as $post) {
             unset($post->seo);
             unset($post->canonical_url);
+            unset($post->description);
         }
-
 
         return view('posts.feed')->with('posts', $posts);
     }
