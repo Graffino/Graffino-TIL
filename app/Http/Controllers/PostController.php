@@ -64,7 +64,7 @@ class PostController extends Controller
       $post->canonical_url = $request->get('canonical_url');
 
       if ($post->save()) {
-			$post->notify(new PostCreated($post));
+      $post->notify(new PostCreated($post));
       }
 
       return redirect()->route('posts');
@@ -75,7 +75,7 @@ class PostController extends Controller
         $channels = $this->getChannels();
         $post = Post::find($id);
         $seo = json_decode($post->seo);
-        if(isset($seo->keywords)){
+        if (isset($seo->keywords)) {
           $post->seo = implode($seo->keywords, ",");
         }
 
@@ -119,8 +119,8 @@ class PostController extends Controller
       $post = Post::where('slug', '=', $slug)->firstOrFail();
       $seo = json_decode($post->seo);
 
-      if(isset($seo->keywords)){
-        $post->seo = implode($seo->keywords, ",");
+      if (isset($seo->keywords)) {
+      $post->seo = implode($seo->keywords, ",");
       }
 
       return view('posts.show')->with('post', $post);
@@ -140,8 +140,8 @@ class PostController extends Controller
       $post->canonical_url = env("APP_URL") . $post->slug;
       $seo = json_decode($post->seo);
 
-      if(isset($seo->keywords)){
-        $post->seo = implode($seo->keywords, ",");
+      if (isset($seo->keywords)) {
+      $post->seo = implode($seo->keywords, ",");
       }
 
       return view('posts.raw')->with('post', $post);
@@ -152,8 +152,8 @@ class PostController extends Controller
       $post = Post::inRandomOrder()->first();
       $seo = json_decode($post->seo);
 
-      if(isset($seo->keywords)){
-        $post->seo = implode($seo->keywords, ",");
+      if (isset($seo->keywords)) {
+      $post->seo = implode($seo->keywords, ",");
       }
       $post->canonical_url = env("APP_URL") . $post->slug;
     
@@ -168,6 +168,7 @@ class PostController extends Controller
       foreach ($posts as $post) {
         unset($post->seo);
         unset($post->canonical_url);
+        unset($post->description);
       }
 
       return view('posts.search')->with('posts', $posts);

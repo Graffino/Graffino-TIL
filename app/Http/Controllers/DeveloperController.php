@@ -49,7 +49,13 @@ class DeveloperController extends Controller
       ->with(['channel', 'developer'])
       ->paginate(15);
 
-    return view('posts.feed')->with('posts', $posts);
+    foreach ($posts as $post) {
+      unset($post->seo);
+      unset($post->canonical_url);
+      unset($post->description);
+    }
+
+    return view('posts.author')->with('posts', $posts);
   }
 
   public function edit() {
