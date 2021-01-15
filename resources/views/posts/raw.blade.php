@@ -17,4 +17,6 @@
 {{ $post->developer->username }}
 {{ $post->created_at->format('d M Y') }}
 </pre>
+
+<a href="{{$post->canonical_url}}">&laquo; Back to post</a> 
 @endsection
