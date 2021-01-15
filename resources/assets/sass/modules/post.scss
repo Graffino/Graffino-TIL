@@ -11,7 +11,8 @@ $post-header-color-green: #99d177;
     width: 100%;
     max-width: rem(800px);
     margin: rem(40px) auto;
-    border-radius: rem(4px);
+    border-bottom-left-radius: rem(4px);
+    border-bottom-right-radius: rem(4px);
     font-family: $mono-fontface-stack;
     background-color: rgba($post-background-color, 0.97);
     box-shadow: 0 0 rem(40px) rem(-15px) black;
@@ -74,6 +75,8 @@ $post-header-color-green: #99d177;
     }
 
     &__header {
+        border-top-left-radius: rem(4px);
+        border-top-right-radius: rem(4px);
         @extend .h-z-index-10;
         position: relative;
         background-color: rgba($post-header-color, 0.9);
@@ -82,6 +85,7 @@ $post-header-color-green: #99d177;
     }
 
     &__wrapper {
+        line-height: $line-height-4;
         padding: rem(10px) rem(20px);
     }
 
