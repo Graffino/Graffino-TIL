@@ -15,7 +15,7 @@
             <strong>{{ $errors->first('title') }}</strong>
           </span>
         @endif
-        <input class="form__input" type="text" name="title" value="{{ old('title', $post->title) }}">
+        <input class="form__input" type="text" name="post_title" value="{{ old('title', $post->title) }}">
       </div>
       <div class="form__field">
         <label class="form__label">Content</label>
@@ -36,7 +36,7 @@
       </div>
       @include('posts.meta')
       <div class="form__field h-center">
-        <button class="button -color-white" type="submit">Update</button>
+        <button id="update-button" class="button -color-white" type="submit">Update</button>
         <a class="link h-margin-left-10" href="{{ route('posts') }}">Cancel</a>
       </div>
     </form>
@@ -44,7 +44,7 @@
       {{ csrf_field() }}
       {{ method_field('DELETE') }}
       <div class="form__field h-center">
-        <button type="submit" class="button -color-white h-pull-right">Delete</button>
+        <button id="delete-button" type="submit" class="button -color-white h-pull-right">Delete</button>
       </div>
     </form>
     <label class="form__label">Html Preview</label>

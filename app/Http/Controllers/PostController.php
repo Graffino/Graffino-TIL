@@ -44,13 +44,13 @@ class PostController extends Controller
     public function create(Request $request)
     {
         Validator::make($request->all(), [
-        'title' => 'required|string',
+        'post_title' => 'required|string',
         'body' => 'required|string',
         'channel_id' => 'required',
         ])->validate();
 
         $post = new Post();
-        $post->title = $request->get('title');
+        $post->title = $request->get('post_title');
         $post->body = $request->get('body');
         $meta_keywords = $request->get('meta_keywords');
         $keywords_array = explode(',', $meta_keywords);
@@ -89,12 +89,12 @@ class PostController extends Controller
         $post = Post::find($id);
 
         Validator::make($request->all(), [
-          'title' => 'required|string',
+          'post_title' => 'required|string',
           'body' => 'required|string',
           'channel_id' => 'required',
         ])->validate();
 
-        $post->title = $request->input('title');
+        $post->title = $request->input('post_title');
         $post->body = $request->input('body');
         $post->channel_id = $request->input('channel_id');
         $keywords = $request->input('meta_keywords');
