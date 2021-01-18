@@ -13,7 +13,7 @@
     <meta property="og:url" content="{{ViewHelper::getCurrentUrl()}}" >
     <meta property="og:type" content="website" >
     <meta property="og:description" content="@hasSection('description')@yield('description')@else @yield('title'){{' • Learn new things everyday! Check out our latest tips and tricks.'}}@endif">
-    <meta property="og:image" content="@hasSection('social_image_url')@yield('social_image_url')@else{{asset('/images/post-image.png')}}@endif">
+    <meta property="og:image" content="@hasSection('social_image_url')@yield('social_image_url')@else{{asset('/images/social.jpg')}}@endif">
 
     <title>@yield('title'){{' • Today I Learned'}}</title>
   </head>
