@@ -8,7 +8,7 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 use App\Developer;
 use App\Post;
 
-class NewPost extends DuskTestCase
+class PostsTest extends DuskTestCase
 {
 
     private $title = 'test title';
