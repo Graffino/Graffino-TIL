@@ -14,7 +14,7 @@
             <strong>{{ $errors->first('title') }}</strong>
           </span>
         @endif
-        <input type="text" class="form__input" name="title" value={{ old('title') }}>
+        <input type="text" class="form__input" name="post_title" value={{ old('title') }}>
       </div>
       <div class="form__field">
         <label class="form__label">Content</label>
@@ -35,7 +35,7 @@
       </div>
       @include('posts.meta')
       <div class="form__field h-center">
-        <button class="button -color-white" type="submit">Post</button>
+        <button id="submit-button" class="button -color-white" type="submit">Post</button>
         <a class="link h-margin-left-10" href="{{ route('posts') }}">Cancel</a>
       </div>
     </form>
