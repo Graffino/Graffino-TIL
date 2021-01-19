@@ -44,6 +44,7 @@
         "illuminate/notifications": "^5.4",
         "laravel-notification-channels/twitter": "^2.0",
         "laravel/framework": "^5.8",
+        "laravel/slack-notification-channel": "^2.3",
         "laravel/socialite": "^3.0",
         "laravel/tinker": "~1.0",
         "nesbot/carbon": "^2.43",
