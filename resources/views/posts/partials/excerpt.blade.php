@@ -1,15 +1,16 @@
-  @section('meta_keywords', $post->seo ?? '')
-  @section('description', $post->description ?? '')
-  @section('canonical_url', $post->canonical_url ?? '')
-  @section('social_image_url', $post->social_image_url ?? '')
+@section('meta_keywords', $post->seo ?? '')
+@section('description', $post->description ?? '')
+@section('canonical_url', $post->canonical_url ?? '')
+@section('social_image_url', $post->social_image_url ?? '')
 
-  <article class="post">
+<article class="post">
   <header class="post__header">
     <span class="post__terminal-decorations"></span>
     <h2 class="post__title"><a href="{{ route('posts.show', $post->slug) }}">{{ $post->title }}</a></h2>
   </header>
   <div class="post__wrapper">
-    {!! markdown($post->body) !!}
+    {$post->description}
+    <a class="post__timestamp" href="{{ route('posts.show', $post->slug) }}">Read more &raquo;</a>
     <div class="post__info">
       <a class="post__author" href="{{ route('author', $post->developer->username) }}">{{ $post->developer->username }}</a>
       <a class="post__timestamp" href="{{ route('posts.show', $post->slug) }}">{{ $post->created_at->format('d M y') }}</a>
