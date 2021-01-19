@@ -34,7 +34,7 @@ class PostsTest extends DuskTestCase
                     ->type('social_image_url', $this->social_image_url)
                     ->driver->executeScript('window.scrollTo(0, 500);');
                     $browser->pause(200)
-                    ->click('#submit-button')
+                    ->press('POST')
                     ->pause(300);
             $this->assertDatabaseHas('posts', [
                 'title' => $this->title
@@ -54,7 +54,7 @@ class PostsTest extends DuskTestCase
             ->type('post_title', $this->edited_title)
             ->driver->executeScript('window.scrollTo(0, 500);');
             $browser->pause(200)
-            ->click('#update-button')
+            ->press('UPDATE')
             ->pause(200);
         });
         $this->assertDatabaseHas('posts', [
@@ -74,7 +74,7 @@ class PostsTest extends DuskTestCase
             ->type('post_title', $this->edited_title)
             ->driver->executeScript('window.scrollTo(0, 500);');
             $browser->pause(200)
-            ->click('#delete-button')
+            ->press('DELETE')
             ->pause(100);
         });
         $post = Post::where('title', '=', $this->edited_title)->get();

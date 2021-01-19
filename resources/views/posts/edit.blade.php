@@ -36,7 +36,7 @@
       </div>
       @include('posts.meta')
       <div class="form__field h-center">
-        <button id="update-button" class="button -color-white" type="submit">Update</button>
+        <button class="button -color-white" type="submit">Update</button>
         <a class="link h-margin-left-10" href="{{ route('posts') }}">Cancel</a>
       </div>
     </form>
@@ -44,7 +44,7 @@
       {{ csrf_field() }}
       {{ method_field('DELETE') }}
       <div class="form__field h-center">
-        <button id="delete-button" type="submit" class="button -color-white h-pull-right">Delete</button>
+        <button type="submit" class="button -color-white h-pull-right">Delete</button>
       </div>
     </form>
     <label class="form__label">Html Preview</label>
