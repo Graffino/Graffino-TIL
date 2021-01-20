@@ -26,6 +26,8 @@ class AppServiceProvider extends ServiceProvider
         $this->app->register(DuskServiceProvider::class);
      }
       Schema::defaultStringLength(191);
+
+      Paginator::useBootstrap();
     }
 
     /**

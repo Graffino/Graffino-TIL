@@ -6,6 +6,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class Developer extends Authenticatable
 {
+    use HasFactory;
+
     protected $casts = [
       'admin' => 'boolean',
     ];
