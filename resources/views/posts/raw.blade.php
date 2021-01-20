@@ -1,6 +1,6 @@
 @extends('layouts.blank')
 
-@section('title', 'Raw - ' . $post->title)
+@section('title', $post->title)
 @section('meta_keywords', $post->seo ?? '')
 @section('description', $post->description ?? '')
 @section('canonical_url', $post->canonical_url ?? '')

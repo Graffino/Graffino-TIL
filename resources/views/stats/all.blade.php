@@ -5,7 +5,7 @@
 @section('content')
 <div class="container">
   <div class="columns">
-    <h1 class="h-center">Statistics</h1>
+    <h2 class="h-center">Statistics</h2>
     <div class="column -spans-12">
       <article class="tile">
         <h4 class="h-center">Last 30 days</h4>
