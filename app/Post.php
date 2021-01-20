@@ -2,13 +2,16 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 
 class Post extends Model
 {
+
+    use HasFactory;
     use Notifiable;
-    
+
     protected $fillable = [
       'title', 'body', 'slug', 'likes', 'max_likes'. 'tweeted_at', 'developer_id', 'channel_id', 'seo', 'description',
        'canonical_url', 'social_image_url'
