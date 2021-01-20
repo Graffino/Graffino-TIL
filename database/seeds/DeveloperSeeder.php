@@ -13,6 +13,6 @@ class DeveloperSeeder extends Seeder
      */
     public function run()
     {
-        factory(\App\Developer::class, 2)->create();
+        \App\Developer::factory()->count(1)->create();
     }
 }

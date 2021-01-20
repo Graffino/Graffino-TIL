@@ -3,9 +3,13 @@
 namespace App;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+
 
 class Developer extends Authenticatable
 {
+    use HasFactory;
+
     protected $casts = [
       'admin' => 'boolean',
     ];
