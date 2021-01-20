@@ -1,0 +1,34 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "Listen for XDebug",
+        "type": "php",
+        "request": "launch",
+        "cwd": "${fileDirname}",
+        "port": 9003,
+        "ignore": [
+          "**/vendor/**/*",
+          "**/.composer/**/*"
+        ],
+        "pathMappings": {
+          "${workspaceRoot}": "${workspaceRoot}"
+        }
+      },
+      {
+        "name": "Chrome Debug",
+        "type": "chrome",
+        // To use "attach" you must start Chrome from the terminal
+        // Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --remote-debugging-port=9229
+        // Or you can replace "attach" with "launch"
+        "request": "launch",
+        "urlFilter": "https://*.graffino.dev",
+        "webRoot": "${workspaceFolder}/",
+        "port": 9229,
+        "pathMapping": {
+          "webpack:///./js/*": "${workspaceFolder}/public/js/*",
+          "${workspaceFolder}/js/*": "${workspaceFolder}/public/js/*"
+        }
+      }
+    ]
+  }
