@@ -1,6 +1,6 @@
 {
     "private": false,
-    "version": "2.0.23",
+    "version": "2.0.24",
     "scripts": {
         "dev": "npm run development",
         "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --config=node_modules/laravel-mix/setup/webpack.config.js",
@@ -12,20 +12,21 @@
         "deploy": "git fetch --all; git reset --hard origin/master; composer install;php artisan migrate --force; yarn; yarn run production; killall php; nohup php artisan queue:work --daemon &"
     },
     "devDependencies": {
-        "axios": "^0.21",
+        "axios": "^0.21.1",
         "bootstrap-sass": "^3.4.1",
-        "cross-env": "^7.0.2",
-        "jquery": "^3.5",
-        "laravel-mix": "^5.0",
+        "cross-env": "^7.0.3",
+        "jquery": "^3.5.1",
+        "laravel-mix": "^6.0.10",
         "lodash": "^4.17.20",
+        "postcss": "^8.2.4",
         "prettier": "^2.2.1",
         "prettier-eslint": "^12.0.0",
         "prettier-eslint-cli": "^5.0.0",
         "prettier-stylelint": "https://github.com/Graffino/prettier-stylelint",
-        "resolve-url-loader": "^3.1.0",
-        "sass": "^1.30.0",
-        "sass-loader": "^8.0.2",
-        "stylelint": "^13.8.0",
+        "resolve-url-loader": "^3.1.2",
+        "sass": "^1.32.5",
+        "sass-loader": "^10.1.1",
+        "stylelint": "^13.9.0",
         "stylelint-config-prettier": "^8.0.2",
         "stylelint-config-sass-guidelines": "^7.1.0",
         "stylelint-config-standard": "^20.0.0",
@@ -38,14 +39,14 @@
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
-        "codemirror": "^5.58.3",
+        "codemirror": "^5.59.2",
         "es-abstract": "^1.17.7",
-        "highlight.js": "^10.4.1",
+        "highlight.js": "^10.5.0",
         "js-cookie": "^2.2.1",
-        "laravel-echo": "^1.9.0",
-        "pusher-js": "^7.0.1",
+        "laravel-echo": "^1.10.0",
+        "pusher-js": "^7.0.2",
         "rxjs": "6.6.3",
-        "svg-spritemap-webpack-plugin": "^3.7.1",
+        "svg-spritemap-webpack-plugin": "^3.8.3",
         "turbolinks": "^5.2.0",
         "typi": "^3.2.0"
     }
