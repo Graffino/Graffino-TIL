@@ -16,12 +16,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-      \URL::forceRootUrl(\Config::get('app.url')); 
-    
+      \URL::forceRootUrl(\Config::get('app.url'));
+
       if(config('app.env') === 'production') {
         \URL::forceScheme('https');
       }
-      
+
       if ($this->app->environment('local', 'testing', 'staging')) {
         $this->app->register(DuskServiceProvider::class);
      }
