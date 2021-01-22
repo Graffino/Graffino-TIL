@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://til.graffino.com'),
+    'url' => env('APP_URL', 'https://graffino.com/til'),
 
     /*
     |--------------------------------------------------------------------------
@@ -65,7 +65,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Europe/Bucharest',
 
     /*
     |--------------------------------------------------------------------------
