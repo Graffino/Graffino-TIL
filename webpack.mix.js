@@ -1,6 +1,7 @@
 let mix = require('laravel-mix');
 let SVGSpritemapPlugin = require('svg-spritemap-webpack-plugin');
 let svgSpriteDestination = "../resources/views/layouts/svgs.blade.php";
+require('laravel-mix-purgecss');
 
 /*
  |--------------------------------------------------------------------------
@@ -15,6 +16,9 @@ let svgSpriteDestination = "../resources/views/layouts/svgs.blade.php";
 
 mix.js('resources/assets/js/app.js', 'public/js')
 mix.sass('resources/assets/sass/app.scss', 'public/css')
+.purgeCss({
+    safelist: { deep: [/hljs/] },
+})
 .webpackConfig({
     plugins: [
         new SVGSpritemapPlugin(['resources/assets/icons/*.svg'], {
