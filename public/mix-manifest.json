@@ -1,6 +1,5 @@
 {
-    "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css",
-    "/spritemap.js": "/spritemap.js",
-    "/../resources/views/layouts/svgs.blade.php": "/../resources/views/layouts/svgs.blade.php"
+    "/js/spritemap.js": "/js/spritemap.js?id=5f6ef07e17161cb70e40",
+    "/js/app.js": "/js/app.js?id=b47396870cde006bb645",
+    "/css/app.css": "/css/app.css?id=fab070430b174eaeb579"
 }
