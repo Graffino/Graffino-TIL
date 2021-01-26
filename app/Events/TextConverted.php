@@ -23,7 +23,7 @@ class TextConverted implements ShouldBroadcast
      */
     public function __construct($text)
     {
-        $this->text = markdown($text);;
+        $this->text = $text;;
     }
 
     /**
