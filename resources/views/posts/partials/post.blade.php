@@ -9,7 +9,7 @@
     <h2 class="post__title"><a href="{{ route('posts.show', $post->slug) }}">{{ $post->title }}</a></h2>
   </header>
   <div class="post__wrapper">
-    {@markdown($post->body)}
+    @markdown($post->body)
     <div class="post__info">
       <a class="post__author" href="{{ route('author', $post->developer->username) }}">{{ $post->developer->username }}</a>
       <a class="post__timestamp" href="{{ route('posts.show', $post->slug) }}">{{ $post->created_at->format('d M y') }}</a>
