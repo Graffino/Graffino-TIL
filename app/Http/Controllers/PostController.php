@@ -117,7 +117,7 @@ class PostController extends Controller
     public function show($slug)
     {
         $post = Post::where('slug', '=', $slug)->firstOrFail();
-        $post->canonical_url = env("APP_URL") . '/' . $post->slug;
+        $post->canonical_url = env("APP_URL") . $post->slug;
         $seo = json_decode($post->seo);
 
         if (isset($seo->keywords)) {
