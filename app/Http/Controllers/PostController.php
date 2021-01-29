@@ -137,7 +137,7 @@ class PostController extends Controller
     public function raw($slug)
     {
         $post = Post::where('slug', '=', $slug)->firstOrFail();
-        $post->canonical_url = env("APP_URL") . $post->slug;
+        $post->canonical_url = env("APP_URL") . '/' . $post->slug;
         $seo = json_decode($post->seo);
 
         if (isset($seo->keywords)) {
@@ -155,7 +155,7 @@ class PostController extends Controller
         if (isset($seo->keywords)) {
             $post->seo = implode($seo->keywords, ",");
         }
-        $post->canonical_url = env("APP_URL") . $post->slug;
+        $post->canonical_url = env("APP_URL") . '/' . $post->slug;
 
         return view('posts.show')->with('post', $post);
     }
