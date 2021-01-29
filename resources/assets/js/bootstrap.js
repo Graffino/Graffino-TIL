@@ -19,5 +19,5 @@ window.Echo = new Echo({
     key: '48c555271ceabb01ea19',
     cluster: 'eu',
     encrypted: true,
-    authEndpoint: `${domainName}broadcasting/auth`
+    authEndpoint: `${domainName}/broadcasting/auth`
 });
