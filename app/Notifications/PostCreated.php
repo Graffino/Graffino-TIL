@@ -11,7 +11,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\SlackMessage;
 use NotificationChannels\Twitter\TwitterChannel;
 use NotificationChannels\Twitter\TwitterStatusUpdate;
-use App\Helpers\ApplicationHelper;
+use App\Helpers\ViewHelper;
 
 class PostCreated extends Notification
 {
@@ -51,25 +51,25 @@ class PostCreated extends Notification
      */
     public function toSlack($notifiable)
     {
-      $post = $this->post;
+        $post = $this->post;
 
-      return (new SlackMessage)
+        return (new SlackMessage)
         ->success()
         ->content('A new post has been created')
         ->attachment(function ($attachment) use ($post) {
-          $attachment
-            ->title($post->title, ApplicationHelper::canonicalUrl($this->post->slug))
+            $attachment
+            ->title($post->title, ViewHelper::getUrl($this->post->slug))
             ->content('Go see what\'s up');
         });
     }
 
     public function toTwitter($notifiable)
     {
-      $canonicalUrl = ApplicationHelper::canonicalUrl($this->post->slug);
-      $developer = Developer::find(Auth::id());
-      $tweet = $canonicalUrl.' via @'.Developer::twitterHandle($developer->id).' #til #'.$this->post->channel->twitter_hashtag;
+        $canonicalUrl = ViewHelper::getUrl($this->post->slug);
+        $developer = Developer::find(Auth::id());
+        $tweet = $canonicalUrl.' via @'.Developer::twitterHandle($developer->id).' #til #'.$this->post->channel->twitter_hashtag;
 
-      return new TwitterStatusUpdate($tweet);
+        return new TwitterStatusUpdate($tweet);
     }
 
     /**
