@@ -4,9 +4,13 @@ namespace App\Helpers;
 
 class ApplicationHelper
 {
-  static public function canonicalUrl($slug) {
-    $appUrl = env("APP_URL");
+    public static function canonicalUrl($slug)
+    {
+        $appUrl = env("APP_URL");
 
-    return $appUrl.'/'.$slug;
-  }
+        $url = $appUrl . '/' . $slug;
+        $url = rtrim($url, '/');
+
+        return $url;
+    }
 }

@@ -12,6 +12,7 @@ use App\Developer;
 use App\Channel;
 use App\Notifications\PostCreated;
 use App\Traits\LikeTrait;
+use App\Helpers\ApplicationHelper;
 
 use Debugbar;
 
@@ -137,7 +138,7 @@ class PostController extends Controller
     public function raw($slug)
     {
         $post = Post::where('slug', '=', $slug)->firstOrFail();
-        $post->canonical_url = env("APP_URL") . '/' . $post->slug;
+        $post->canonical_url = ApplicationHelper::canonicalUrl($post->slug);
         $seo = json_decode($post->seo);
 
         if (isset($seo->keywords)) {
@@ -155,7 +156,7 @@ class PostController extends Controller
         if (isset($seo->keywords)) {
             $post->seo = implode($seo->keywords, ",");
         }
-        $post->canonical_url = env("APP_URL") . '/' . $post->slug;
+        $post->canonical_url = ApplicationHelper::canonicalUrl($post->slug);
 
         return view('posts.show')->with('post', $post);
     }
