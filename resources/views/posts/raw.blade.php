@@ -6,8 +6,6 @@
 @section('canonical_url', $post->canonical_url ?? '')
 @section('social_image_url', $post->social_image_url ?? '')
 
-<link rel="canonical" href="{{$post->canonical_url}}"/>
-
 @section('content')
 <h1>{{ $post->title }}</h1>
 
