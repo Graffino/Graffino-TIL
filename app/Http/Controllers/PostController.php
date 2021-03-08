@@ -77,7 +77,7 @@ class PostController extends Controller
         $post = Post::find($id);
         $seo = json_decode($post->seo);
         if (isset($seo->keywords)) {
-            $post->seo = implode($seo->keywords, ",");
+            $post->seo = implode(",", $seo->keywords);
         }
 
         return view('posts.edit')
@@ -121,7 +121,7 @@ class PostController extends Controller
         $seo = json_decode($post->seo);
 
         if (isset($seo->keywords)) {
-            $post->seo = implode($seo->keywords, ",");
+            $post->seo = implode(",", $seo->keywords);
         }
 
         return view('posts.show')->with('post', $post);
@@ -142,7 +142,7 @@ class PostController extends Controller
         $seo = json_decode($post->seo);
 
         if (isset($seo->keywords)) {
-            $post->seo = implode($seo->keywords, ",");
+            $post->seo = implode(",", $seo->keywords);
         }
 
         return view('posts.raw')->with('post', $post);
@@ -154,7 +154,7 @@ class PostController extends Controller
         $seo = json_decode($post->seo);
 
         if (isset($seo->keywords)) {
-            $post->seo = implode($seo->keywords, ",");
+            $post->seo = implode(",", $seo->keywords);
         }
         $post->canonical_url = ApplicationHelper::canonicalUrl($post->slug);
 
